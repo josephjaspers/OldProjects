@@ -1,0 +1,19 @@
+/*
+ * BlackCat_Definitions.h
+ *
+ *  Created on: Dec 18, 2017
+ *      Author: joseph
+ */
+
+#ifndef BLACKCAT_DEFINITIONS_H_
+#define BLACKCAT_DEFINITIONS_H_
+
+
+constexpr int OPENMP_SINGLE_THREAD_THRESHHOLD = 9999;
+
+enum TRAITS {
+	Dynamic = 0, Scalar = 0, Vector = 1, Matrix = 2, Cube = 3,
+};
+//
+
+#endif /* BLACKCAT_DEFINITIONS_H_ */

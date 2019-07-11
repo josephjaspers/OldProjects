@@ -1,0 +1,81 @@
+/*
+ * Tensor_Lv5_Math_Scalar.h
+ *
+ *  Created on: Dec 20, 2017
+ *      Author: joseph
+ */
+
+#ifndef TENSOR_LV5_MATH_TAIL_0_SCALAR_H_
+#define TENSOR_LV5_MATH_TAIL_0_SCALAR_H_
+
+#include "../Tensor_Lv4_Math_Head.h"
+#include "../../ForwardDeclerations.h"
+#include "Tensor_Lv5_Math_Tail_0_Default.h"
+
+/*
+ *
+ * Scalar specialization for mathematics
+ *
+ */
+
+template<
+	class T,
+	class derived,
+	class math_lib
+>
+struct Tensor_Advanced_Core<T, derived, math_lib, Inner_Shape<1>, Outer_Shape<0>>
+	: public Tensor_Mathematics_Head<T, derived, math_lib, Inner_Shape<1>, Outer_Shape<0>>
+{
+	using parent_class = Tensor_Mathematics_Head<T, derived, math_lib, Inner_Shape<1>, Outer_Shape<0>>;
+	using functor_type = typename parent_class::functor_type;
+	using this_type = Scalar<T, math_lib>;
+	typedef Inner_Shape<1> IS;
+	typedef Outer_Shape<0> OS;
+
+/*
+ * Currently needs specialization for CUDA
+ */
+
+	//specializations for Scalar by Scalar
+	template<typename U> T operator + (const Scalar<U, math_lib>& scalar) { return this->array[0] + scalar.array[0]; }
+	template<typename U> T operator - (const Scalar<U, math_lib>& scalar) { return this->array[0] - scalar.array[0]; }
+	template<typename U> T operator / (const Scalar<U, math_lib>& scalar) { return this->array[0] / scalar.array[0]; }
+	template<typename U> T operator % (const Scalar<U, math_lib>& scalar) { return this->array[0] * scalar.array[0]; }
+	template<typename U> T operator * (const Scalar<U, math_lib>& scalar) { return this->array[0] * scalar.array[0]; }
+
+	//Specializations for Scalar by Tensor
+	template<typename U, class deriv,  class is, class os>
+	typename BC_Substitute_Type::Identity<binary_expression_scalar_L<T, BC::add, functor_type, typename Tensor_Mathematics_Head<U, deriv, math_lib, is, ld>::functor_type>, this_type>::type  //return object
+	operator + (const Tensor_Mathematics_Head<U, derived, math_lib, is, os>& tensor) {
+		return 	typename BC_Substitute_Type::Identity<binary_expression_scalar_L<T, BC::add, functor_type, typename Tensor_Mathematics_Head<U, deriv, math_lib, is, ld>::functor_type>, this_type>(this->array, tensor.array);  //return object
+	}
+	template<typename U, class deriv,  class is, class os>
+	typename BC_Substitute_Type::Identity<binary_expression_scalar_L<T, BC::sub, functor_type, typename Tensor_Mathematics_Head<U, deriv, math_lib, is, ld>::functor_type>, this_type>::type  //return object
+	operator - (const Tensor_Mathematics_Head<U, derived, math_lib, is, os>& tensor) {
+		return 	typename BC_Substitute_Type::Identity<binary_expression_scalar_L<T, BC::sub, functor_type, typename Tensor_Mathematics_Head<U, deriv, math_lib, is, ld>::functor_type>, this_type>(this->array, tensor.array);  //return object
+	}
+
+	template<typename U, class deriv,  class is, class os>
+	typename BC_Substitute_Type::Identity<binary_expression_scalar_L<T, BC::div, functor_type, typename Tensor_Mathematics_Head<U, deriv, math_lib, is, ld>::functor_type>, this_type>::type  //return object
+	operator / (const Tensor_Mathematics_Head<U, derived, math_lib, is, os>& tensor) {
+		return 	typename BC_Substitute_Type::Identity<binary_expression_scalar_L<T, BC::div, functor_type, typename Tensor_Mathematics_Head<U, deriv, math_lib, is, ld>::functor_type>, this_type>(this->array, tensor.array);  //return object
+	}
+
+	template<typename U, class deriv,  class is, class os>
+	typename BC_Substitute_Type::Identity<binary_expression_scalar_L<T, BC::mul, functor_type, typename Tensor_Mathematics_Head<U, deriv, math_lib, inner_shape, ld>::functor_type>, this_type>::type  //return object
+	operator % (const Tensor_Mathematics_Head<U, derived, math_lib, is, os>& tensor) {
+		return 	typename BC_Substitute_Type::Identity<binary_expression_scalar_L<T, BC::mul, functor_type, typename Tensor_Mathematics_Head<U, deriv, math_lib, inner_shape, ld>::functor_type>, this_type>(this->array, tensor.array);  //return object
+	}
+
+	///Alternate
+	template<typename U, class deriv,  class is, class os>
+	typename BC_Substitute_Type::Identity<binary_expression_Scalar_L<T, BC::mul, functor_type, typename Tensor_Mathematics_Head<U, deriv, math_lib, inner_shape, ld>::functor_type>, this_type>::type  //return object
+	operator * (const Tensor_Mathematics_Head<U, derived, math_lib, is, os>& tensor) {
+		return 	typename BC_Substitute_Type::Identity<binary_expression_Scalar_L<T, BC::mul, functor_type, typename Tensor_Mathematics_Head<U, deriv, math_lib, inner_shape, ld>::functor_type>, this_type>(this->array, tensor.array);  //return object
+	}
+
+};
+
+
+
+#endif /* TENSOR_LV5_MATH_TAIL_0_SCALAR_H_ */

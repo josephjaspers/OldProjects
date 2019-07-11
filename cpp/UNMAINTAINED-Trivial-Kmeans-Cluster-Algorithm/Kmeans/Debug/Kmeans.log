@@ -1,0 +1,13 @@
+﻿  Kmeans.cpp
+c:\users\joseph\documents\visual studio 2015\projects\kmeans\kmeans\point.h(31): warning C4018: '<': signed/unsigned mismatch
+c:\users\joseph\documents\visual studio 2015\projects\kmeans\kmeans\kmeans.cpp(31): warning C4018: '<': signed/unsigned mismatch
+c:\users\joseph\documents\visual studio 2015\projects\kmeans\kmeans\kmeans.cpp(37): warning C4018: '<': signed/unsigned mismatch
+c:\users\joseph\documents\visual studio 2015\projects\kmeans\kmeans\kmeans.cpp(48): warning C4018: '<': signed/unsigned mismatch
+c:\users\joseph\documents\visual studio 2015\projects\kmeans\kmeans\kmeans.cpp(65): warning C4018: '<': signed/unsigned mismatch
+c:\users\joseph\documents\visual studio 2015\projects\kmeans\kmeans\kmeans.cpp(89): warning C4018: '<': signed/unsigned mismatch
+c:\users\joseph\documents\visual studio 2015\projects\kmeans\kmeans\kmeans.cpp(96): warning C4018: '<': signed/unsigned mismatch
+c:\users\joseph\documents\visual studio 2015\projects\kmeans\kmeans\kmeans.cpp(97): warning C4018: '<': signed/unsigned mismatch
+c:\users\joseph\documents\visual studio 2015\projects\kmeans\kmeans\kmeans.cpp(126): warning C4018: '<': signed/unsigned mismatch
+c:\users\joseph\documents\visual studio 2015\projects\kmeans\kmeans\kmeans.cpp(127): warning C4018: '<': signed/unsigned mismatch
+  Kmeans.vcxproj -> C:\Users\Joseph\documents\visual studio 2015\Projects\Kmeans\Debug\Kmeans.exe
+  Kmeans.vcxproj -> C:\Users\Joseph\documents\visual studio 2015\Projects\Kmeans\Debug\Kmeans.pdb (Full PDB)

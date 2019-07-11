@@ -1,0 +1,26 @@
+/*
+ * Tensor_Lv5_Core_Specialized.h
+ *
+ *  Created on: Dec 20, 2017
+ *      Author: joseph
+ */
+
+#ifndef TENSOR_LV5_MATH_TAIL_H_
+#define TENSOR_LV5_MATH_TAIL_H_
+
+#include "Tensor_Lv4_Math_Head.h"
+
+template<
+	class T,
+	class derived,
+	class math_lib,
+	class inner_shape,
+	class outer_shape = typename DEFAULT_LD<inner_shape>::type
+>
+struct Tensor_Advanced_Core  : public Tensor_Mathematics_Head<T, derived, math_lib, inner_shape, outer_shape>
+{
+	//DEFAUlT
+};
+
+
+#endif /* TENSOR_LV5_MATH_TAIL_H_ */

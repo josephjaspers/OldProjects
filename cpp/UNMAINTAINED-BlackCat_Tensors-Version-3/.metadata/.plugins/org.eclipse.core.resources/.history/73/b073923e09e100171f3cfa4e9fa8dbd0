@@ -1,0 +1,52 @@
+/*
+ * BC_MetaTemplate_Simple.h
+ *
+ *  Created on: Dec 12, 2017
+ *      Author: joseph
+ */
+
+#ifndef BC_METATEMPLATE_SIMPLE_H_
+#define BC_METATEMPLATE_SIMPLE_H_
+
+namespace BC_MTF {
+
+	template<bool> struct isFalse { static constexpr bool conditional = true; };
+
+	template<bool, bool> struct OR 				 { static constexpr bool conditional = true ;};
+	template<>			 struct OR<false, false> { static constexpr bool conditional = false;};
+
+	template<> struct isFalse<true> { 			 	static constexpr bool conditional = false; };
+
+	template<int a, int b> struct equal { 			static constexpr bool conditional = a == b; };
+
+	template<int a, int b> struct greater_than {	static constexpr int  value = a > b ? a : b;
+												 	static constexpr bool conditional = a > b ? true : false; };
+
+	template<int a, int b> struct less_than { 	 	static constexpr int  value = a < b ? a : b;
+													static constexpr bool conditional = a < b ? true : false;
+	};
+
+	template<class> struct isPrimitive { static constexpr bool conditional = false; };
+	template<> struct isPrimitive<bool> 				{ static constexpr bool conditional = true; };
+	template<> struct isPrimitive<short> 				{ static constexpr bool conditional = true; };
+	template<> struct isPrimitive<unsigned short> 		{ static constexpr bool conditional = true; };
+	template<> struct isPrimitive<int> 					{ static constexpr bool conditional = true; };
+	template<> struct isPrimitive<unsigned> 			{ static constexpr bool conditional = true; };
+	template<> struct isPrimitive<long> 				{ static constexpr bool conditional = true; };
+	template<> struct isPrimitive<unsigned long> 		{ static constexpr bool conditional = true; };
+	template<> struct isPrimitive<long long> 			{ static constexpr bool conditional = true; };
+	template<> struct isPrimitive<unsigned long long> 	{ static constexpr bool conditional = true; };
+	template<> struct isPrimitive<char> 				{ static constexpr bool conditional = true; };
+	template<> struct isPrimitive<unsigned char>		{ static constexpr bool conditional = true; };
+	template<> struct isPrimitive<float> 				{ static constexpr bool conditional = true; };
+	template<> struct isPrimitive<double> 				{ static constexpr bool conditional = true; };
+	template<> struct isPrimitive<long double> 			{ static constexpr bool conditional = true; };
+	template<> struct isPrimitive<wchar_t> 				{ static constexpr bool conditional = true; };
+
+
+
+}
+
+
+
+#endif /* BC_METATEMPLATE_SIMPLE_H_ */

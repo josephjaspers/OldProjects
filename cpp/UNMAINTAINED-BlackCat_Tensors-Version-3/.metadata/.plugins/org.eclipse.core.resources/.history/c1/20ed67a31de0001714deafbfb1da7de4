@@ -1,0 +1,49 @@
+/*
+ * BC_Internal_Include.h
+ *
+ *  Created on: Dec 1, 2017
+ *      Author: joseph
+ */
+
+#ifndef BC_INTERNAL_INCLUDE_H_
+#define BC_INTERNAL_INCLUDE_H_
+
+#include "BC_Expression_Binary_Functors.h"
+#include "BC_Expression_Binary_Pointwise_Scalar_L.h"
+#include "BC_Expression_Binary_Pointwise_Scalar_R.h"
+
+#include "BC_Expression_Binary_Pointwise_Same.h"
+#include "BC_Mathematics_CPU.h"
+#include "BC_MetaTemplate_Complex.h"
+#include "BC_MetaTemplate_Simple.h"
+#include "BC_MetaTemplate_adhoc.h"
+
+#include "BC_Tensor_Lv1_Shape.h"
+
+template<class T, class ml>
+class Scalar;
+
+template<class traits, int... dimensions>
+class Vector;
+
+template<class T, int rows, int cols, class math_library>
+class Matrix;
+
+template<class T, int rows, int cols, int depth, class math_library>
+class Cube;
+
+template<class T, class dims, class math_library>
+class Tensor;
+
+
+template<class T, class deriv>
+struct expression;
+
+template<class T, class oper>
+struct unary_expression;
+
+template<class T, class oper, class lv, class rv>
+struct binary_expression;
+
+
+#endif /* BC_INTERNAL_INCLUDE_H_ */

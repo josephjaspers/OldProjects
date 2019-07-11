@@ -1,0 +1,53 @@
+Main.o: ../Main.cpp ../BC_Shape.h ../BC_Shape_Inner_Impl.h \
+ ../BC_MetaTemplate_Simple.h ../BC_Shape_Outer_impl.h \
+ ../BC_Internal_Include.h ../BC_Expression_Binary_Functors.h \
+ ../BC_Expression_Binary_Pointwise_Scalar.h ../BC_Expression_Base.h \
+ ../BC_Expression_Binary_Pointwise_Same.h ../BC_Mathematics_CPU.h \
+ ../BC_MetaTemplate_Brancher.h ../BC_MetaTemplate_Complex.h \
+ ../BC_MetaTemplate_adhoc.h ../BC_Tensor_Lv2_Type.h \
+ ../BC_Typeclass_FunctionType.h ../BC_Typeclass_Identity.h \
+ ../BC_Tensor_Vector.h ../BC_Tensor_Lv4_Math_Simple.h \
+ ../BC_Tensor_Lv3_Array_Utility.h ../BC_Tensor_Lv3_Expression_Utility.h \
+ ../BC_TensorShape_General_impl.h
+
+../BC_Shape.h:
+
+../BC_Shape_Inner_Impl.h:
+
+../BC_MetaTemplate_Simple.h:
+
+../BC_Shape_Outer_impl.h:
+
+../BC_Internal_Include.h:
+
+../BC_Expression_Binary_Functors.h:
+
+../BC_Expression_Binary_Pointwise_Scalar.h:
+
+../BC_Expression_Base.h:
+
+../BC_Expression_Binary_Pointwise_Same.h:
+
+../BC_Mathematics_CPU.h:
+
+../BC_MetaTemplate_Brancher.h:
+
+../BC_MetaTemplate_Complex.h:
+
+../BC_MetaTemplate_adhoc.h:
+
+../BC_Tensor_Lv2_Type.h:
+
+../BC_Typeclass_FunctionType.h:
+
+../BC_Typeclass_Identity.h:
+
+../BC_Tensor_Vector.h:
+
+../BC_Tensor_Lv4_Math_Simple.h:
+
+../BC_Tensor_Lv3_Array_Utility.h:
+
+../BC_Tensor_Lv3_Expression_Utility.h:
+
+../BC_TensorShape_General_impl.h:

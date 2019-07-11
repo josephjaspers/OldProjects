@@ -1,0 +1,42 @@
+/*
+ * BC_Tensor_Base2.h
+ *
+ *  Created on: Dec 12, 2017
+ *      Author: joseph
+ */
+
+#ifndef BC_TENSOR_VECTOR_H_
+#define BC_TENSOR_VECTOR_H_
+
+#include "BC_Tensor_Lv4_Math_Simple.h"
+
+
+template<
+	class T,
+	int row,
+	class lib,// = CPU,
+	class LD //= typename DEFAULT_LD<Inner_Shape<row>>::type
+>
+class Vector
+		: public Tensor_Base<T, Vector<T, row, lib>, lib,  typename Shape_Parser<row>::type::inner_shape, typename Shape_Parser<row>::type::outer_shape> {
+
+	using functor_type = typename Tensor_FunctorType<T>::type;
+	using parent_class = Tensor_Base<T, Vector<T, row, lib>, lib,  typename Shape_Parser<row>::type::inner_shape,typename Shape_Parser<row>::type::outer_shape>;
+	using this_type    = Vector<T, row, lib>;
+
+
+public:
+	Vector() = default;
+	template<class... params> Vector(params... p) : parent_class(p...) {}
+
+	template<class U> Vector<T, row, lib>& operator = (const Vector<U, row, lib>& v) {
+		using rv_functor_type = typename Tensor_FunctorType<U>::type;;
+		//evaluator<functor_type, rv_functor_type>::copy(this->data(), v.data(), this->size());
+
+		//o<row>::i_copy(this->data(), v.data(), 0);
+		lib::copy(this->data(), v.data(), this->size());
+		return *this;
+	}
+};
+
+#endif /* BC_TENSOR_VECTOR_H_ */

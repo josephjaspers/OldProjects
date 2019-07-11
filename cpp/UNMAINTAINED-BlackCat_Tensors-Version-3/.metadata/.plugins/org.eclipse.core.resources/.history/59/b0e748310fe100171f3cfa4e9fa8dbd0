@@ -1,0 +1,65 @@
+/*
+ * BC_Tensor_Super_Ace.h
+ *
+ *  Created on: Nov 18, 2017
+ *      Author: joseph
+ */
+
+#ifndef BC_TENSOR_LV1_SHAPE_H_
+#define BC_TENSOR_LV1_SHAPE_H_
+
+#include "BC_Shape_Inner_Impl.h"
+#include "BC_Shape_Outer_impl.h"
+#include "BC_Internal_Include.h"
+/*
+ * Compile time management of methods related to dimensionality
+ */
+
+
+template<class Inner_Shape, class Outer_Shape = typename DEFAULT_LD<Inner_Shape>::type>
+struct Tensor_Shape : Inner_Shape, Outer_Shape {
+
+	static constexpr bool isContinuous = BC_MTF::is_same<Outer_Shape, typename DEFAULT_LD<Inner_Shape>::type>::conditional;
+	static constexpr int  rank = Inner_Shape::RANK;
+	using outer_shape = Outer_Shape;
+	using inner_shape = Inner_Shape;
+};
+
+template<int ... dimensions>
+struct Inner_Shape {
+
+	static constexpr int RANK = sizeof...(dimensions);
+
+	void printDimensions() const { BC_Shape_Identity_impl::print<Inner_Shape<dimensions...>>(); }
+
+	constexpr int size()  const { return BC_Shape_Identity_impl::size<dimensions...>(); }
+	constexpr int rows()  const { return BC_Shape_Identity_impl::row<dimensions...>();   }
+	constexpr int cols()  const { return BC_Shape_Identity_impl::col<dimensions...>();   }
+	constexpr int depth() const { return BC_Shape_Identity_impl::depth<dimensions...>(); }
+	constexpr int pages() const { return BC_Shape_Identity_impl::pages<dimensions...>(); }
+	constexpr int books() const { return BC_Shape_Identity_impl::books<dimensions...>(); }
+	constexpr int libraries() const { return BC_Shape_Identity_impl::libraries<dimensions...>(); }
+
+	template<int dim_index> constexpr int dimension() const { return BC_Shape_Identity_impl::dimension<dim_index, dimensions...>(); }
+};
+
+template<int... dimensions>
+struct Outer_Shape {
+
+	static constexpr int LD_RANK = sizeof...(dimensions);
+
+	void printLeadingDimensions() const { BC_Shape_Identity_impl::print<Outer_Shape<dimensions...>>(); }
+
+	constexpr int LD_size()  const { return BC_Shape_Identity_impl::size<dimensions...>(); }
+	constexpr int LD_rows()  const { return BC_Shape_Identity_impl::row<dimensions...>(); }
+	constexpr int LD_cols()  const { return BC_Shape_Identity_impl::col<dimensions...>(); }
+	constexpr int LD_depth() const { return BC_Shape_Identity_impl::depth<dimensions...>(); }
+	constexpr int LD_pages() const { return BC_Shape_Identity_impl::pages<dimensions...>(); }
+	constexpr int LD_books() const { return BC_Shape_Identity_impl::books<dimensions...>(); }
+	constexpr int LD_libraries() const { return BC_Shape_Identity_impl::libraries<dimensions...>(); }
+
+	template<int dim_index> constexpr int LD_dimension() const { return BC_Shape_Identity_impl::dimension<dim_index, dimensions...>(); }
+};
+
+
+#endif /* BC_TENSOR_LV1_SHAPE_H_ */

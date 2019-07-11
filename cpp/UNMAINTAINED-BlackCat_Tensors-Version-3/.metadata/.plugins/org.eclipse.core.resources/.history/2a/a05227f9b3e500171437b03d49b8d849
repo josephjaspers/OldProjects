@@ -1,0 +1,33 @@
+/*
+ * Expression_Binary_VVmul.h
+ *
+ *  Created on: Dec 20, 2017
+ *      Author: joseph
+ */
+
+#ifndef EXPRESSION_BINARY_VVMUL_H_
+#define EXPRESSION_BINARY_VVMUL_H_
+
+#include "../BlackCat_Global_Unifier.h"
+
+template<
+	class T,
+	class V1,
+	class V2,
+	int   V1_lngth,
+	int	  V2_lngth
+	>
+struct binary_expression_VVmul : expression<T, binary_expression_VVmul<T, V1, V2, V1_lngth, V2_lngth>>{
+
+	/*
+	 * Outer product
+	 */
+
+	V1 vecL;
+	V2 vecR;
+
+};
+
+
+
+#endif /* EXPRESSION_BINARY_VVMUL_H_ */

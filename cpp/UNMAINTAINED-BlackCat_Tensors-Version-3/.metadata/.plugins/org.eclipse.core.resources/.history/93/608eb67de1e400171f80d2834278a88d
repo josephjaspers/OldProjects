@@ -1,0 +1,14 @@
+/*
+ * Transpose_Wrapper.h
+ *
+ *  Created on: Dec 19, 2017
+ *      Author: joseph
+ */
+
+#ifndef TRANSPOSE_WRAPPER_H_
+#define TRANSPOSE_WRAPPER_H_
+
+#include "../BC_Internal_Include.h"
+
+template<class T, class>
+#endif /* TRANSPOSE_WRAPPER_H_ */

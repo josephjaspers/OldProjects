@@ -1,0 +1,34 @@
+/*
+ * Dynamic_Shape.h
+ *
+ *  Created on: Dec 20, 2017
+ *      Author: joseph
+ */
+
+#ifndef DYNAMIC_SHAPE_H_
+#define DYNAMIC_SHAPE_H_
+
+/*
+ * BC_Tensor_Super_Ace.h
+ *
+ *  Created on: Nov 18, 2017
+ *      Author: joseph
+ */
+
+template<class inner, class outer>
+struct Dynamic_Shape : inner, outer {
+
+
+};
+
+struct Dynamic_Inner_Shape {
+
+};
+
+template<int ... dimensions>
+struct Outer_Shape {
+
+
+};
+
+#endif /* DYNAMIC_SHAPE_H_ */

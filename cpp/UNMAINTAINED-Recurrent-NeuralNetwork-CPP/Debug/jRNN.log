@@ -1,0 +1,12 @@
+﻿  jRNN.cpp
+c:\users\joeyj\onedrive\documents\visual studio 2015\projects\matrix\matrix\matrices.h(381): warning C4018: '<': signed/unsigned mismatch
+c:\users\joeyj\onedrive\documents\visual studio 2015\projects\jrnn\jrnn\jrnn.cpp(19): warning C4018: '<': signed/unsigned mismatch
+c:\users\joeyj\onedrive\documents\visual studio 2015\projects\jrnn\jrnn\jrnn.cpp(56): warning C4018: '<': signed/unsigned mismatch
+c:\users\joeyj\onedrive\documents\visual studio 2015\projects\jrnn\jrnn\jrnn.cpp(71): warning C4018: '<': signed/unsigned mismatch
+c:\users\joeyj\onedrive\documents\visual studio 2015\projects\jrnn\jrnn\jrnn.cpp(74): warning C4018: '<': signed/unsigned mismatch
+c:\users\joeyj\onedrive\documents\visual studio 2015\projects\jrnn\jrnn\jrnn.cpp(99): warning C4018: '<': signed/unsigned mismatch
+c:\users\joeyj\onedrive\documents\visual studio 2015\projects\jrnn\jrnn\jrnn.cpp(101): warning C4018: '<': signed/unsigned mismatch
+c:\users\joeyj\onedrive\documents\visual studio 2015\projects\jrnn\jrnn\jrnn.cpp(111): warning C4018: '<': signed/unsigned mismatch
+c:\users\joeyj\onedrive\documents\visual studio 2015\projects\jrnn\jrnn\jrnn.cpp(254): warning C4018: '<': signed/unsigned mismatch
+  jRNN.vcxproj -> C:\Users\joeyj\OneDrive\Documents\Visual Studio 2015\Projects\jRNN\Debug\jRNN.exe
+  jRNN.vcxproj -> C:\Users\joeyj\OneDrive\Documents\Visual Studio 2015\Projects\jRNN\Debug\jRNN.pdb (Full PDB)

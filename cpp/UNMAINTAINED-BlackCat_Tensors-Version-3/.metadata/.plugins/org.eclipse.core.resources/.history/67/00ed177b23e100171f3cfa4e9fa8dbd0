@@ -1,0 +1,245 @@
+/*
+ * BC_MetaTemplate_EssentialMethods.h
+ *
+ *  Created on: Dec 11, 2017
+ *      Author: joseph
+ */
+
+#ifndef BC_METATEMPLATE_ADHOC_H_
+#define BC_METATEMPLATE_ADHOC_H_
+
+#include "BC_Internal_Include.h"
+
+namespace BC_MTF {
+
+	/*
+	 * Contains meta-template functions that are designed specifically for this library
+	 * All other meta-template functions are generalizable
+	 */
+
+	template<class > struct isArrayType {
+		static constexpr bool conditional = false;
+	};
+	template<class T, class deriv> struct isArrayType<expression<T, deriv>> {
+		static constexpr bool conditional = true;
+	};
+}
+	namespace Expression_Brancher {
+		template<class > struct Brancher;
+
+		//No branches
+
+		template<class T, class lv, class rv> struct Brancher<binary_expression<T, BC::add, lv, rv>> {
+			static auto function(lv l, rv r, int index) {
+				return l[index] + r[index];
+			}
+		};
+		template<class T, class lv, class rv> struct Brancher<binary_expression<T, BC::sub, lv, rv>> {
+			static auto function(lv l, rv r, int index) {
+				return l[index] - r[index];
+			}
+		};
+		template<class T, class lv, class rv> struct Brancher<binary_expression<T, BC::div, lv, rv>> {
+			static auto function(lv l, rv r, int index) {
+				return l[index] / r[index];
+			}
+		};
+		template<class T, class lv, class rv> struct Brancher<binary_expression<T, BC::mul, lv, rv>> {
+			static auto function(lv l, rv r, int index) {
+				return l[index] * r[index];
+			}
+		};
+
+		//Branch left
+
+		template<class T, class U, class l_lv, class l_rv, class rv, class oper>
+		struct Brancher<binary_expression<T, BC::add, binary_expression<U, oper, l_lv, l_rv>, rv>> {
+			static auto function(binary_expression<U, oper, l_lv, l_rv> l, rv r, int index) {
+				return Brancher<binary_expression<U, oper, l_lv, l_rv>>::function(l.left, r.right) + r[index];
+			}
+			template<class eval_to>
+			static void function(eval_to eval, binary_expression<U, oper, l_lv, l_rv> l, rv r, int index) {
+				eval[index] =  Brancher<binary_expression<U, oper, l_lv, l_rv>>::function(l.left, r.right) + r[index];
+			}
+		};
+		template<class T, class U, class l_lv, class l_rv, class rv, class oper>
+		struct Brancher<binary_expression<T, BC::sub, binary_expression<U, oper, l_lv, l_rv>, rv>> {
+			static auto function(binary_expression<U, oper, l_lv, l_rv> l, rv r, int index) {
+				return Brancher<binary_expression<U, oper, l_lv, l_rv>>::function(l.left, r.right) - r[index];
+			}
+			template<class eval_to>
+			static void function(eval_to eval, binary_expression<U, oper, l_lv, l_rv> l, rv r, int index) {
+				eval[index] =  Brancher<binary_expression<U, oper, l_lv, l_rv>>::function(l.left, r.right) - r[index];
+			}
+		};
+		template<class T, class U, class l_lv, class l_rv, class rv, class oper>
+		struct Brancher<binary_expression<T, BC::mul, binary_expression<U, oper, l_lv, l_rv>, rv>> {
+			static auto function(binary_expression<U, oper, l_lv, l_rv> l, rv r, int index) {
+				return Brancher<binary_expression<U, oper, l_lv, l_rv>>::function(l.left, r.right) * r[index];
+			}
+			template<class eval_to>
+			static void function(eval_to eval, binary_expression<U, oper, l_lv, l_rv> l, rv r, int index) {
+				eval[index] =  Brancher<binary_expression<U, oper, l_lv, l_rv>>::function(l.left, r.right) * r[index];
+			}
+		};
+		template<class T, class U, class l_lv, class l_rv, class rv, class oper>
+		struct Brancher<binary_expression<T, BC::div, binary_expression<U, oper, l_lv, l_rv>, rv>> {
+			static auto function(binary_expression<U, oper, l_lv, l_rv> l, rv r, int index) {
+				return Brancher<binary_expression<U, oper, l_lv, l_rv>>::function(l.left, r.right) / r[index];
+			}
+			template<class eval_to>
+			static void function(eval_to eval, binary_expression<U, oper, l_lv, l_rv> l, rv r, int index) {
+				eval[index] =  Brancher<binary_expression<U, oper, l_lv, l_rv>>::function(l.left, r.right) / r[index];
+			}
+		};
+
+		//Branch Right
+
+		template<class T, class U, class lv, class r_lv, class r_rv, class oper>
+		struct Brancher<binary_expression<T, BC::add, lv, binary_expression<U, oper, r_lv, r_rv>>> {
+			static auto function(lv l, binary_expression<U, oper, r_lv, r_rv> r, int index) {
+				return l[index] + Brancher<binary_expression<U, oper, r_lv, r_rv>>::function(r.left, r.right, index);
+			}
+			template<class eval_to>
+			static void function(eval_to eval, lv l, binary_expression<U, oper, r_lv, r_rv> r, int index) {
+				eval[index] =  l[index] + Brancher<binary_expression<U, oper, r_lv, r_rv>>::function(r.left, r.right, index);
+			}
+		};
+		template<class T, class U, class lv, class r_lv, class r_rv, class oper>
+		struct Brancher<binary_expression<T, BC::sub, lv, binary_expression<U, oper, r_lv, r_rv>>> {
+			static auto function(lv l, binary_expression<U, oper, r_lv, r_rv> r, int index) {
+				return l[index] - Brancher<binary_expression<U, oper, r_lv, r_rv>>::function(r.left, r.right, index);
+			}
+			template<class eval_to>
+			static void function(eval_to eval, lv l, binary_expression<U, oper, r_lv, r_rv> r, int index) {
+				eval[index] =  l[index] - Brancher<binary_expression<U, oper, r_lv, r_rv>>::function(r.left, r.right, index);
+			}
+		};
+		template<class T, class U, class lv, class r_lv, class r_rv, class oper>
+		struct Brancher<binary_expression<T, BC::mul, lv, binary_expression<U, oper, r_lv, r_rv>>> {
+			static auto function(lv l, binary_expression<U, oper, r_lv, r_rv> r, int index) {
+				return l[index] * Brancher<binary_expression<U, oper, r_lv, r_rv>>::function(r.left, r.right, index);
+			}
+			template<class eval_to>
+			static void function(eval_to eval, lv l, binary_expression<U, oper, r_lv, r_rv> r, int index) {
+				eval[index] =  l[index] * Brancher<binary_expression<U, oper, r_lv, r_rv>>::function(r.left, r.right, index);
+			}
+		};
+		template<class T, class U, class lv, class r_lv, class r_rv, class oper>
+		struct Brancher<binary_expression<T, BC::div, lv, binary_expression<U, oper, r_lv, r_rv>>> {
+			static auto function(lv l, binary_expression<U, oper, r_lv, r_rv> r, int index) {
+				return l[index] / Brancher<binary_expression<U, oper, r_lv, r_rv>>::function(r.left, r.right, index);
+			}
+			template<class eval_to>
+			static void function(eval_to eval, lv l, binary_expression<U, oper, r_lv, r_rv> r, int index) {
+				eval[index] =  l[index] / Brancher<binary_expression<U, oper, r_lv, r_rv>>::function(r.left, r.right, index);
+			}
+		};
+
+
+
+		//Branch Both
+
+		template<class T,
+				class U,
+				class V,
+				class l_lv,
+				class l_rv,
+				class l_oper,
+				class r_lv,
+				class r_rv,
+				class r_oper>
+		struct Brancher<binary_expression<T, BC::add,
+		binary_expression<U, l_oper, l_lv, l_rv>,
+		binary_expression<V, r_oper, r_lv, r_rv>>> {
+
+			using left  = binary_expression<U, l_oper, l_lv, l_rv>;
+			using right = binary_expression<V, r_oper, r_lv, r_rv>;
+
+			static auto function(left l, right r, int index) {
+				return Brancher<left>::function(l.left, l.right, index) + Brancher<right>::function(r.left, r.right, index);
+			}
+			template<class eval_to>
+			static void function(eval_to eval, left l, right r, int index) {
+				eval[index] =  Brancher<left>::function(l.left, l.right, index) + Brancher<right>::function(r.left, r.right, index);
+			}
+		};
+
+		template<class T,
+				class U,
+				class V,
+				class l_lv,
+				class l_rv,
+				class l_oper,
+				class r_lv,
+				class r_rv,
+				class r_oper>
+		struct Brancher<binary_expression<T, BC::sub,
+		binary_expression<U, l_oper, l_lv, l_rv>,
+		binary_expression<V, r_oper, r_lv, r_rv>>> {
+
+			using left  = binary_expression<U, l_oper, l_lv, l_rv>;
+			using right = binary_expression<V, r_oper, r_lv, r_rv>;
+
+			static auto function(left l, right r, int index) {
+				return Brancher<left>::function(l.left, l.right, index) - Brancher<right>::function(r.left, r.right, index);
+			}
+			template<class eval_to>
+			static void function(eval_to eval, left l, right r, int index) {
+				eval[index] =  Brancher<left>::function(l.left, l.right, index) - Brancher<right>::function(r.left, r.right, index);
+			}
+		};
+		template<class T,
+				class U,
+				class V,
+				class l_lv,
+				class l_rv,
+				class l_oper,
+				class r_lv,
+				class r_rv,
+				class r_oper>
+		struct Brancher<binary_expression<T, BC::mul,
+		binary_expression<U, l_oper, l_lv, l_rv>,
+		binary_expression<V, r_oper, r_lv, r_rv>>> {
+
+			using left  = binary_expression<U, l_oper, l_lv, l_rv>;
+			using right = binary_expression<V, r_oper, r_lv, r_rv>;
+
+			static auto function(left l, right r, int index) {
+				return Brancher<left>::function(l.left, l.right, index) * Brancher<right>::function(r.left, r.right, index);
+			}
+			template<class eval_to>
+			static void function(eval_to eval, left l, right r, int index) {
+				eval[index] =  Brancher<left>::function(l.left, l.right, index) * Brancher<right>::function(r.left, r.right, index);
+			}
+		};
+
+		template<class T,
+				class U,
+				class V,
+				class l_lv,
+				class l_rv,
+				class l_oper,
+				class r_lv,
+				class r_rv,
+				class r_oper>
+		struct Brancher<binary_expression<T, BC::div,
+		binary_expression<U, l_oper, l_lv, l_rv>,
+		binary_expression<V, r_oper, r_lv, r_rv>>> {
+
+			using left  = binary_expression<U, l_oper, l_lv, l_rv>;
+			using right = binary_expression<V, r_oper, r_lv, r_rv>;
+
+			static auto function(left l, right r, int index) {
+				return Brancher<left>::function(l.left, l.right, index) / Brancher<right>::function(r.left, r.right, index);
+			}
+			template<class eval_to>
+			static void function(eval_to eval, left l, right r, int index) {
+				eval[index] =  Brancher<left>::function(l.left, l.right, index) / Brancher<right>::function(r.left, r.right, index);
+			}
+		};
+
+	}
+
+
+#endif /* BC_METATEMPLATE_ADHOC_H_ */

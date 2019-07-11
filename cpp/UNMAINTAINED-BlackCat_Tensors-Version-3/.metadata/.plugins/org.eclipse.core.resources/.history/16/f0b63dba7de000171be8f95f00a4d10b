@@ -1,0 +1,25 @@
+/*
+ * BC_Tensor_Lv4_Array_Utility.h
+ *
+ *  Created on: Dec 13, 2017
+ *      Author: joseph
+ */
+
+#ifndef BC_TENSOR_LV4_ARRAY_UTILITY_H_
+#define BC_TENSOR_LV4_ARRAY_UTILITY_H_
+
+template<
+class T,
+class derived,
+class math_lib,
+int... dimensions
+>
+struct BC_Tensor_Utility_Array : public Tensor_Base<T, derived, math_lib, dimensions...> {
+
+};
+
+
+
+
+
+#endif /* BC_TENSOR_LV4_ARRAY_UTILITY_H_ */

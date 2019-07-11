@@ -1,0 +1,77 @@
+/*
+ * BC_Tensor_Matrix.h
+ *
+ *  Created on: Dec 18, 2017
+ *      Author: joseph
+ */
+
+#ifndef BC_TENSOR_MATRIX_H_
+#define BC_TENSOR_MATRIX_H_
+
+
+#include "../BlackCat_Global_Unifier.h"
+#include "BC_Tensor_Vector.h"
+
+
+template<class T, int row, int col, class lib, //default = CPU,
+		class LD // default = typename DEFAULT_LD<Inner_Shape<row>>::type
+>
+class Matrix : public Tensor_Mathematics_Head<T, Matrix<T, row,col, lib>, lib, Inner_Shape<row, col>, typename DEFAULT_LD<Inner_Shape<row, col>>::type> {
+
+	using functor_type = typename Tensor_FunctorType<T>::type;
+	using parent_class = Tensor_Mathematics_Head<T, Matrix<T, row, col, lib>, lib, Inner_Shape<row, col>, typename DEFAULT_LD<Inner_Shape<row, col>>::type>;
+	using grandparent_class = typename parent_class::grandparent_class;
+	using this_type = Matrix<T, row, col, lib>;
+
+public:
+
+	using parent_class::parent_class;
+
+	template<class U, class alt_LD> Matrix(const Matrix<U, row, col, lib, alt_LD>&  mat) : parent_class() { (*this) = mat; }
+	template<class U, class alt_LD>	Matrix(      Matrix<U, row, col, lib, alt_LD>&& mat) : parent_class() { (*this) = mat; }
+	template<class alt_LD>  Matrix(const Matrix<T, row, col, lib, alt_LD>&  mat) : parent_class() { (*this) = mat; }
+	template<class alt_LD>	Matrix(      Matrix<T, row, col, lib, alt_LD>&& mat) : parent_class()  { (*this) = mat; }
+
+	template<class U, class alt_LD>
+	Matrix<T, row, col, lib, LD>& operator =(const Matrix<U, row, col, lib, alt_LD>& v) {
+
+		this->size() > OPENMP_SINGLE_THREAD_THRESHHOLD ?
+			lib::copy(this->data(), v.data(), this->size()):
+			lib::copy_single_thread(this->data(), v.data(), this->size());
+
+		return *this;
+	}
+	template<class alt_LD>
+	Matrix<T, row, col, lib, LD>& operator =(const typename BC_MTF::IF_ELSE<grandparent_class::ASSIGNABLE, Matrix<T, row, col, lib, alt_LD>&, VOID_CLASS>::type v) {
+
+		this->size() > OPENMP_SINGLE_THREAD_THRESHHOLD ?
+			lib::copy(this->data(), v.data(), this->size()):
+			lib::copy_single_thread(this->data(), v.data(), this->size());
+
+		return *this;
+	}
+
+	const Matrix<MatrixTranspose_Wrapper<T, col, row>, col, row, lib, typename DEFAULT_LD<Inner_Shape<col, row>>::type> t() const {
+		return Matrix<MatrixTranspose_Wrapper<T, col, row>, col, row, lib>(this->array);
+	}
+
+	Vector<T, row, lib, LD> operator [] (int index)  {
+		return Vector<T, row, lib, LD>(&this->array[index] * row);
+	}
+	const Vector<T, row, lib, LD> operator [] (int index) const  {
+		return Vector<T, row, lib, LD>(&this->array[index] * row);
+	}
+
+};
+
+
+template<class T, class row, class lib, class U, int col, class alt_LD>
+Matrix<binary_expression_VVmul_outer<T, typename Tensor_FunctorType<T>::type, typename Tensor_FunctorType<U>::type, row, col>, row, col, lib>
+operator * (const Vector<T, row, lib, LD>& vec1, const RowVector<U, col, lib, alt_LD>& vec2) {
+	return Matrix<binary_expression_VVmul_outer<T, typename Tensor_FunctorType<T>::type, typename Tensor_FunctorType<U>::type, row, col>, row, col, lib>(this->data(), vec.data());
+};
+
+
+
+
+#endif /* BC_TENSOR_MATRIX_H_ */

@@ -1,0 +1,63 @@
+/*
+ * Dynamic_Shape.h
+ *
+ *  Created on: Dec 20, 2017
+ *      Author: joseph
+ */
+
+#ifndef DYNAMIC_SHAPE_H_
+#define DYNAMIC_SHAPE_H_
+
+/*
+ * BC_Tensor_Super_Ace.h
+ *
+ *  Created on: Nov 18, 2017
+ *      Author: joseph
+ */
+
+
+
+
+template<int order, class inner, class outer>
+struct Dynamic_Shape : inner, outer {
+
+	int sz;
+
+};
+
+template<int... set>
+struct support_static_array {
+	using type = int[sizeof...(set)];
+	template<class>
+	static void init(const type& t) { };
+};
+//MORE THAN 4 DIMS
+template<int a, int b, int c, int d, int... set>
+struct support_static_array<a, b, c, d, set...> {
+	using type = int *[4 + sizeof...(set)];
+	template<class ml>
+	static void init(const type& t) { ml::initialize(t, sizeof...(set) + 4); };
+
+};
+
+#include <initializer_list>
+
+template<int order>
+struct Dynamic_Inner_Shape {
+
+	int dimensions[order];
+
+};
+
+template<int... set>
+struct test {
+
+};
+template<class... dimensions>
+auto init_Dynamic_Shape(dimensions... set) {
+	test<dimensions...> a;
+	return Dynamic_Inner_Shape<sizeof...(set)>();
+}
+
+
+#endif /* DYNAMIC_SHAPE_H_ */

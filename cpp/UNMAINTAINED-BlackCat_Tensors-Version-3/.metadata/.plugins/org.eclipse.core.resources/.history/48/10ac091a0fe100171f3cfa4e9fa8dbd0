@@ -1,0 +1,39 @@
+/*
+ * Tensor_Lion.h
+ *
+ *  Created on: Dec 1, 2017
+ *      Author: joseph
+ */
+
+#ifndef BC_TYPECLASS_FUNCTIONTYPE_H_
+#define BC_TYPECLASS_FUNCTIONTYPE_H_
+
+#include <type_traits>
+#include "BC_Expression_Base.h"
+#include "BC_Internal_Include.h"
+
+/*
+ * Defines T type as either an array (if non class type)
+ * or defiens T as a value (given that its a wrapper to an array_tpe)
+ */
+
+template<class T, class enable_mem_ptr = void>
+struct Tensor_FunctorType {
+	using type = T;
+	static constexpr bool supports_utility_functions = false;
+
+};
+
+template<class T>
+struct Tensor_FunctorType<T, typename std::enable_if<BC_MTF::isPrimitive<T>::conditional>::type> {
+	using type = T*;
+	static constexpr bool supports_utility_functions = true;
+};
+
+template<class T>
+struct Tensor_FunctorType<T, typename std::enable_if<BC_MTF::isArrayType<T>::conditional>::type> {
+	using type = T;
+	static constexpr bool supports_utility_functions = true;
+};
+
+#endif /* BC_TYPECLASS_FUNCTIONTYPE_H_ */

@@ -1,0 +1,78 @@
+/*
+ * BC_Internal_ForwardDeclerations.h
+ *
+ *  Created on: Dec 18, 2017
+ *      Author: joseph
+ */
+
+#ifndef BC_INTERNAL_FORWARDDECLERATIONS_H_
+#define BC_INTERNAL_FORWARDDECLERATIONS_H_
+
+
+/*
+ * Forward dec of the core classes
+ */
+class CPU;
+template<class> class DEFAULT_LD;
+
+
+#ifndef BLACKCAT_TENSORS_DEFAULT_LIB_GPU
+typedef  CPU DEFAULT_LIBRARY;
+#else
+struct GPU;
+typedef GPU DEFAULT_LIBRARY;
+#endif
+
+template<class T, class ml = DEFAULT_LIBRARY>
+class Scalar;
+
+template<
+	class T,
+	int rows,
+	class math_library = DEFAULT_LIBRARY,
+	class outer_shape = typename DEFAULT_LD<Inner_Shape<rows>>::type>
+class Vector;
+
+template<
+	class T,
+	int rows, int cols,
+	class math_library = DEFAULT_LIBRARY,
+	class outer_shape  =  typename DEFAULT_LD<Inner_Shape<rows, cols>>::type
+>
+class Matrix;
+
+template<
+	class T,
+	int rows, int cols, int depth,
+	class math_library = DEFAULT_LIBRARY,
+	class outer_shape  =  typename DEFAULT_LD<Inner_Shape<rows, cols, depth>>::type
+>
+class Cube;
+
+template<
+	class T,
+	class Shape,
+	class math_library = CPU,
+	class outer_shape =  typename DEFAULT_LD<Shape>::type
+>
+class Tensor;
+
+/*
+ * Forward dec of auxillary classes
+ */
+
+
+template<class T, class deriv>
+struct expression;
+
+template<class T, class oper>
+struct unary_expression;
+
+template<class T, class oper, class lv, class rv>
+struct binary_expression;
+
+#include "BC_Internal_Include.h"
+
+
+
+#endif /* BC_INTERNAL_FORWARDDECLERATIONS_H_ */

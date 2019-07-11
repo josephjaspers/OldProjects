@@ -1,0 +1,96 @@
+/*
+ * BC_Tensor_Base.h
+ *
+ *  Created on: Dec 12, 2017
+ *      Author: joseph
+ */
+
+#ifndef BC_TENSOR_LV3_MATH_SIMPLE_H_
+#define BC_TENSOR_LV3_MATH_SIMPLE_H_
+
+#include "BC_Internal_Include.h"
+#include "BC_Tensor_Lv2_Type.h"
+#include "BC_TensorShape_General_impl.h"
+
+template<
+class T,									//The internal array type
+class derived,									//The derived class
+class math_lib,					    		    //Math_library
+class inner_shape,
+class outer_shape
+>
+struct Tensor_Base : public Tensor_Type<T, derived, math_lib, Tensor_Shape<inner_shape, outer_shape>>{
+
+	using this_type = derived;
+	using functor_type = typename  Tensor_Type<T, derived, math_lib, Tensor_Shape<inner_shape, outer_shape>>::functor_type;
+
+	template<class... params>
+	Tensor_Base(const params... p) : Tensor_Type<T, derived, math_lib, Tensor_Shape<inner_shape, outer_shape>>(p...) {}
+
+	/*
+	 * What's happening?
+	 *
+	 * 	Each of these pointwise operator accepts a Tensor_Base<U (anytype), deriv (any derived), math_lib(same), dimensions...(same)>
+	 *  and returns a derived class of type binary_expression<T, math_function, functor_type, param::functor_type>.
+	 *
+	 *  The replace_front metatemplate function is called to assist in the conversion from type T to binary_expression.
+	 *  IE Vector<T, 100> will be replaced to Vector<bin_expr, 100>.
+	 */
+
+	template<class U, class deriv>
+	typename BC_Substitute_Type::Identity<binary_expression<T, BC::add, functor_type, typename Tensor_Base<U, deriv, math_lib, inner_shape, outer_shape>::functor_type>, this_type>::type  //return object
+	operator + (const Tensor_Base<U, deriv, math_lib, inner_shape, outer_shape>& rv) {
+		return typename BC_Substitute_Type::Identity<binary_expression<T, BC::add, functor_type, typename Tensor_Base<U, deriv, math_lib, inner_shape, outer_shape>::functor_type>, this_type>::type(this->data(), rv.data());
+	}
+//
+	template<class U, class deriv>
+	typename BC_Substitute_Type::Identity<binary_expression<T, BC::sub, functor_type, typename Tensor_Base<U, deriv, math_lib, inner_shape, outer_shape>::functor_type>, this_type>::type  //return object
+	operator - (const Tensor_Base<U, deriv, math_lib, inner_shape, outer_shape>& rv) {
+		return typename BC_Substitute_Type::Identity<binary_expression<T, BC::sub, functor_type, typename Tensor_Base<U, deriv, math_lib, inner_shape, outer_shape>::functor_type>, this_type>::type(this->data(), rv.data());
+	}
+
+	template<class U, class deriv>
+	typename BC_Substitute_Type::Identity<binary_expression<T, BC::div, functor_type, typename Tensor_Base<U, deriv, math_lib, inner_shape, outer_shape>::functor_type>, this_type>::type  //return object
+	operator / (const Tensor_Base<U, deriv, math_lib, inner_shape, outer_shape>& rv) {
+		return typename BC_Substitute_Type::Identity<binary_expression<T, BC::add, functor_type, typename Tensor_Base<U, deriv, math_lib, inner_shape, outer_shape>::functor_type>, this_type>::type(this->data(), rv.data());
+	}
+
+	template<class U, class deriv>
+	typename BC_Substitute_Type::Identity<binary_expression<T, BC::add, functor_type, typename Tensor_Base<U, deriv, math_lib, inner_shape, outer_shape>::functor_type>, this_type>::type  //return object
+	operator % (const Tensor_Base<U, deriv, math_lib, inner_shape, outer_shape>& rv) {
+		return typename BC_Substitute_Type::Identity<binary_expression<T, BC::add, functor_type, typename Tensor_Base<U, deriv, math_lib, inner_shape, outer_shape>::functor_type>, this_type>::type(this->data(), rv.data());
+	}
+//Scalar methods
+
+//	template<class U, class deriv>
+//		typename BC_MTF::replace_front<binary_expression_scalar_R<T, BC::add, functor_type, typename Tensor_Base<U, deriv, math_lib, 1>::functor_type>, this_type>::type  //return object
+//		operator + (const Tensor_Base<U, deriv, math_lib, 1>& rv) {
+//			return BC_MTF::replace_front<binary_expression_scalar_R<T, BC::add, functor_type, typename Tensor_Base<U, deriv, math_lib, 1>::functor_type>, this_type>::type(this->data(), rv.data());
+//		}
+//
+//		template<class U, class deriv>
+//		typename BC_MTF::replace_front<binary_expression_scalar_R<T, BC::sub, functor_type, typename Tensor_Base<U, deriv, math_lib, 1>::functor_type>, this_type>::type  //return object
+//		operator - (const Tensor_Base<U, deriv, math_lib, 1>& rv) {
+//			return BC_MTF::replace_front<binary_expression_scalar_R<T, BC::sub, functor_type, typename Tensor_Base<U, deriv, math_lib, 1>::functor_type>, this_type>::type(this->data(), rv.data());
+//		}
+//
+//		template<class U, class deriv>
+//		typename BC_MTF::replace_front<binary_expression_scalar_R<T, BC::div, functor_type, typename Tensor_Base<U, deriv, math_lib, 1>::functor_type>, this_type>::type  //return object
+//		operator / (const Tensor_Base<U, deriv, math_lib, 1>& rv) {
+//			return BC_MTF::replace_front<binary_expression_scalar_R<T, BC::div, functor_type, typename Tensor_Base<U, deriv, math_lib, 1>::functor_type>, this_type>::type(this->data(), rv.data());
+//		}
+//
+//		template<class U, class deriv>
+//		typename BC_MTF::replace_front<binary_expression_scalar_R<T, BC::mul, functor_type, typename Tensor_Base<U, deriv, math_lib, 1>::functor_type>, this_type>::type  //return object
+//		operator % (const Tensor_Base<U, deriv, math_lib, 1>& rv) {
+//			return BC_MTF::replace_front<binary_expression_scalar_R<T, BC::mul, functor_type, typename Tensor_Base<U, deriv, math_lib, 1>::functor_type>, this_type>::type(this->data(), rv.data());
+//
+//		}
+};
+
+
+
+
+
+
+#endif /* BC_TENSOR_LV3_MATH_SIMPLE_H_ */

@@ -1,0 +1,51 @@
+/*
+ * BC_Internal_Include.h
+ *
+ *  Created on: Dec 1, 2017
+ *      Author: joseph
+ */
+
+#ifndef BLACKCAT_GLOBAL_UNIFIER_H_
+#define BLACKCAT_GLOBAL_UNIFIER_H_
+
+//Internal
+#include "BC_ArrayWrappers_and_Dotproduct_Expressions/ArrayType_Base.h"
+#include "BC_ArrayWrappers_and_Dotproduct_Expressions/Matrix_Transpose_Wrapper.h"
+#include "BlackCat_Definitions.h"
+
+//Expressions
+#include "BC_Expressions/Expression_Binary_Functors.h"
+#include "BC_Expressions/Expression_Binary_Pointwise_Same.h"
+#include "BC_Expressions/Expression_Binary_Pointwise_Scalar.h"
+
+//Array Wrappers
+#include "BC_Mathematics_CPU/Mathematics_CPU.h"
+
+//Meta-templates Functions
+#include "BC_MetaTemplateFunctions/Adhoc.h"
+#include "BC_MetaTemplateFunctions/Complex.h"
+#include "BC_MetaTemplateFunctions/Simple.h"
+
+//Shape implementation (Meta-template-functions that handle the dimensionality of a Tensor at compile time)
+#include "BC_Shape/Shape_Inner_Impl.h"
+#include "BC_Shape/Shape_Outer_Impl.h"
+
+//Part of the Inheritance-set Identity determines the return type for super-classes, where FunctionType determines the internal array-type
+#include "BC_MetaTemplateFunctions/Typeclass_Identity.h"
+#include "BC_MetaTemplateFunctions/Typeclass_FunctionType.h"
+#include "BC_Shape/Shape.h"
+
+#include "BC_Tensor_InheritanceHierachy/Tensor_Lv2_Traits.h" //Tensor_Core (The Tensor_type primary_classes inherit from)
+#include "BC_Tensor_InheritanceHierachy/Tensor_Lv3_ArrayType_Utility.h" //Tensor_Core (The Tensor_type primary_classes inherit from)
+#include "BC_Tensor_InheritanceHierachy/Tensor_Lv3_ExpressionType_Utility.h" //Tensor_Core (The Tensor_type primary_classes inherit from)
+
+#include "BC_Tensor_InheritanceHierachy/Tensor_Lv4_Core.h" //Tensor_Core (The Tensor_type primary_classes inherit from)
+
+#include "BC_PrimaryClasses/BC_Tensor_Scalar.h"
+#include "BC_PrimaryClasses/BC_Tensor_Vector.h"
+#include "BC_PrimaryClasses/BC_Tensor_Matrix.h"
+#include "BC_PrimaryClasses/BC_Tensor_Cube.h"
+
+
+
+#endif /* BLACKCAT_GLOBAL_UNIFIER_H_ */

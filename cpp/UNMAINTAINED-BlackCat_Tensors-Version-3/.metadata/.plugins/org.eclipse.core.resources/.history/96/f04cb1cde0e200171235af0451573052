@@ -1,0 +1,280 @@
+/*
+ * BC_MetaTemplate_Brancher.h
+ *
+ *  Created on: Dec 14, 2017
+ *      Author: joseph
+ */
+
+#ifndef BC_METATEMPLATE_BRANCHER_H_
+#define BC_METATEMPLATE_BRANCHER_H_
+
+#include "BC_Internal_Include.h"
+
+template<class > struct Brancher;
+
+template<class T, class U>
+struct evaluator {
+
+	static void copy(T t, const U u, int sz) {
+#pragma omp parallel for
+		for (int i = 0; i < sz; ++i) {
+			t[i] = u[i];
+		}
+#pragma omp barrier
+	}
+};
+template<class T, class U, class lv, class rv, class oper>
+struct evaluator<T, binary_expression<U, oper, lv, rv>> {
+
+	static void copy(T t, binary_expression<U, oper, lv, rv> u, int sz) {
+#pragma omp parallel for
+		for (int i = 0; i < sz; ++i) {
+			t[i] = u.left[i] + u.right[i];
+//			t[i] = u[i];
+//			Brancher<binary_expression<U, oper, lv, rv>>::function(t, u.left, u.right, i);
+//			Brancher<binary_expression<U, oper, lv, rv>>::function(t[i], u.left[i], u.right[i]);
+
+		}
+#pragma omp barrier
+	}
+};
+
+//No branches
+
+template<class T, class oper, class lv, class rv> struct Brancher<binary_expression<T, oper, lv, rv>> {
+
+	static constexpr oper operation = oper();
+
+	inline __attribute__((always_inline))
+	static auto function(const lv l, const rv r, int index) {
+		return l[index] + r[index];
+	}
+
+	template<class eval> inline __attribute__((always_inline))
+	static void function(eval ary, const lv l, const rv r, int index) {
+		ary[index] = l[index] + r[index];
+	}
+
+	//Fastest version
+	template<class eval, class LV, class RV>
+	inline __attribute__((always_inline, flatten))
+	static void function(eval ary, LV l, RV r) {
+		ary = l + r;
+	}
+};
+//
+template<class T, class lv, class rv> struct Brancher<binary_expression<T, BC::add, lv, rv>> {
+
+	inline __attribute__((always_inline))
+	static auto function(const lv l, const rv r, int index) {
+		return l[index] + r[index];
+	}
+
+	template<class eval> inline __attribute__((always_inline))
+	static void function(eval ary, const lv l, const rv r, int index) {
+		ary[index] = l[index] + r[index];
+	}
+	//	//Fastest version
+		template<class eval, class LV, class RV>
+		inline __attribute__((always_inline, flatten))
+		static void function(eval ary, LV l, RV r) {
+			ary = l + r;
+		}
+};
+template<class T, class lv, class rv> struct Brancher<binary_expression<T, BC::sub, lv, rv>> {
+
+	inline __attribute__((always_inline))
+	static auto function(lv l, rv r, int index) {
+		return l[index] - r[index];
+	}
+
+	template<class eval> inline __attribute__((always_inline))
+	static void function(eval ary, lv l, rv r, int index) {
+		ary[index] = l[index] - r[index];
+	}
+};
+template<class T, class lv, class rv> struct Brancher<binary_expression<T, BC::div, lv, rv>> {
+
+	inline __attribute__((always_inline))
+	static auto function(lv l, rv r, int index) {
+		return l[index] / r[index];
+	}
+	template<class eval> inline __attribute__((always_inline))
+	static void function(eval ary, lv l, rv r, int index) {
+		ary[index] = l[index] / r[index];
+	}
+};
+template<class T, class lv, class rv> struct Brancher<binary_expression<T, BC::mul, lv, rv>> {
+
+	inline __attribute__((always_inline))
+	static auto function(lv l, rv r, int index) {
+		return l[index] * r[index];
+	}
+
+	template<class eval> inline __attribute__((always_inline))
+	static void function(eval ary, lv l, rv r, int index) {
+		ary[index] = l[index] * r[index];
+	}
+};
+
+//Branch left
+
+template<class T, class U, class l_lv, class l_rv, class rv, class oper>
+struct Brancher<binary_expression<T, BC::add, binary_expression<U, oper, l_lv, l_rv>, rv>> {
+
+	inline __attribute__((always_inline))
+	static auto function(const binary_expression<U, oper, l_lv, l_rv> l, const rv r, int index) {
+		return Brancher<binary_expression<U, oper, l_lv, l_rv>>::function(l.left, l.right, index) + r[index];
+	}
+	template<class eval_to> inline __attribute__((always_inline))
+	static void function(eval_to eval, const binary_expression<U, oper, l_lv, l_rv> l, const rv r, int index) {
+		eval[index] = Brancher<binary_expression<U, oper, l_lv, l_rv>>::function(l.left, l.right, index) + r[index];
+	}
+};
+template<class T, class U, class l_lv, class l_rv, class rv, class oper>
+struct Brancher<binary_expression<T, BC::sub, binary_expression<U, oper, l_lv, l_rv>, rv>> {
+	inline __attribute__((always_inline))
+	static auto function(binary_expression<U, oper, l_lv, l_rv> l, rv r, int index) {
+		return Brancher<binary_expression<U, oper, l_lv, l_rv>>::function(l.left, l.right, index) - r[index];
+	}
+	template<class eval_to> inline __attribute__((always_inline))
+	static void function(eval_to eval, binary_expression<U, oper, l_lv, l_rv> l, rv r, int index) {
+		eval[index] = Brancher<binary_expression<U, oper, l_lv, l_rv>>::function(l.left, l.right, index) - r[index];
+	}
+};
+template<class T, class U, class l_lv, class l_rv, class rv, class oper>
+struct Brancher<binary_expression<T, BC::mul, binary_expression<U, oper, l_lv, l_rv>, rv>> {
+	inline __attribute__((always_inline))
+	static auto function(binary_expression<U, oper, l_lv, l_rv> l, rv r, int index) {
+		return Brancher<binary_expression<U, oper, l_lv, l_rv>>::function(l.left, l.right, index) * r[index];
+	}
+	template<class eval_to> inline __attribute__((always_inline))
+	static void function(eval_to eval, binary_expression<U, oper, l_lv, l_rv> l, rv r, int index) {
+		eval[index] = Brancher<binary_expression<U, oper, l_lv, l_rv>>::function(l.left, l.right, index) * r[index];
+	}
+};
+template<class T, class U, class l_lv, class l_rv, class rv, class oper>
+struct Brancher<binary_expression<T, BC::div, binary_expression<U, oper, l_lv, l_rv>, rv>> {
+
+	inline __attribute__((always_inline))
+	static auto function(binary_expression<U, oper, l_lv, l_rv> l, rv r, int index) {
+		return Brancher<binary_expression<U, oper, l_lv, l_rv>>::function(l.left, l.right, index) / r[index];
+	}
+	template<class eval_to> inline __attribute__((always_inline))
+	static void function(eval_to eval, binary_expression<U, oper, l_lv, l_rv> l, rv r, int index) {
+		eval[index] = Brancher<binary_expression<U, oper, l_lv, l_rv>>::function(l.left, l.right, index) / r[index];
+	}
+};
+
+//Branch Right
+
+template<class T, class U, class lv, class r_lv, class r_rv, class oper>
+struct Brancher<binary_expression<T, BC::add, lv, binary_expression<U, oper, r_lv, r_rv>>> {
+	inline __attribute__((always_inline))
+	static auto function(lv l, binary_expression<U, oper, r_lv, r_rv> r, int index) {
+		return l[index] + Brancher<binary_expression<U, oper, r_lv, r_rv>>::function(r.left, r.right, index);
+	}
+	template<class eval_to> inline __attribute__((always_inline))
+	static void function(eval_to eval, lv l, binary_expression<U, oper, r_lv, r_rv> r, int index) {
+		eval[index] = l[index] + Brancher<binary_expression<U, oper, r_lv, r_rv>>::function(r.left, r.right, index);
+	}
+};
+template<class T, class U, class lv, class r_lv, class r_rv, class oper>
+struct Brancher<binary_expression<T, BC::sub, lv, binary_expression<U, oper, r_lv, r_rv>>> {
+	inline __attribute__((always_inline))
+	static auto function(lv l, binary_expression<U, oper, r_lv, r_rv> r, int index) {
+		return l[index] - Brancher<binary_expression<U, oper, r_lv, r_rv>>::function(r.left, r.right, index);
+	}
+	template<class eval_to> inline __attribute__((always_inline))
+	static void function(eval_to eval, lv l, binary_expression<U, oper, r_lv, r_rv> r, int index) {
+		eval[index] = l[index] - Brancher<binary_expression<U, oper, r_lv, r_rv>>::function(r.left, r.right, index);
+	}
+};
+template<class T, class U, class lv, class r_lv, class r_rv, class oper>
+struct Brancher<binary_expression<T, BC::mul, lv, binary_expression<U, oper, r_lv, r_rv>>> {
+	inline __attribute__((always_inline))
+	static auto function(lv l, binary_expression<U, oper, r_lv, r_rv> r, int index) {
+		return l[index] * Brancher<binary_expression<U, oper, r_lv, r_rv>>::function(r.left, r.right, index);
+	}
+	template<class eval_to> inline __attribute__((always_inline))
+	static void function(eval_to eval, lv l, binary_expression<U, oper, r_lv, r_rv> r, int index) {
+		eval[index] = l[index] * Brancher<binary_expression<U, oper, r_lv, r_rv>>::function(r.left, r.right, index);
+	}
+};
+template<class T, class U, class lv, class r_lv, class r_rv, class oper>
+struct Brancher<binary_expression<T, BC::div, lv, binary_expression<U, oper, r_lv, r_rv>>> {
+	inline __attribute__((always_inline))
+	static auto function(lv l, binary_expression<U, oper, r_lv, r_rv> r, int index) {
+		return l[index] / Brancher<binary_expression<U, oper, r_lv, r_rv>>::function(r.left, r.right, index);
+	}
+	template<class eval_to> inline __attribute__((always_inline))
+	static void function(eval_to eval, lv l, binary_expression<U, oper, r_lv, r_rv> r, int index) {
+		eval[index] = l[index] / Brancher<binary_expression<U, oper, r_lv, r_rv>>::function(r.left, r.right, index);
+	}
+};
+
+//Branch Both
+
+template<class T, class U, class V, class l_lv, class l_rv, class l_oper, class r_lv, class r_rv, class r_oper>
+struct Brancher<binary_expression<T, BC::add, binary_expression<U, l_oper, l_lv, l_rv>, binary_expression<V, r_oper, r_lv, r_rv>>> {
+
+	using left = binary_expression<U, l_oper, l_lv, l_rv>;
+	using right = binary_expression<V, r_oper, r_lv, r_rv>;
+
+	__attribute__((always_inline))
+	static auto function(left l, right r, int index) {
+		return Brancher<left>::function(l.left, l.right, index) + Brancher<right>::function(r.left, r.right, index);
+	}
+	template<class eval_to> __attribute__((always_inline))
+	static void function(eval_to eval, left l, right r, int index) {
+		eval[index] = Brancher<left>::function(l.left, l.right, index) + Brancher<right>::function(r.left, r.right, index);
+	}
+};
+
+template<class T, class U, class V, class l_lv, class l_rv, class l_oper, class r_lv, class r_rv, class r_oper>
+struct Brancher<binary_expression<T, BC::sub, binary_expression<U, l_oper, l_lv, l_rv>, binary_expression<V, r_oper, r_lv, r_rv>>> {
+
+	using left = binary_expression<U, l_oper, l_lv, l_rv>;
+	using right = binary_expression<V, r_oper, r_lv, r_rv>;
+
+	__attribute__((always_inline))
+	static auto function(left l, right r, int index) {
+		return Brancher<left>::function(l.left, l.right, index) - Brancher<right>::function(r.left, r.right, index);
+	}
+	template<class eval_to> __attribute__((always_inline))
+	static void function(eval_to eval, left l, right r, int index) {
+		eval[index] = Brancher<left>::function(l.left, l.right, index) - Brancher<right>::function(r.left, r.right, index);
+	}
+};
+template<class T, class U, class V, class l_lv, class l_rv, class l_oper, class r_lv, class r_rv, class r_oper>
+struct Brancher<binary_expression<T, BC::mul, binary_expression<U, l_oper, l_lv, l_rv>, binary_expression<V, r_oper, r_lv, r_rv>>> {
+
+	using left = binary_expression<U, l_oper, l_lv, l_rv>;
+	using right = binary_expression<V, r_oper, r_lv, r_rv>;
+
+	__attribute__((always_inline))
+	static auto function(left l, right r, int index) {
+		return Brancher<left>::function(l.left, l.right, index) * Brancher<right>::function(r.left, r.right, index);
+	}
+	template<class eval_to> __attribute__((always_inline))
+	static void function(eval_to eval, left l, right r, int index) {
+		eval[index] = Brancher<left>::function(l.left, l.right, index) * Brancher<right>::function(r.left, r.right, index);
+	}
+};
+
+template<class T, class U, class V, class l_lv, class l_rv, class l_oper, class r_lv, class r_rv, class r_oper>
+struct Brancher<binary_expression<T, BC::div, binary_expression<U, l_oper, l_lv, l_rv>, binary_expression<V, r_oper, r_lv, r_rv>>> {
+
+	using left = binary_expression<U, l_oper, l_lv, l_rv>;
+	using right = binary_expression<V, r_oper, r_lv, r_rv>;
+	__attribute__((always_inline))
+	static auto function(left l, right r, int index) {
+		return Brancher<left>::function(l.left, l.right, index) / Brancher<right>::function(r.left, r.right, index);
+	}
+	template<class eval_to> __attribute__((always_inline))
+	static void function(eval_to eval, left l, right r, int index) {
+		eval[index] = Brancher<left>::function(l.left, l.right, index) / Brancher<right>::function(r.left, r.right, index);
+	}
+};
+
+#endif /* BC_METATEMPLATE_BRANCHER_H_ */

@@ -1,0 +1,125 @@
+/*
+ * Main.cpp
+ *
+ *  Created on: Dec 6, 2017
+ *      Author: joseph
+ */
+
+#include "BC_Internals/BlackCat_Global_Unifier.h"
+//
+//template<class T, int row, class lib, class LD,  class U, int col, class alt_LD>
+//Matrix<binary_expression_VVmul_outer<T, typename Tensor_FunctorType<T>::type, typename Tensor_FunctorType<U>::type, row, col>, row, col, lib>
+//operator * (const Vector<T, row, lib, LD>& vec1, const RowVector<U, col, lib, alt_LD>& vec2) {
+//	return Matrix<binary_expression_VVmul_outer<T, typename Tensor_FunctorType<T>::type, typename Tensor_FunctorType<U>::type, row, col>, row, col, lib>(vec1.data(), vec2.data());
+//};
+
+//
+template<class T, int row, class lib, class LD,  class U, int col, class alt_LD>
+auto operator * (const Vector<T, row, lib, LD>& vec1, const RowVector<U, col, lib, alt_LD>& vec2) {
+
+	using v1 = Vector<T, row, lib, LD>;
+	using v2 = RowVector<U, col, lib, alt_LD>;
+
+	v1& rm_const1 = vec1;
+	v2& rm_const2 = vec2;
+
+//	return Matrix<binary_expression_VVmul_outer<T, v1, v2>, row, col, lib>(
+//			static_cast<v1&>(vec1), static_cast<v2&>(vec2));
+		//return binary_expression_VVmul_outer<T, typename Tensor_FunctorType<T>::type, typename Tensor_FunctorType<U>::type, row, col>(vec1.data(), vec2.data());
+};
+
+int VectorTests() {
+
+	Tensor_Shape<Inner_Shape<2, 3, 4>> sh;
+
+	sh.printDimensions();
+	sh.printLeadingDimensions();
+
+	Vector<double, 10> vec;
+	Vector<double, 10> vec1;
+
+	Vector<double, 10> vec2;
+
+	vec1.randomize(10, 20);
+	vec1.print();
+	vec2.randomize(1, 10);
+	vec2.print();
+
+	vec = vec1 + vec2 + vec1;
+	std::cout << " adding vec1 + vec2 and eval " << std::endl;
+	(vec1 + vec2).eval();
+
+	//(vec1 + vec2) = vec1;
+
+	vec.print();
+	vec[2].print();
+
+	vec = vec2;
+	vec = vec + vec;
+	vec.print();
+
+	vec * vec2.t();
+
+//	vec * vec2.t();
+
+	Matrix<double, 10, 10> mat;
+
+	std::cout << "vec trans = " << std::endl;
+
+	Matrix<double, 10, 2> mat3;
+	Matrix<double, 2, 10> mat4 = mat3.t();
+	//vec.t();
+	//vec.t();//.t();
+
+//	mat3.t();
+
+	RowVector<double, 10> m = vec.t();
+	m.print();
+
+	std::cout << "success " << std::endl;
+
+	return 0;
+}
+
+int main() {
+	VectorTests();
+
+	Cube<double, 3, 4, 2> cub;
+	cub.randomize(0, 400);
+	cub.print();
+
+	Matrix<double, 3, 4> mat;
+	Matrix<double, 3, 4> mat1;
+	Matrix<double, 3, 4> mat2;
+
+	mat1.randomize(0, 100);
+	mat2.randomize(0, 100);
+
+	mat1.print();
+	mat2.print();
+
+	std::cout << "expression " << std::endl;
+	mat = mat1 / mat2 + mat1 % mat2;
+	mat.print();
+
+	std::cout << " standard const Matrix<params>& constructor" << std::endl;
+	Matrix<double, 3, 4> con = mat;
+
+	std::cout << " copy assignment" << std::endl;
+	con = mat;
+
+	std::cout << " mat " << std::endl;
+	mat.print();
+
+	std::cout << " transpose mat " << std::endl;
+
+	Matrix<double, 4, 3> matT;
+
+	matT = mat.t();
+	matT.print();
+
+	std::cout << "success " << std::endl;
+
+	return 0;
+
+}

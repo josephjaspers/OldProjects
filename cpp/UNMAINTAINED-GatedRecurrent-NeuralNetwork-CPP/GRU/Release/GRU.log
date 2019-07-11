@@ -1,0 +1,39 @@
+﻿  GRU.cpp
+C:\Users\joeyj\OneDrive\Documents\Visual Studio 2015\Projects\Matrix\Matrix\Matrices.h(345): warning C4018: '<': signed/unsigned mismatch
+GRU.cpp(41): warning C4018: '<': signed/unsigned mismatch
+GRU.cpp(105): warning C4018: '<': signed/unsigned mismatch
+GRU.cpp(113): warning C4018: '<': signed/unsigned mismatch
+GRU.cpp(115): warning C4018: '<': signed/unsigned mismatch
+GRU.cpp(144): warning C4018: '<': signed/unsigned mismatch
+GRU.cpp(246): warning C4018: '<': signed/unsigned mismatch
+  testClass.cpp
+C:\Users\joeyj\OneDrive\Documents\Visual Studio 2015\Projects\Matrix\Matrix\Matrices.h(345): warning C4018: '<': signed/unsigned mismatch
+testClass.cpp(41): warning C4018: '<': signed/unsigned mismatch
+  Generating code
+c:\users\joeyj\onedrive\documents\visual studio 2015\projects\matrix\matrix\vector.cpp(187): warning C4711: function 'int __thiscall Vector::length(void)const ' selected for automatic inline expansion
+c:\users\joeyj\onedrive\documents\visual studio 2015\projects\matrix\matrix\vector.cpp(226): warning C4711: function '__thiscall Vector::Vector(unsigned int)' selected for automatic inline expansion
+c:\users\joeyj\onedrive\documents\visual studio 2015\projects\matrix\matrix\vector.cpp(228): warning C4711: function 'double & __thiscall Vector::operator[](int)' selected for automatic inline expansion
+c:\users\joeyj\onedrive\documents\visual studio 2015\projects\matrix\matrix\vector.cpp(73): warning C4711: function 'int __thiscall Vector::length(void)const ' selected for automatic inline expansion
+c:\users\joeyj\onedrive\documents\visual studio 2015\projects\matrix\matrix\vector.cpp(320): warning C4710: 'void __thiscall Vector::chkBounds(int)const ': function not inlined
+c:\users\joeyj\onedrive\documents\visual studio 2015\projects\matrix\matrix\vector.cpp(57): warning C4710: 'void __thiscall Vector::chkBounds(int)const ': function not inlined
+c:\users\joeyj\onedrive\documents\visual studio 2015\projects\matrix\matrix\vector.cpp(178): warning C4710: 'void __thiscall Vector::chkBounds(class Vector const &)const ': function not inlined
+c:\users\joeyj\onedrive\documents\visual studio 2015\projects\matrix\matrix\vector.cpp(180): warning C4711: function 'int __thiscall Vector::length(void)const ' selected for automatic inline expansion
+c:\users\joeyj\onedrive\documents\visual studio 2015\projects\matrix\matrix\vector.cpp(160): warning C4710: 'void __thiscall Vector::chkBounds(class Vector const &)const ': function not inlined
+c:\users\joeyj\onedrive\documents\visual studio 2015\projects\matrix\matrix\vector.cpp(162): warning C4711: function 'int __thiscall Vector::length(void)const ' selected for automatic inline expansion
+c:\users\joeyj\onedrive\documents\visual studio 2015\projects\matrix\matrix\vector.cpp(143): warning C4711: function '__thiscall Vector::Vector(unsigned int)' selected for automatic inline expansion
+c:\users\joeyj\onedrive\documents\visual studio 2015\projects\matrix\matrix\vector.cpp(145): warning C4711: function 'double & __thiscall Vector::operator[](int)' selected for automatic inline expansion
+c:\users\joeyj\onedrive\documents\visual studio 2015\projects\matrix\matrix\vector.cpp(133): warning C4711: function '__thiscall Vector::Vector(unsigned int)' selected for automatic inline expansion
+c:\users\joeyj\onedrive\documents\visual studio 2015\projects\matrix\matrix\vector.cpp(135): warning C4711: function 'double & __thiscall Vector::operator[](int)' selected for automatic inline expansion
+c:\users\joeyj\onedrive\documents\visual studio 2015\projects\matrix\matrix\vector.cpp(123): warning C4711: function '__thiscall Vector::Vector(unsigned int)' selected for automatic inline expansion
+c:\users\joeyj\onedrive\documents\visual studio 2015\projects\matrix\matrix\vector.cpp(125): warning C4711: function 'double & __thiscall Vector::operator[](int)' selected for automatic inline expansion
+c:\users\joeyj\onedrive\documents\visual studio 2015\projects\matrix\matrix\matrix.cpp(117): warning C4710: 'void __thiscall Matrix::chkBounds(int,int)const ': function not inlined
+c:\users\joeyj\onedrive\documents\visual studio 2015\projects\matrix\matrix\matrix.cpp(296): warning C4710: 'void __thiscall Matrix::chkBounds(class Matrix const &)const ': function not inlined
+c:\users\joeyj\onedrive\documents\visual studio 2015\projects\matrix\matrix\matrix.cpp(298): warning C4711: function 'int __thiscall Matrix::length(void)const ' selected for automatic inline expansion
+c:\users\joeyj\onedrive\documents\visual studio 2015\projects\matrix\matrix\matrix.cpp(299): warning C4711: function 'int __thiscall Matrix::width(void)const ' selected for automatic inline expansion
+c:\users\joeyj\onedrive\documents\visual studio 2015\projects\matrix\matrix\matrix.cpp(369): warning C4711: function 'int __thiscall Matrix::length(void)const ' selected for automatic inline expansion
+c:\users\joeyj\onedrive\documents\visual studio 2015\projects\matrix\matrix\matrix.cpp(369): warning C4711: function 'int __thiscall Matrix::width(void)const ' selected for automatic inline expansion
+c:\users\joeyj\onedrive\documents\visual studio 2015\projects\matrix\matrix\matrix.cpp(371): warning C4711: function 'int __thiscall Matrix::length(void)const ' selected for automatic inline expansion
+c:\users\joeyj\onedrive\documents\visual studio 2015\projects\matrix\matrix\matrix.cpp(372): warning C4711: function 'int __thiscall Matrix::width(void)const ' selected for automatic inline expansion
+  Finished generating code
+  GRU.vcxproj -> C:\Users\joeyj\OneDrive\Documents\Visual Studio 2015\Projects\GRU\Release\GRU.exe
+  GRU.vcxproj -> C:\Users\joeyj\OneDrive\Documents\Visual Studio 2015\Projects\GRU\Release\GRU.pdb (Full PDB)

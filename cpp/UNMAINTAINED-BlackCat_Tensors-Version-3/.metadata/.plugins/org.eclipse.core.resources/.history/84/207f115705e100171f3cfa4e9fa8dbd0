@@ -1,0 +1,75 @@
+/*
+ * BC_Tensor_Lv4_Array_Utility.h
+ *
+ *  Created on: Dec 13, 2017
+ *      Author: joseph
+ */
+
+#ifndef BC_TENSOR_LV3_ARRAY_UTILITY_H_
+#define BC_TENSOR_LV3_ARRAY_UTILITY_H_
+
+#include "BC_Tensor_Lv2_Type.h"
+
+namespace printHelper {
+
+	template<class >
+	struct f;
+
+	template<int ... set, template<int...> class list, int front>
+	struct f<list<front, set...>> {
+		static void fill(int* ary) {
+			ary[0] = front;
+			f<list<set...>>::fill(&ary[1]);
+		}
+	};
+	template<template<int...> class list, int front>
+struct f<list<front>> {
+	static void fill(int* ary) {
+		ary[0] = front;
+	}
+};
+}
+
+template<class T,									//The internal array type
+	class derived,									//The derived class
+	class math_lib,					    		    //Math_library
+	class inner_shape, class outer_shape>
+struct BC_Tensor_Utility_Array : public Tensor_Type<T, derived, math_lib, Tensor_Shape<inner_shape, outer_shape>,
+	BC_MTF::is_same<outer_shape, DEFAULT_LD<inner_shape>>::conditional> {
+
+BC_Tensor_Utility_Array() {
+	std::cout << " utility array " << std::endl;
+	if (BC_MTF::is_same<outer_shape, DEFAULT_LD<inner_shape>>::conditional) {
+		std::cout << " is true " << std::endl;
+	} else {
+		std::cout << " is fakse " << std::endl;
+	}
+	this->printLeadingDimensions();
+
+}
+template<class ... params> BC_Tensor_Utility_Array(params ... p) :
+		Tensor_Type<T, derived, math_lib, Tensor_Shape<inner_shape, outer_shape>>(p...) {
+	std::cout << " utility array " << std::endl;
+
+}
+
+void fill(T value) {
+	math_lib::fill(this->data(), value, this->size());
+}
+void zero() {
+	math_lib::zero(this->data(), this->size());
+}
+void randomize(T lb, T ub) {
+	math_lib::randomize(this->data(), lb, ub, this->size());
+}
+
+void print() const {
+	//rewrite this method
+			int* ranks = new int[Tensor_Shape<inner_shape, outer_shape>::rank];
+			printHelper::f<typename Tensor_Shape<inner_shape, outer_shape>::inner_shape>::fill(ranks);
+			math_lib::print(this->array, ranks, Tensor_Shape<inner_shape, outer_shape>::rank, 5);
+			delete[] ranks;
+		}
+	};
+
+#endif /* BC_TENSOR_LV3_ARRAY_UTILITY_H_ */

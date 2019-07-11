@@ -1,0 +1,58 @@
+/*
+ * BC_Tensor_Base2.h
+ *
+ *  Created on: Dec 12, 2017
+ *      Author: joseph
+ */
+
+#ifndef BC_TENSOR_VECTOR_H_
+#define BC_TENSOR_VECTOR_H_
+
+#include "../BlackCat_Global_Unifier.h"
+#include "BC_Tensor_Scalar.h"
+
+template<class T, int row, class lib, //default = CPU,
+		class LD // default = typename DEFAULT_LD<Inner_Shape<row>>::type
+>
+class Vector : public Tensor_Base<T, Vector<T, row, lib>, lib, Inner_Shape<row>, typename DEFAULT_LD<Inner_Shape<row>>::type> {
+
+	using functor_type = typename Tensor_FunctorType<T>::type;
+	using parent_class = Tensor_Base<T, Vector<T, row, lib>, lib, Inner_Shape<row>, typename DEFAULT_LD<Inner_Shape<row>>::type>;
+	using grandparent_class = typename parent_class::grandparent_class;
+	using this_type = Vector<T, row, lib>;
+
+public:
+
+	using parent_class::parent_class;
+
+	template<class U, class alt_LD> Vector(const Vector<U, row, lib, alt_LD>&  vec) : parent_class() { (*this) = vec; }
+	template<class U, class alt_LD>	Vector(      Vector<U, row, lib, alt_LD>&& vec) : parent_class() { (*this) = vec; }
+
+	template<class U, class alt_LD>
+	Vector<T, row, lib, LD>& operator =(const Vector<U, row, lib, alt_LD>& v) {
+		this->size() > OPENMP_SINGLE_THREAD_THRESHHOLD ?
+			lib::copy(this->data(), v.data(), this->size()):
+			lib::copy_single_thread(this->data(), v.data(), this->size());
+
+		return *this;
+	}
+	template<class alt_LD>
+	Vector<T, row, lib, LD>& operator =(const typename BC_MTF::IF_ELSE<grandparent_class::ASSIGNABLE, Vector<T, row, lib, alt_LD>&, VOID_CLASS> v) {
+		this->size() > OPENMP_SINGLE_THREAD_THRESHHOLD ?
+			lib::copy(this->data(), v.data(), this->size()):
+			lib::copy_single_thread(this->data(), v.data(), this->size());
+
+		return *this;
+	}
+
+	template<int sub_row>
+	const Scalar<T, lib> operator [] (int index) const {
+		return Scalar<T, lib>(&(this->array[index]));
+	}
+	Scalar<T, lib> operator [] (int index) {
+		return Scalar<T, lib>(&(this->array[index]));
+	}
+
+};
+
+#endif /* BC_TENSOR_VECTOR_H_ */

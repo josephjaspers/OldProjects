@@ -1,0 +1,58 @@
+/*
+ * BC_Expression_Binary.h
+ *
+ *  Created on: Dec 1, 2017
+ *      Author: joseph
+ */
+
+#ifndef BC_EXPRESSION_BINARY_POINTWISE_SAME_H_
+#define BC_EXPRESSION_BINARY_POINTWISE_SAME_H_
+
+#include "BC_Expression_Base.h"
+
+template<class T, class op, class lv, class rv>
+class binary_expression;
+
+
+
+template<class T, class operation, class lv, class rv>
+class binary_expression : public expression<T, binary_expression<T, operation, lv, rv>> {
+public:
+
+	using this_type = binary_expression<T, operation, lv, rv>;
+	operation oper;
+
+	lv left;
+	rv right;
+
+
+	auto function () {
+		return [=] (int i) { binExpr_function<this_type>::function(*this); };
+		//return binExpr_function<binary_expression<T, operation, lv, rv>>::function;
+	}
+
+	template<class L, class R>
+	inline __attribute__((always_inline)) binary_expression(L l, R r) :
+			left(l), right(r) {
+	}
+
+	inline __attribute__((always_inline)) auto operator [](int index) const {
+		return oper(left[index], right[index]);
+	}
+};
+
+template<class T>
+struct binExpr_function {
+	static constexpr auto function = [](const T& ary, int index) { return ary[index]; };
+};
+
+template<class T, class op, class lv, class rv>
+struct binExpr_function<binary_expression<T, op, lv, rv>> {
+	static constexpr auto operation = op();
+	static constexpr auto function = [](const binary_expression<T, op, lv, rv>& expr) { return operation(binExpr_function(expr.left), binExpr_function(expr.right)); };
+
+};
+
+
+
+#endif /* BC_EXPRESSION_BINARY_POINTWISE_SAME_H_ */

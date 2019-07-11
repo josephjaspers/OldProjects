@@ -1,0 +1,37 @@
+/*
+ * BC_MetaTemplate_EssentialMethods.h
+ *
+ *  Created on: Dec 11, 2017
+ *      Author: joseph
+ */
+
+#ifndef ADHOC_H_
+#define ADHOC_H_
+
+#include "../BlackCat_Global_Unifier.h"
+
+template<class, class>
+class expression;
+
+namespace BC_MTF {
+
+	/*
+	 * Contains meta-template functions that are designed specifically for this library
+	 * All other meta-template functions are generalizable
+	 */
+
+	template<class > struct isArrayType {
+		static constexpr bool conditional = false;
+	};
+	template<class T, class deriv> struct isArrayType<expression<T, deriv>> {
+		static constexpr bool conditional = true;
+	};
+
+	/*
+	 * ADD ARRAY_TYPE CLASSES HERE ---  IF A CLASS IS
+	 */
+
+
+}
+
+#endif /* ADHOC_H_ */

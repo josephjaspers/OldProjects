@@ -1,0 +1,15 @@
+/*
+ * BC_Tensor_TailedBeast.h
+ *
+ *  Created on: Dec 18, 2017
+ *      Author: joseph
+ */
+
+#ifndef BC_TENSOR_TAILEDBEAST_H_
+#define BC_TENSOR_TAILEDBEAST_H_
+
+ public Tensor_Base<T, Vector<T, row, lib>, lib, Inner_Shape<row>, typename DEFAULT_LD<Inner_Shape<row>>::type>
+
+
+
+#endif /* BC_TENSOR_TAILEDBEAST_H_ */

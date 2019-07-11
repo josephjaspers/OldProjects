@@ -1,0 +1,19 @@
+/*
+ * Transpose_Wrapper.h
+ *
+ *  Created on: Dec 19, 2017
+ *      Author: joseph
+ */
+
+#ifndef TRANSPOSE_WRAPPER_H_
+#define TRANSPOSE_WRAPPER_H_
+
+#include "../BlackCat_Global_Unifier.h"
+
+template<class T, int rows, int cols>
+struct Transpose_Wrapper : ArrayType<T, Transpose_Wrapper<T>>
+{
+
+};
+
+#endif /* TRANSPOSE_WRAPPER_H_ */

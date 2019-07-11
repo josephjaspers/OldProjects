@@ -1,0 +1,42 @@
+/*
+ * BC_Tensor_Scalar.h
+ *
+ *  Created on: Dec 18, 2017
+ *      Author: joseph
+ */
+
+#ifndef BC_TENSOR_SCALAR_H_
+#define BC_TENSOR_SCALAR_H_
+
+
+#include "../BlackCat_Global_Unifier.h"
+
+
+template<class T, class lib>{
+class Scalar : public Tensor_Base<T, Scalar<T, lib>, lib, Inner_Shape<1>, Outer_Shape<0>> {
+
+	using functor_type = typename Tensor_FunctorType<T>::type;
+	using parent_class = Tensor_Base<T, Scalar<T, lib>, lib, Inner_Shape<1>, Outer_Shape<0>>;
+	using grandparent_class = typename parent_class::grandparent_class;
+	using this_type = Scalar<T, lib>;
+
+public:
+	Scalar() = delete;
+	Scalar(T* t) : parent_class(t) {}
+
+	template<class U> Scalar<T, lib>& operator =(const Scalar<U, lib>& v) {
+
+		static_assert(grandparent_class::ASSIGNABLE, "Scalar<T, lib> of type T is non assignable (use Eval() to evaluate expression-tensors)");
+		lib::set_heap(this->data(), v.data());
+		return *this;
+	}
+
+	template<class U> Scalar<T, lib>& operator =(U scalar) {
+
+		static_assert(grandparent_class::ASSIGNABLE, "Scalar<T, lib> of type T is non assignable (use Eval() to evaluate expression-tensors)");
+		lib::set_stack(this->data(), scalar);
+		return *this;
+	}
+
+};
+#endif /* BC_TENSOR_SCALAR_H_ */

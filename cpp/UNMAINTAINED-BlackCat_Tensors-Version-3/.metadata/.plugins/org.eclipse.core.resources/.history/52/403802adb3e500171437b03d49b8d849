@@ -1,0 +1,19 @@
+/*
+ * Expression_Binary_VVmul.h
+ *
+ *  Created on: Dec 20, 2017
+ *      Author: joseph
+ */
+
+#ifndef EXPRESSION_BINARY_VVMUL_H_
+#define EXPRESSION_BINARY_VVMUL_H_
+
+#include "../BlackCat_Global_Unifier.h"
+
+template
+<class T,
+ class
+
+
+
+#endif /* EXPRESSION_BINARY_VVMUL_H_ */

@@ -1,0 +1,30 @@
+/*
+ * BC_Tensor_Lv4_Math_Advanced.h
+ *
+ *  Created on: Dec 12, 2017
+ *      Author: joseph
+ */
+
+#ifndef BC_TENSOR_LV4_EXPRESSION_UTILITY_H_
+#define BC_TENSOR_LV4_EXPRESSION_UTILITY_H_
+
+#include "BC_Tensor_Lv3_Math_Simple.h"
+
+namespace BC_AdvancedMath_enabler {
+	template<int... dims>
+	struct isVector;
+}
+template<
+class T,
+class derived,
+class math_lib,
+int... dimensions
+>
+struct BC_Tensor_Math_Advanced : public Tensor_Base<T, derived, math_lib, dimensions...> {
+
+};
+
+
+
+
+#endif /* BC_TENSOR_LV4_EXPRESSION_UTILITY_H_ */

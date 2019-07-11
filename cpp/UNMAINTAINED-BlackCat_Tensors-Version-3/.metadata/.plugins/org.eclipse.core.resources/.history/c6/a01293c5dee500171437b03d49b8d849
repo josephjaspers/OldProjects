@@ -1,0 +1,39 @@
+/*
+ * Transpose_Wrapper.h
+ *
+ *  Created on: Dec 19, 2017
+ *      Author: joseph
+ */
+
+#ifndef MATRIX_TRANSPOSE_WRAPPER_H_
+#define MATRIX_TRANSPOSE_WRAPPER_H_
+
+#include "../BlackCat_Global_Unifier.h"
+#include "../BC_MetaTemplateFunctions/Typeclass_FunctionType.h"
+#include "../BC_MetaTemplateFunctions/Adhoc.h"
+#include <cmath>
+
+template<class T, class parent>
+struct MatrixTranspose_Wrapper : ArrayType<T, MatrixTranspose_Wrapper<T, MatrixTranspose_Wrapper<T , parent>>>
+{
+	/*
+	 * Rows and Cols are the CURRENT rows and cols of the set,
+	 * which means
+	 */
+
+	using this_type = MatrixTranspose_Wrapper<T,parent>;
+	using functor_type = typename Tensor_FunctorType<T>::type;
+
+	functor_type array;
+	const parent& dad; // This the Matrix class that wraps around this class //
+
+	MatrixTranspose_Wrapper(const parent& p, functor_type data) : array(data), dad(p) {}
+
+	__attribute__((always_inline)) auto& operator [](int index) {
+		return array[(int)floor(index / rows) + (index % rows) * cols];
+	}
+	__attribute__((always_inline)) const auto& operator[](int index) const {
+		return array[(int) floor(index / rows) + (index % rows) * cols];
+	}
+};
+#endif /* MATRIX_TRANSPOSE_WRAPPER_H_ */

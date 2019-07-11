@@ -1,0 +1,43 @@
+/*
+ * BC_Tensor_Scalar.h
+ *
+ *  Created on: Dec 18, 2017
+ *      Author: joseph
+ */
+
+#ifndef BC_TENSOR_SCALAR_H_
+#define BC_TENSOR_SCALAR_H_
+
+
+#include "../BlackCat_Global_Unifier.h"
+
+
+template<class T, class lib>
+class Scalar : public Tensor_Base<T, Scalar<T, lib>, lib, Inner_Shape<1>, Outer_Shape<0>> {
+
+	using functor_type = typename Tensor_FunctorType<T>::type;
+	using parent_class = Tensor_Base<T, Scalar<T, lib>, lib, Outer_Shape<0>>;
+	using grandparent_class = typename parent_class::grandparent_class;
+	using this_type = Vector<T, row, lib>;
+
+public:
+	Scalar() = default;
+	template<class ... params> 	Vector(params ... p) : parent_class(p...) {}
+
+	template<class U> 		  	Vector(const Vector<U, row, lib>&  vec) : parent_class() { (*this) = vec; }
+	template<class U>		  	Vector(      Vector<U, row, lib>&& vec) : parent_class() { (*this) = vec; }
+
+	template<class U> Vector<T, row, lib>& operator =(const Vector<U, row, lib>& v) {
+
+		static_assert(grandparent_class::ASSIGNABLE, "Vector<T, row, lib> of type T is non assignable (use Eval() to evaluate expression-tensors)");
+
+		this->size() > 9999 ?
+			lib::copy(this->data(), v.data(), this->size())
+		:
+			lib::copy_single_thread(this->data(), v.data(), this->size());
+
+		return *this;
+	}
+
+};
+#endif /* BC_TENSOR_SCALAR_H_ */

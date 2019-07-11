@@ -1,0 +1,104 @@
+/*
+ * BC_Tensor_Base.h
+ *
+ *  Created on: Dec 11, 2017
+ *      Author: joseph
+ */
+
+#ifndef BC_TENSOR_BASE_H_
+#define BC_TENSOR_BASE_H_
+
+#include "../BlackCat_Global_Unifier.h"
+
+
+template <
+class array_T,									//The internal array type
+class derived,									//The derived class
+class math_lib,					    		    //Math_library
+class shape,									//The shape of the tensor
+bool  isParent = BC_MTF::is_same<typename shape::inner_shape, DEFAULT_LD<typename shape::inner_shape>>::conditional
+>
+struct Tensor_Type : shape {
+
+	using this_type       = Tensor_Type<array_T, derived, math_lib, shape, isParent>;
+
+
+	using functor_type    = typename Tensor_FunctorType<array_T>::type;			//either T* if primitive else an array wrapper
+	using scalar_type 	  = typename BC_ArrayType::Identity<array_T>::type;
+
+	using identity_type   = typename BC_Shape_Identity::Identity<array_T, math_lib, typename shape::inner_shape>::type;
+	using evaluation_type = derived&; //This is the same as BC_Evaluation (as this specialization only handles actual arrays (not expression))
+	//using evaluation_type = typename BC_Evaluation_Identity::Identity<array_T, math_lib, typename shape::inner_shape>::type;
+
+	using math_library 	  = math_lib;											//The math library generally either the default CPU lib or a CUDA lib (Cuda lib not yet written)
+
+	functor_type array; 														//This is the internal array
+
+	Tensor_Type()  { math_lib::initialize(array, this->size());} 				//Assumes array is a pointer to a primitive type, initializes with the apropriate math_lib call
+	template<class... params> Tensor_Type(params... p)  : array(p...) {}
+	~Tensor_Type() { if (isParent) math_lib::destroy(array); }
+
+
+		  evaluation_type eval() 	   { return static_cast<evaluation_type>(*this); }
+	const evaluation_type eval() const { return static_cast<evaluation_type>(*this); }
+
+		  functor_type    data()	   { return array; }
+	const functor_type	  data() const { return array; }
+
+	constexpr bool isAssignable() const { return true; }
+	constexpr bool isMoveable()   const { return isParent; }
+
+	static constexpr bool ASSIGNABLE = true;
+	static constexpr bool MOVEABLE   = isParent;
+
+};
+
+
+/*
+ *
+ * This specialization is for Tensors that are not parents of their internal array. IE expressions and sub-tensors.
+ *
+ */
+
+template <
+class array_T,									//The internal array type
+class derived,									//The derived class
+class math_lib,					    		    //Math_library
+class shape									   //The shape of the tensor
+>
+struct Tensor_Type<array_T, derived, math_lib, shape, false> : shape {
+
+	using this_type       = Tensor_Type<array_T, derived, math_lib, shape, false>;
+
+	using functor_type    = typename Tensor_FunctorType<array_T>::type;			//either T* if primitive else an array wrapper
+	using scalar_type 	  = typename BC_ArrayType::Identity<array_T>::type;
+
+	using identity_type   = typename BC_Shape_Identity::Identity<array_T, math_lib, typename shape::inner_shape>::type;
+	using evaluation_type = typename BC_Evaluation_Identity::Identity<array_T, math_lib, typename shape::inner_shape>::type;
+
+	using math_library 	  = math_lib;											//The math library generally either the default CPU lib or a CUDA lib (Cuda lib not yet written)
+
+	static constexpr bool ASSIGNABLE = false;
+	static constexpr bool MOVEABLE   = false;
+
+	functor_type array; 														//This is the internal array
+
+	template<class... params> Tensor_Type(params... p) : array(p...) {}				//Assumes array is a pointer to a primitive type, initializes with the apropriate math_lib call
+  //variations for initializing the field array
+
+	~Tensor_Type() = default;
+
+
+		  evaluation_type eval() 	   { return static_cast<evaluation_type>(static_cast<derived&>(*this)); }
+	const evaluation_type eval() const { return static cast<evaluation_type>(static_cast<derived&>(*this)); }
+
+		  functor_type&  data()	   	  { return array; }
+	const functor_type&	 data() const { return array; }
+
+
+	constexpr bool isAssignable() const { return false; }
+	constexpr bool isMoveable()   const { return false; }
+
+};
+
+#endif /* BC_TENSOR_BASE_H_ */

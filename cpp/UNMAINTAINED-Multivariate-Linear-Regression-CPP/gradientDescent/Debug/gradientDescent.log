@@ -1,0 +1,6 @@
+﻿  gradientDescent.cpp
+c:\users\joseph\documents\visual studio 2015\projects\gradientdescent\gradientdescent\gradientdescent.cpp(42): warning C4018: '<': signed/unsigned mismatch
+c:\users\joseph\documents\visual studio 2015\projects\gradientdescent\gradientdescent\gradientdescent.cpp(56): warning C4018: '<': signed/unsigned mismatch
+c:\users\joseph\documents\visual studio 2015\projects\gradientdescent\gradientdescent\gradientdescent.cpp(141): warning C4018: '<': signed/unsigned mismatch
+  gradientDescent.vcxproj -> c:\users\joseph\documents\visual studio 2015\Projects\gradientDescent\Debug\gradientDescent.exe
+  gradientDescent.vcxproj -> c:\users\joseph\documents\visual studio 2015\Projects\gradientDescent\Debug\gradientDescent.pdb (Full PDB)

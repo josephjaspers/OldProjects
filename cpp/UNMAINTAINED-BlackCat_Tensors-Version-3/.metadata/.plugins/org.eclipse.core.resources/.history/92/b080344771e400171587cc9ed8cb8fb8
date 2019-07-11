@@ -1,0 +1,30 @@
+/*
+ * BC_Tensor_Cube.h
+ *
+ *  Created on: Dec 18, 2017
+ *      Author: joseph
+ */
+
+#ifndef BC_TENSOR_CUBE_H_
+#define BC_TENSOR_CUBE_H_
+
+
+
+#include "../BlackCat_Global_Unifier.h"
+#include "BC_Tensor_Vector.h"
+
+template<class T, int row, int col, int depth, class lib, //default = CPU,
+		class LD // default = typename DEFAULT_LD<Inner_Shape<row>>::type
+>
+class Cube : public Tensor_Base<T, Cube<T, row,col, depth, lib>, lib, Inner_Shape<row, col, depth>, typename DEFAULT_LD<Inner_Shape<row, col, depth>>::type> {
+
+
+	using parent_class = Tensor_Base<T, Cube<T, row,col, depth, lib>, lib, Inner_Shape<row, col, depth>, typename DEFAULT_LD<Inner_Shape<row, col, depth>>::type>;
+	using this_class = Cube<T, row, col, depth, lib, LD>;
+
+	using parent_class::operator=;
+	using parent_class::parent_class;
+};
+
+
+#endif /* BC_TENSOR_CUBE_H_ */

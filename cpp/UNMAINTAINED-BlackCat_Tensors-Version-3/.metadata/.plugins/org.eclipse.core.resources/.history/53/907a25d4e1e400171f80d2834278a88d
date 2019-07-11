@@ -1,0 +1,21 @@
+/*
+ * Transpose_Wrapper.h
+ *
+ *  Created on: Dec 19, 2017
+ *      Author: joseph
+ */
+
+#ifndef MATRIX_TRANSPOSE_WRAPPER_H_
+#define MATRIX_TRANSPOSE_WRAPPER_H_
+
+#include "../BlackCat_Global_Unifier.h"
+#include "ArrayType_Base.h"
+
+template<class T, int rows, int cols>
+struct MatrixTranspose_Wrapper : ArrayType<T, MatrixTranspose_Wrapper<T, rows, cols>>
+{
+
+	TensorFunctor_Type<T>::type array;
+
+};
+#endif /* MATRIX_TRANSPOSE_WRAPPER_H_ */

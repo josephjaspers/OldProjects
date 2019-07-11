@@ -1,0 +1,6 @@
+﻿  ANN.cpp
+c:\users\joeyj\onedrive\documents\visual studio 2015\projects\ann\ann\ann.cpp(72): warning C4018: '<': signed/unsigned mismatch
+c:\users\joeyj\onedrive\documents\visual studio 2015\projects\ann\ann\ann.cpp(136): warning C4018: '<': signed/unsigned mismatch
+c:\users\joeyj\onedrive\documents\visual studio 2015\projects\ann\ann\ann.cpp(158): warning C4018: '<': signed/unsigned mismatch
+  ANN.vcxproj -> C:\Users\joeyj\OneDrive\Documents\Visual Studio 2015\Projects\ANN\Debug\ANN.exe
+  ANN.vcxproj -> C:\Users\joeyj\OneDrive\Documents\Visual Studio 2015\Projects\ANN\Debug\ANN.pdb (Full PDB)

@@ -1,0 +1,40 @@
+/*
+ * Expression_Binary_VVmul.h
+ *
+ *  Created on: Dec 20, 2017
+ *      Author: joseph
+ */
+
+#ifndef EXPRESSION_BINARY_VVMUL_H_
+#define EXPRESSION_BINARY_VVMUL_H_
+
+#include "../BlackCat_Global_Unifier.h"
+#include <cmath>
+
+template<
+	class T,
+	class V1,
+	class V2
+>
+struct binary_expression_VVmul_outer : expression<T, binary_expression_VVmul_outer<T, V1, V2>{
+
+	/*
+	 * Outer product
+	 */
+
+	V1 vecL;
+	V2 vecR;
+
+	binary_expression_VVmul_outer(V1 lv, V2 rv) : vecL(lv), vecR(rv) {}
+	binary_expression_VVmul_outer(const binary_expression_VVmul_outer&) = default;
+
+	T operator [] (int index) const {
+		return vecL[std::ceil(index / vecL.rows())] * vecR[index % vecR.rows()];
+	}
+
+
+};
+
+
+
+#endif /* EXPRESSION_BINARY_VVMUL_H_ */
