@@ -1,0 +1,23 @@
+﻿  Matrix.cpp
+c:\users\joeyj\onedrive\documents\visual studio 2015\projects\jas_matrices\jas_matrices\Matrix_Operations.h(146): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\joeyj\onedrive\documents\visual studio 2015\projects\jas_matrices\jas_matrices\Matrix_Operations.h(148): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\joeyj\onedrive\documents\visual studio 2015\projects\jas_matrices\jas_matrices\Matrix_Operations.h(196): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+Matrix.cpp(23): warning C4267: '=': conversion from 'size_t' to 'unsigned int', possible loss of data
+Matrix.cpp(24): warning C4267: '=': conversion from 'size_t' to 'unsigned int', possible loss of data
+Matrix.cpp(334): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+Matrix.cpp(387): warning C4018: '<': signed/unsigned mismatch
+Matrix.cpp(436): warning C4018: '<': signed/unsigned mismatch
+  Vector.cpp
+c:\users\joeyj\onedrive\documents\visual studio 2015\projects\jas_matrices\jas_matrices\Matrix_Operations.h(146): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\joeyj\onedrive\documents\visual studio 2015\projects\jas_matrices\jas_matrices\Matrix_Operations.h(148): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\joeyj\onedrive\documents\visual studio 2015\projects\jas_matrices\jas_matrices\Matrix_Operations.h(196): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+Vector.cpp(41): warning C4267: '=': conversion from 'size_t' to 'unsigned int', possible loss of data
+Vector.cpp(46): warning C4018: '<': signed/unsigned mismatch
+Vector.cpp(308): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+Vector.cpp(339): warning C4018: '<': signed/unsigned mismatch
+Vector.cpp(385): warning C4018: '<': signed/unsigned mismatch
+  main.cpp
+c:\users\joeyj\onedrive\documents\visual studio 2015\projects\jas_matrices\jas_matrices\Matrix_Operations.h(146): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\joeyj\onedrive\documents\visual studio 2015\projects\jas_matrices\jas_matrices\Matrix_Operations.h(148): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\joeyj\onedrive\documents\visual studio 2015\projects\jas_matrices\jas_matrices\Matrix_Operations.h(196): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+  jas_Matrices.vcxproj -> C:\Users\joeyj\OneDrive\Documents\Visual Studio 2015\Projects\jas_Matrices\x64\Release\jas_Matrices.lib

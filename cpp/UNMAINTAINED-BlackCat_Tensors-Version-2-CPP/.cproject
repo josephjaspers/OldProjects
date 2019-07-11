@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?fileVersion 4.0.0?><cproject storage_type_id="org.eclipse.cdt.core.XmlProjectDescriptionStorage">
+	<storageModule moduleId="org.eclipse.cdt.core.settings">
+		<cconfiguration id="com.nvidia.cuda.ide.eight_zero.configuration.lib.debug.1401251614">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="com.nvidia.cuda.ide.eight_zero.configuration.lib.debug.1401251614" moduleId="org.eclipse.cdt.core.settings" name="Debug_Broken">
+				<externalSettings>
+					<externalSetting>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/BlackCat_Tensors"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/BlackCat_Tensors/Debug_Broken"/>
+						<entry flags="RESOLVED" kind="libraryFile" name="BlackCat_Tensors" srcPrefixMapping="" srcRootPath=""/>
+					</externalSetting>
+				</externalSettings>
+				<extensions>
+					<extension id="com.nvidia.cuda.ide.elf" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="com.nvidia.cuda.ide.cubin" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="com.nvidia.cuda.ide.macho" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.VCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="nvcc.errorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactExtension="a" artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.staticLib" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.staticLib,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug" cleanCommand="rm -rf" description="" id="com.nvidia.cuda.ide.eight_zero.configuration.lib.debug.1401251614" name="Debug_Broken" parent="com.nvidia.cuda.ide.eight_zero.configuration.lib.debug.1401251614">
+					<folderInfo id="com.nvidia.cuda.ide.eight_zero.configuration.lib.debug.1401251614." name="/" resourcePath="">
+						<toolChain id="com.nvidia.cuda.tools.toolchain.eight_zero.lib.debug.1137751524" name="CUDA Toolkit 8.0">
+							<targetPlatform archList="all" id="com.nvidia.cuda.ide.targetPlatform.1509478548" isAbstract="false" name="Debug Platform" osList="linux,macosx" superClass="com.nvidia.cuda.ide.targetPlatform"/>
+							<builder buildPath="${workspace_loc:/BlackCat_Tensors}/Debug" id="com.nvidia.cuda.ide.builder.1315491409" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="CUDA Toolkit 7.5 Builder" superClass="com.nvidia.cuda.ide.builder">
+								<outputEntries>
+									<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="outputPath" name="Debug_Broken"/>
+									<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="outputPath" name="Release_Broken"/>
+									<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="outputPath" name="Release"/>
+									<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="outputPath" name="Debug"/>
+								</outputEntries>
+							</builder>
+							<tool command="nvcc" commandLinePattern="${COMMAND} ${FLAGS} ${OUTPUT_FLAG} ${OUTPUT_PREFIX} ${OUTPUT} ${INPUTS}" id="nvcc.compiler.base.32342223" name="NVCC Compiler" superClass="nvcc.compiler.base">
+								<option defaultValue="nvcc.compiler.optimization.level.none" id="nvcc.compiler.optimization.level.1763242749" name="Optimization Level" superClass="nvcc.compiler.optimization.level" valueType="enumerated"/>
+								<option id="nvcc.compiler.pic.1744566534" name="Position Independent Code (-fPIC)" superClass="nvcc.compiler.pic"/>
+								<option id="nvcc.compiler.cpp11option.2107419229" name="Enable C++11 support (-std=c++11)" superClass="nvcc.compiler.cpp11option" value="true" valueType="boolean"/>
+								<option id="nvcc.compiler.deviceDebug.1478695907" name="Generate device debug information (-G)" superClass="nvcc.compiler.deviceDebug" value="true" valueType="boolean"/>
+								<option id="nvcc.compiler.option.level.679009504" name="Generate host debug information (-g)" superClass="nvcc.compiler.option.level" value="true" valueType="boolean"/>
+								<option id="nvcc.compiler.include.paths.253817321" name="Include paths (-I)" superClass="nvcc.compiler.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="/home/joseph/cuda-workspace/BlackCat_Tensors/BC_Headers/BlackCat_Mathematics"/>
+									<listOptionValue builtIn="false" value="/home/joseph/cuda-workspace/BlackCat_Tensors/BC_Headers"/>
+									<listOptionValue builtIn="false" value="/home/joseph/cuda-workspace/BlackCat_Tensors/BC_Headers/BC_HEADERS_GPU_TYPES"/>
+									<listOptionValue builtIn="false" value="/home/joseph/cuda-workspace/BlackCat_Tensors/BC_GPU_impl"/>
+									<listOptionValue builtIn="false" value="/home/joseph/cuda-workspace/BlackCat_Tensors/BC_LAR_impl"/>
+								</option>
+								<inputType id="nvcc.compiler.input.cu.834527348" superClass="nvcc.compiler.input.cu"/>
+								<inputType id="nvcc.compiler.input.cpp.1393813332" superClass="nvcc.compiler.input.cpp"/>
+								<inputType id="nvcc.compiler.input.c.451774100" superClass="nvcc.compiler.input.c"/>
+							</tool>
+							<tool id="nvcc.linker.base.2092379641" name="NVCC Linker" superClass="nvcc.linker.base">
+								<inputType id="nvcc.linker.input.1227444708" superClass="nvcc.linker.input">
+									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
+									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
+								</inputType>
+							</tool>
+							<tool id="nvcc.archiver.base.318809664" name="NVCC Archiver" superClass="nvcc.archiver.base"/>
+							<tool id="com.nvidia.host.assembler.973673507" name="Host Assembler" superClass="com.nvidia.host.assembler">
+								<option id="gnu.both.asm.option.include.paths.318112768" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="/home/joseph/cuda-workspace/BlackCat_Tensors/BC_Headers/BlackCat_Mathematics"/>
+									<listOptionValue builtIn="false" value="/home/joseph/cuda-workspace/BlackCat_Tensors/BC_Headers"/>
+									<listOptionValue builtIn="false" value="/home/joseph/cuda-workspace/BlackCat_Tensors/BC_Headers/BC_HEADERS_GPU_TYPES"/>
+									<listOptionValue builtIn="false" value="/home/joseph/cuda-workspace/BlackCat_Tensors/BC_GPU_impl"/>
+									<listOptionValue builtIn="false" value="/home/joseph/cuda-workspace/BlackCat_Tensors/BC_LAR_impl"/>
+								</option>
+								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.737375212" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
+							</tool>
+						</toolChain>
+					</folderInfo>
+					<folderInfo id="com.nvidia.cuda.ide.eight_zero.configuration.lib.debug.1401251614.915940069" name="/" resourcePath="BC_Headers">
+						<toolChain id="com.nvidia.cuda.tools.toolchain.eight_zero.lib.debug.332735860" name="CUDA Toolkit 8.0" unusedChildren="">
+							<targetPlatform archList="all" binaryParser="com.nvidia.cuda.ide.elf;com.nvidia.cuda.ide.macho;com.nvidia.cuda.ide.cubin" id="com.nvidia.cuda.ide.targetPlatform" isAbstract="false" name="Debug Platform" osList="linux,macosx" superClass="com.nvidia.cuda.ide.targetPlatform"/>
+							<tool id="nvcc.compiler.base.881237682" name="NVCC Compiler" superClass="nvcc.compiler.base.32342223">
+								<option id="nvcc.compiler.include.paths.1942238847" name="Include paths (-I)" superClass="nvcc.compiler.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="/home/joseph/cuda-workspace/BlackCat_Tensors/BC_Headers/BlackCat_Mathematics"/>
+									<listOptionValue builtIn="false" value="/home/joseph/cuda-workspace/BlackCat_Tensors/BC_Headers"/>
+									<listOptionValue builtIn="false" value="/home/joseph/cuda-workspace/BlackCat_Tensors/BC_Headers/BC_HEADERS_GPU_TYPES"/>
+									<listOptionValue builtIn="false" value="/home/joseph/cuda-workspace/BlackCat_Tensors/BC_GPU_impl"/>
+									<listOptionValue builtIn="false" value="/home/joseph/cuda-workspace/BlackCat_Tensors/BC_LAR_impl"/>
+								</option>
+								<inputType id="nvcc.compiler.input.cu.1796441330" superClass="nvcc.compiler.input.cu"/>
+								<inputType id="nvcc.compiler.input.cpp.837879786" superClass="nvcc.compiler.input.cpp"/>
+								<inputType id="nvcc.compiler.input.c.769708398" superClass="nvcc.compiler.input.c"/>
+							</tool>
+							<tool id="nvcc.linker.base.761599463" name="NVCC Linker" superClass="nvcc.linker.base.2092379641"/>
+							<tool id="nvcc.archiver.base.173221077" name="NVCC Archiver" superClass="nvcc.archiver.base.318809664"/>
+							<tool id="com.nvidia.host.assembler.418348133" name="Host Assembler" superClass="com.nvidia.host.assembler.973673507">
+								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.2096153854" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
+							</tool>
+						</toolChain>
+					</folderInfo>
+					<sourceEntries>
+						<entry excluding="Later/BC_Matrix_impl|BlackCat_Mathematics" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="BC_Headers"/>
+						<entry excluding="LAR_transposeDeprecated" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="BC_LAR_impl"/>
+						<entry excluding="GPU_LIB_ImplementationDelayedNotSupportedCurrently|dep_scalar" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Deprecated_FileCode"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Deprecated_FileCode/GPU_LIB_ImplementationDelayedNotSupportedCurrently"/>
+					</sourceEntries>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="com.nvidia.cuda.ide.build.project.ICudaProjectConfiguration">
+				<executable devicelink="true">
+					<sass major="5" minor="2"/>
+					<ptx major="5" minor="2"/>
+				</executable>
+				<editor-arch major="5" minor="0"/>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+		</cconfiguration>
+		<cconfiguration id="com.nvidia.cuda.ide.eight_zero.configuration.lib.release.1144034874">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="com.nvidia.cuda.ide.eight_zero.configuration.lib.release.1144034874" moduleId="org.eclipse.cdt.core.settings" name="Release_Broken">
+				<externalSettings>
+					<externalSetting>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/BlackCat_Tensors"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/BlackCat_Tensors_needsRedone"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/BlackCat_Tensors/Release"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/BlackCat_Tensors_needsRedone/Release"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/BlackCat_Tensors/Release_Broken"/>
+						<entry flags="RESOLVED" kind="libraryFile" name="BlackCat_Tensors" srcPrefixMapping="" srcRootPath=""/>
+						<entry flags="RESOLVED" kind="libraryFile" name="BlackCat_Tensors_needsRedone" srcPrefixMapping="" srcRootPath=""/>
+					</externalSetting>
+				</externalSettings>
+				<extensions>
+					<extension id="com.nvidia.cuda.ide.elf" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="com.nvidia.cuda.ide.cubin" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="com.nvidia.cuda.ide.macho" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.VCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="nvcc.errorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactExtension="a" artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.staticLib" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.staticLib" cleanCommand="rm -rf" description="" id="com.nvidia.cuda.ide.eight_zero.configuration.lib.release.1144034874" name="Release_Broken" parent="com.nvidia.cuda.ide.eight_zero.configuration.lib.release.1144034874" prebuildStep="-std=c++11">
+					<folderInfo id="com.nvidia.cuda.ide.eight_zero.configuration.lib.release.1144034874." name="/" resourcePath="">
+						<toolChain id="com.nvidia.cuda.ide.toolchain.eight_zero.168451651" name="CUDA Toolkit 8.0">
+							<targetPlatform archList="all" id="com.nvidia.cuda.ide.targetPlatform.210008977" isAbstract="false" name="Debug Platform" osList="linux,macosx" superClass="com.nvidia.cuda.ide.targetPlatform"/>
+							<builder buildPath="${workspace_loc:/BlackCat_Tensors}/Release" id="com.nvidia.cuda.ide.builder.1594281344" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="CUDA Toolkit 7.5 Builder" superClass="com.nvidia.cuda.ide.builder"/>
+							<tool id="nvcc.compiler.base.1589786290" name="NVCC Compiler" superClass="nvcc.compiler.base">
+								<option id="nvcc.compiler.pic.1295192592" name="Position Independent Code (-fPIC)" superClass="nvcc.compiler.pic"/>
+								<option id="nvcc.compiler.cpp11option.372275041" name="Enable C++11 support (-std=c++11)" superClass="nvcc.compiler.cpp11option" value="true" valueType="boolean"/>
+								<option id="nvcc.compiler.include.paths.1052686015" name="Include paths (-I)" superClass="nvcc.compiler.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="/home/joseph/cuda-workspace/BlackCat_Tensors/BC_Headers/BlackCat_Mathematics"/>
+									<listOptionValue builtIn="false" value="/home/joseph/cuda-workspace/BlackCat_Tensors/BC_Headers"/>
+									<listOptionValue builtIn="false" value="/home/joseph/cuda-workspace/BlackCat_Tensors/BC_Headers/BC_HEADERS_GPU_TYPES"/>
+									<listOptionValue builtIn="false" value="/home/joseph/cuda-workspace/BlackCat_Tensors/BC_GPU_impl"/>
+									<listOptionValue builtIn="false" value="/home/joseph/cuda-workspace/BlackCat_Tensors/BC_LAR_impl"/>
+								</option>
+								<inputType id="nvcc.compiler.input.cu.897625315" superClass="nvcc.compiler.input.cu"/>
+								<inputType id="nvcc.compiler.input.cpp.263255334" superClass="nvcc.compiler.input.cpp"/>
+								<inputType id="nvcc.compiler.input.c.348449577" superClass="nvcc.compiler.input.c"/>
+							</tool>
+							<tool id="nvcc.linker.base.1140284573" name="NVCC Linker" superClass="nvcc.linker.base"/>
+							<tool id="nvcc.archiver.base.233731933" name="NVCC Archiver" superClass="nvcc.archiver.base"/>
+							<tool id="com.nvidia.host.assembler.756805281" name="Host Assembler" superClass="com.nvidia.host.assembler">
+								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.1662143027" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
+							</tool>
+						</toolChain>
+					</folderInfo>
+					<folderInfo id="com.nvidia.cuda.ide.eight_zero.configuration.lib.release.1144034874.1546393562" name="/" resourcePath="BC_Headers">
+						<toolChain id="com.nvidia.cuda.ide.toolchain.eight_zero.1962275333" name="CUDA Toolkit 8.0" unusedChildren="">
+							<targetPlatform archList="all" binaryParser="com.nvidia.cuda.ide.elf;com.nvidia.cuda.ide.macho;com.nvidia.cuda.ide.cubin" id="com.nvidia.cuda.ide.targetPlatform" isAbstract="false" name="Debug Platform" osList="linux,macosx" superClass="com.nvidia.cuda.ide.targetPlatform"/>
+							<tool id="nvcc.compiler.base.335107882" name="NVCC Compiler" superClass="nvcc.compiler.base.1589786290">
+								<option id="nvcc.compiler.include.paths.1306920846" name="Include paths (-I)" superClass="nvcc.compiler.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="/home/joseph/cuda-workspace/BlackCat_Tensors/BC_Headers/BlackCat_Mathematics"/>
+									<listOptionValue builtIn="false" value="/home/joseph/cuda-workspace/BlackCat_Tensors/BC_Headers"/>
+								</option>
+								<inputType id="nvcc.compiler.input.cu.91924437" superClass="nvcc.compiler.input.cu"/>
+								<inputType id="nvcc.compiler.input.cpp.577083684" superClass="nvcc.compiler.input.cpp"/>
+								<inputType id="nvcc.compiler.input.c.717571158" superClass="nvcc.compiler.input.c"/>
+							</tool>
+							<tool id="nvcc.linker.base.847108306" name="NVCC Linker" superClass="nvcc.linker.base.1140284573"/>
+							<tool id="nvcc.archiver.base.998817791" name="NVCC Archiver" superClass="nvcc.archiver.base.233731933"/>
+							<tool id="com.nvidia.host.assembler.1828302481" name="Host Assembler" superClass="com.nvidia.host.assembler.756805281">
+								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.52151944" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
+							</tool>
+						</toolChain>
+					</folderInfo>
+					<fileInfo id="com.nvidia.cuda.ide.eight_zero.configuration.lib.release.1144034874.465995063" name="BLACKCAT_GPU_MATHEMATICS.cuh" rcbsApplicability="disable" resourcePath="BC_Headers/BLACKCAT_GPU_MATHEMATICS.cuh" toolsToInvoke=""/>
+					<sourceEntries>
+						<entry excluding="UNSIGNED_DEFS|UNSIGNDEF_DEFS|GPU_double" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="BC_LAR_GPU_impl"/>
+						<entry excluding="LAR_transposeDeprecated" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="BC_LAR_impl"/>
+						<entry excluding="GPU_LIB_ImplementationDelayedNotSupportedCurrently|GPU_LIB_ImplementationDelayedNotSupportedCurrently/BC_LAR_GPU_impl|UNSIGNDEF_DEFS|dep_scalar" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Deprecated_FileCode"/>
+						<entry excluding="BC_LAR_GPU_impl" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Deprecated_FileCode/GPU_LIB_ImplementationDelayedNotSupportedCurrently"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Deprecated_FileCode/UNSIGNDEF_DEFS"/>
+					</sourceEntries>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="com.nvidia.cuda.ide.build.project.ICudaProjectConfiguration">
+				<executable devicelink="true">
+					<sass major="3" minor="7"/>
+					<sass major="5" minor="0"/>
+					<sass major="5" minor="2"/>
+					<sass major="5" minor="3"/>
+					<sass major="6" minor="0"/>
+					<ptx major="5" minor="0"/>
+					<ptx major="5" minor="2"/>
+					<ptx major="5" minor="3"/>
+					<ptx major="6" minor="0"/>
+				</executable>
+				<editor-arch major="5" minor="0"/>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+		</cconfiguration>
+		<cconfiguration id="com.nvidia.cuda.ide.eight_zero.configuration.lib.release.1179095477">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="com.nvidia.cuda.ide.eight_zero.configuration.lib.release.1179095477" moduleId="org.eclipse.cdt.core.settings" name="Release">
+				<externalSettings>
+					<externalSetting>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/BlackCat_Tensors"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/BlackCat_Tensors/Release"/>
+						<entry flags="RESOLVED" kind="libraryFile" name="BlackCat_Tensors" srcPrefixMapping="" srcRootPath=""/>
+					</externalSetting>
+				</externalSettings>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactExtension="a" artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.staticLib" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.staticLib" cleanCommand="rm -rf" description="" id="com.nvidia.cuda.ide.eight_zero.configuration.lib.release.1179095477" name="Release" parent="com.nvidia.cuda.ide.eight_zero.configuration.lib.release.1179095477">
+					<folderInfo id="com.nvidia.cuda.ide.eight_zero.configuration.lib.release.1179095477." name="/" resourcePath="">
+						<toolChain id="cdt.managedbuild.toolchain.gnu.base.1610716077" name="Linux GCC" superClass="cdt.managedbuild.toolchain.gnu.base">
+							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="cdt.managedbuild.target.gnu.platform.base.251078875" name="Debug Platform" osList="linux,hpux,aix,qnx" superClass="cdt.managedbuild.target.gnu.platform.base"/>
+							<builder buildPath="${workspace_loc:/BlackCat_Tensors}/Release" id="cdt.managedbuild.target.gnu.builder.base.1526885014" keepEnvironmentInBuildfile="false" name="Gnu Make Builder" superClass="cdt.managedbuild.target.gnu.builder.base"/>
+							<tool id="cdt.managedbuild.tool.gnu.archiver.base.1301100730" name="GCC Archiver" superClass="cdt.managedbuild.tool.gnu.archiver.base"/>
+							<tool command="g++ -std=c++17 -fopenmp" id="cdt.managedbuild.tool.gnu.cpp.compiler.base.549927661" name="GCC C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.base">
+								<option id="gnu.cpp.compiler.option.include.paths.1086476228" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="/home/joseph/cuda-workspace/BlackCat_Tensors/BC_Headers"/>
+								</option>
+								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.438345541" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.c.compiler.base.380032594" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.base">
+								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1891597913" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.c.linker.base.212609652" name="GCC C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.base"/>
+							<tool id="cdt.managedbuild.tool.gnu.cpp.linker.base.1881291642" name="GCC C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.base"/>
+							<tool command="as -fopenmp" commandLinePattern="${COMMAND} ${FLAGS} ${OUTPUT_FLAG} ${OUTPUT_PREFIX}${OUTPUT} ${INPUTS}" id="cdt.managedbuild.tool.gnu.assembler.base.200269848" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.base">
+								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.1253590708" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
+							</tool>
+						</toolChain>
+					</folderInfo>
+					<sourceEntries>
+						<entry excluding="Deprecated_FileCode/GPU_LIB_ImplementationDelayedNotSupportedCurrently|z_Deprecated_FileCode/GPU_LIB_ImplementationDelayedNotSupportedCurrently|GPU_LIB_ImplementationDelayedNotSupportedCurrently" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Deprecated_FileCode/GPU_LIB_ImplementationDelayedNotSupportedCurrently"/>
+					</sourceEntries>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+			<storageModule moduleId="com.nvidia.cuda.ide.build.project.ICudaProjectConfiguration">
+				<editor-arch major="5" minor="2"/>
+				<executable devicelink="true">
+					<ptx major="5" minor="2"/>
+					<sass major="5" minor="2"/>
+				</executable>
+			</storageModule>
+		</cconfiguration>
+		<cconfiguration id="com.nvidia.cuda.ide.eight_zero.configuration.lib.debug.726360483">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="com.nvidia.cuda.ide.eight_zero.configuration.lib.debug.726360483" moduleId="org.eclipse.cdt.core.settings" name="Debug">
+				<externalSettings>
+					<externalSetting>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/BlackCat_Tensors"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/BlackCat_Tensors/Debug"/>
+						<entry flags="RESOLVED" kind="libraryFile" name="BlackCat_Tensors" srcPrefixMapping="" srcRootPath=""/>
+					</externalSetting>
+				</externalSettings>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="com.nvidia.cuda.ide.build.project.ICudaProjectConfiguration">
+				<editor-arch major="5" minor="2"/>
+				<executable devicelink="true">
+					<ptx major="5" minor="2"/>
+					<sass major="5" minor="2"/>
+				</executable>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactExtension="a" artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.staticLib" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.staticLib,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug" cleanCommand="rm -rf" description="" id="com.nvidia.cuda.ide.eight_zero.configuration.lib.debug.726360483" name="Debug" parent="com.nvidia.cuda.ide.eight_zero.configuration.lib.debug.726360483">
+					<folderInfo id="com.nvidia.cuda.ide.eight_zero.configuration.lib.debug.726360483." name="/" resourcePath="">
+						<toolChain id="cdt.managedbuild.toolchain.gnu.base.253419967" name="Linux GCC" superClass="cdt.managedbuild.toolchain.gnu.base">
+							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="cdt.managedbuild.target.gnu.platform.base.636757879" name="Debug Platform" osList="linux,hpux,aix,qnx" superClass="cdt.managedbuild.target.gnu.platform.base"/>
+							<builder buildPath="${workspace_loc:/BlackCat_Tensors}/Debug" id="cdt.managedbuild.target.gnu.builder.base.1570198453" keepEnvironmentInBuildfile="false" name="Gnu Make Builder" superClass="cdt.managedbuild.target.gnu.builder.base"/>
+							<tool id="cdt.managedbuild.tool.gnu.archiver.base.956154561" name="GCC Archiver" superClass="cdt.managedbuild.tool.gnu.archiver.base"/>
+							<tool command="g++ -std=c++17 -fopenmp" id="cdt.managedbuild.tool.gnu.cpp.compiler.base.314228110" name="GCC C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.base">
+								<option id="gnu.cpp.compiler.option.include.paths.1465331391" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="/home/joseph/cuda-workspace/BlackCat_Tensors/BC_Headers"/>
+								</option>
+								<option id="gnu.cpp.compiler.option.optimization.level.561144025" name="Optimization Level" superClass="gnu.cpp.compiler.option.optimization.level" value="gnu.cpp.compiler.optimization.level.none" valueType="enumerated"/>
+								<option id="gnu.cpp.compiler.option.debugging.level.789234878" name="Debug Level" superClass="gnu.cpp.compiler.option.debugging.level" value="gnu.cpp.compiler.debugging.level.max" valueType="enumerated"/>
+								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.1747101798" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
+							</tool>
+							<tool command="gcc -fopenmp" id="cdt.managedbuild.tool.gnu.c.compiler.base.687800557" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.base">
+								<option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.option.optimization.level.46534358" name="Optimization Level" superClass="gnu.c.compiler.option.optimization.level" valueType="enumerated"/>
+								<option id="gnu.c.compiler.option.debugging.level.2017345730" name="Debug Level" superClass="gnu.c.compiler.option.debugging.level" value="gnu.c.debugging.level.max" valueType="enumerated"/>
+								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.603531619" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.c.linker.base.1065525215" name="GCC C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.base"/>
+							<tool id="cdt.managedbuild.tool.gnu.cpp.linker.base.634410092" name="GCC C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.base"/>
+							<tool command="as -fopenmp" id="cdt.managedbuild.tool.gnu.assembler.base.1554224815" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.base">
+								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.1986260945" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
+							</tool>
+						</toolChain>
+					</folderInfo>
+					<sourceEntries>
+						<entry excluding="Deprecated_FileCode/GPU_LIB_ImplementationDelayedNotSupportedCurrently|z_Deprecated_FileCode/GPU_LIB_ImplementationDelayedNotSupportedCurrently|GPU_LIB_ImplementationDelayedNotSupportedCurrently" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Deprecated_FileCode/GPU_LIB_ImplementationDelayedNotSupportedCurrently"/>
+					</sourceEntries>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+		</cconfiguration>
+	</storageModule>
+	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+		<project id="BlackCat_Tensors.com.nvidia.cuda.ide.eight_zero.lib.198446557" name="Static Library"/>
+	</storageModule>
+	<storageModule moduleId="scannerConfiguration">
+		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		<scannerConfigBuildInfo instanceId="com.nvidia.cuda.ide.eight_zero.configuration.lib.debug.1401251614;com.nvidia.cuda.ide.eight_zero.configuration.lib.debug.1401251614.;nvcc.compiler.base.32342223;nvcc.compiler.input.cu.834527348">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.nvidia.cuda.ide.build.NVCCPerProjectProfile"/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="com.nvidia.cuda.ide.eight_zero.configuration.lib.debug.1401251614;com.nvidia.cuda.ide.eight_zero.configuration.lib.debug.1401251614.;nvcc.compiler.base.32342223;nvcc.compiler.input.c.451774100">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.nvidia.cuda.ide.build.NVCCPerProjectProfile"/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="com.nvidia.cuda.ide.eight_zero.configuration.lib.debug.1401251614;com.nvidia.cuda.ide.eight_zero.configuration.lib.debug.1401251614.;nvcc.compiler.base.32342223;nvcc.compiler.input.cpp.1393813332">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.nvidia.cuda.ide.build.NVCCPerProjectProfile"/>
+		</scannerConfigBuildInfo>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
+	<storageModule moduleId="refreshScope" versionNumber="2">
+		<configuration configurationName="Debug_Broken"/>
+		<configuration configurationName="Release_Broken"/>
+		<configuration configurationName="RunTimeTest">
+			<resource resourceType="PROJECT" workspacePath="/BlackCat_Tensors"/>
+		</configuration>
+		<configuration configurationName="Release">
+			<resource resourceType="PROJECT" workspacePath="/BlackCat_Tensors"/>
+		</configuration>
+		<configuration configurationName="Debug">
+			<resource resourceType="PROJECT" workspacePath="/BlackCat_Tensors"/>
+		</configuration>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
+	<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
+</cproject>

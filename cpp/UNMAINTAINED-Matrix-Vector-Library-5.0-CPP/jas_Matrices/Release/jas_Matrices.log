@@ -1,0 +1,2 @@
+﻿main.obj : error LNK2001: unresolved external symbol "public: double & __thiscall Matrix::operator[](int)" (??AMatrix@@QAEAANH@Z)
+C:\Users\joeyj\OneDrive\Documents\Visual Studio 2015\Projects\jas_Matrices\Release\jas_Matrices.exe : fatal error LNK1120: 1 unresolved externals

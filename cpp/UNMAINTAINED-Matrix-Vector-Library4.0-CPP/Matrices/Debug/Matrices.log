@@ -1,0 +1,25 @@
+﻿  Compiling CUDA source file GPU_operations.cu...
+  Compiling CUDA source file Matrix.cu...
+  
+  c:\Users\joeyj\OneDrive\documents\visual studio 2015\Projects\Matrices\Matrices>"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v8.0\bin\nvcc.exe" -gencode=arch=compute_20,code=\"sm_20,compute_20\" --use-local-env --cl-version 2015 -ccbin "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin"  -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v8.0\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v8.0\include"  -G   --keep-dir Debug -maxrregcount=0  --machine 32 --compile -cudart static  -g   -DWIN32 -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Od /FS /Zi /RTC1 /MDd " -o Debug\GPU_operations.cu.obj "c:\Users\joeyj\OneDrive\documents\visual studio 2015\Projects\Matrices\Matrices\GPU_operations.cu" 
+  
+  c:\Users\joeyj\OneDrive\documents\visual studio 2015\Projects\Matrices\Matrices>"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v8.0\bin\nvcc.exe" -gencode=arch=compute_20,code=\"sm_20,compute_20\" --use-local-env --cl-version 2015 -ccbin "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin"  -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v8.0\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v8.0\include"  -G   --keep-dir Debug -maxrregcount=0  --machine 32 --compile -cudart static  -g   -DWIN32 -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Od /FS /Zi /RTC1 /MDd " -o Debug\Matrix.cu.obj "c:\Users\joeyj\OneDrive\documents\visual studio 2015\Projects\Matrices\Matrices\Matrix.cu" 
+CUDACOMPILE : nvcc warning : The 'compute_20', 'sm_20', and 'sm_21' architectures are deprecated, and may be removed in a future release (Use -Wno-deprecated-gpu-targets to suppress warning).
+  GPU_operations.cu
+CUDACOMPILE : nvcc warning : The 'compute_20', 'sm_20', and 'sm_21' architectures are deprecated, and may be removed in a future release (Use -Wno-deprecated-gpu-targets to suppress warning).
+  Matrix.cu
+c:\users\joeyj\onedrive\documents\visual studio 2015\projects\matrices\matrices\GPU_operations.cuh(53): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\joeyj\onedrive\documents\visual studio 2015\projects\matrices\matrices\GPU_operations.cuh(55): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\joeyj\onedrive\documents\visual studio 2015\projects\matrices\matrices\GPU_operations.cuh(53): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\joeyj\onedrive\documents\visual studio 2015\projects\matrices\matrices\GPU_operations.cuh(55): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+  CPU_operations.cpp
+c:\users\joeyj\onedrive\documents\visual studio 2015\projects\matrices\matrices\cpu_operations.h(52): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\joeyj\onedrive\documents\visual studio 2015\projects\matrices\matrices\cpu_operations.h(54): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+Matrix.cu.obj : error LNK2019: unresolved external symbol "private: void __thiscall Matrix::updateCPU(void)" (?updateCPU@Matrix@@AAEXXZ) referenced in function "public: double & __thiscall Matrix::operator[](int)" (??AMatrix@@QAEAANH@Z)
+Matrix.cu.obj : error LNK2019: unresolved external symbol "public: __thiscall Matrix::~Matrix(void)" (??1Matrix@@QAE@XZ) referenced in function "public: class Matrix __thiscall Matrix::operator^(class Matrix const &)const " (??TMatrix@@QBE?AV0@ABV0@@Z)
+Matrix.cu.obj : error LNK2019: unresolved external symbol "public: int __thiscall Matrix::length(void)const " (?length@Matrix@@QBEHXZ) referenced in function "public: class Matrix & __thiscall Matrix::operator=(class Matrix const &)" (??4Matrix@@QAEAAV0@ABV0@@Z)
+Matrix.cu.obj : error LNK2019: unresolved external symbol "public: int __thiscall Matrix::width(void)const " (?width@Matrix@@QBEHXZ) referenced in function "public: class Matrix & __thiscall Matrix::operator=(class Matrix const &)" (??4Matrix@@QAEAAV0@ABV0@@Z)
+Matrix.cu.obj : error LNK2001: unresolved external symbol "public: virtual void __thiscall Matrix::write(class std::basic_ofstream<char,struct std::char_traits<char> > &)const " (?write@Matrix@@UBEXAAV?$basic_ofstream@DU?$char_traits@D@std@@@std@@@Z)
+Matrix.cu.obj : error LNK2001: unresolved external symbol "public: virtual void __thiscall Matrix::read(class std::basic_ifstream<char,struct std::char_traits<char> > &)const " (?read@Matrix@@UBEXAAV?$basic_ifstream@DU?$char_traits@D@std@@@std@@@Z)
+MSVCRTD.lib(exe_main.obj) : error LNK2019: unresolved external symbol _main referenced in function "int __cdecl invoke_main(void)" (?invoke_main@@YAHXZ)
+c:\Users\joeyj\OneDrive\documents\visual studio 2015\Projects\Matrices\Debug\Matrices.exe : fatal error LNK1120: 7 unresolved externals
