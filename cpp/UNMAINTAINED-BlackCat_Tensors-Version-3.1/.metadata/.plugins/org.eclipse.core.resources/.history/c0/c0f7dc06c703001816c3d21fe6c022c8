@@ -1,0 +1,42 @@
+
+namespace BC {
+
+#ifdef __CUDACC__
+#define __BC_gcpu__ __host__ __device__
+static constexpr int CUDA_BASE_THREADS = 256;
+#define BLACKCAT_GPU_ENABLED
+#else
+#define __BC_gcpu__
+#endif
+
+	namespace NN_Functions {
+
+
+
+		struct sigmoid {
+			static constexpr double e = 2.71828;
+
+
+			T operator () (T t) const {
+				return 1 / (1 + std::pow(e, - t));
+			}
+
+		};
+
+
+
+
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+}

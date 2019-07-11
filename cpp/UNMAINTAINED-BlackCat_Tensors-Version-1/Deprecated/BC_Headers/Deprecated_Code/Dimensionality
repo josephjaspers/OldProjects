@@ -1,0 +1,57 @@
+/*
+ * Dimensionality.h
+ *
+ *  Created on: Nov 2, 2017
+ *      Author: joseph
+ */
+
+#ifndef DIMENSIONALITY_H_
+#define DIMENSIONALITY_H_
+
+namespace Shape {
+	struct Dimensionality {
+
+		virtual int size() const = 0;
+		virtual int rows() const = 0;
+		virtual int cols() const = 0;
+		virtual int depth() const = 0;
+		virtual int order() const = 0;
+		virtual int rank(int index) const = 0;
+
+		virtual ~Dimensionality();
+	};
+
+	struct sub_shape : Dimensionality {
+
+		virtual int leading_dimension(int index) = 0;
+		virtual ~sub_shape();
+
+	};
+
+	struct Vector : public Dimensionality {
+		int sz;
+
+		Vector(int size) :
+				sz(size) {
+		}
+		int size() const override {
+			return sz;
+		}
+		int rows() const override {
+			return sz;
+		}
+		int cols() const override{
+			return 1;
+		}
+		int depth() const override{
+			return 1;
+		}
+		int order() const override{
+			return 1;
+		}
+		int rank(int r_id) const override {
+			return r_id > 0 ? 1 : sz;
+		}
+	};
+}
+#endif /* DIMENSIONALITY_H_ */

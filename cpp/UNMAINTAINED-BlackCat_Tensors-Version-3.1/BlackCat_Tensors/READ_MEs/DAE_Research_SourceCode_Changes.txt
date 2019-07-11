@@ -1,0 +1,33 @@
+FOR PACISE RESEARCH PAPER REVIEWES
+
+Slight changes were made to the source code during testing.
+This class based on some static constexpr int BC_CPU_SINGLE_THREAD_THRESHOLD 
+determines if the class utilizes a single thread copy or a multi-threaded copy.
+
+For the research paper submitted I removed this threshold to ensure all copies were multithreaded. 
+For single threaded version I simply re-compiled without -fopenmp.
+
+To replicate these results, go to
+
+BC_Internals/BC_Mathlibraries/Mathematic_CPU.h
+
+go to method:
+
+---------------------------------------------
+
+template<typename T, typename J>
+static void copy(T t, const J j, int sz) {
+		if (sz < BC_CPU_SINGLE_THREAD_THRESHOLD) {
+			copy_single_thread(t, j, sz);
+			return;
+		}
+#pragma omp parallel for
+		for (int i = 0; i < sz; ++i) {
+			t[i] = j[i];
+		}
+#pragma omp barrier
+	}
+
+---------------------------------------------
+
+and remove the entire if statement. 

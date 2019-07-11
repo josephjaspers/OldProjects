@@ -1,0 +1,144 @@
+
+/*
+ *
+ * The Accessor objects are the objects that control the functionality of how data is accessed during pointwise operations.
+ * The most common accessor is the pointwise accessor which assumes all data is contained on a continuous array
+ *
+ * Other types of accessors include lead_dimension accessor in cases when the current tensor is a sub-tensor within a larger tensor, therefor the accessor will have
+ * to calculate the offset after a certain number of operations. IE a 3x3 Matrix within a 4x4 matrix. (IE Every 3 operations a single element in the dataset will be skipped)
+ *
+ * The buffer_Accessor inlines the calculations, this is the primary method that handles converting extensive operations IE y = a + b + c + d; into a single for loop.
+ *
+ */
+
+template<typename T>
+struct Reference_Accessor {
+//	virtual inline T& operator[](int access_index) const = 0;
+	virtual ~Reference_Accessor<T>() = default;
+};
+template<typename T>
+struct Value_Accessor {
+	virtual inline T operator[](int access_index) const = 0;
+	virtual ~Value_Accessor<T>() = default;
+};
+
+template<typename T>
+struct Pointwise_Accessor : public Reference_Accessor<T> {
+	T* data;
+
+	Pointwise_Accessor<T>() {
+		data = nullptr;
+	}
+
+	Pointwise_Accessor<T>(T* data) {
+		this->data = data;
+	}
+
+	virtual T& operator[](int access) const override final {
+		return data[access];
+	}
+
+	virtual ~Pointwise_Accessor() = default;
+};
+
+
+
+template<class T, class lv, class rv, class oper>
+struct Buffer_Accessor : Value_Accessor<T> {
+	oper operation;
+	const rv& next;
+	const lv& curr;
+
+	Buffer_Accessor(const lv& left, const rv& right) :
+			next(right), curr(left) {
+	}
+
+	virtual inline T operator[](int index) const final {
+		return operation(curr, next, index);
+	}
+
+	virtual ~Buffer_Accessor<T, lv, rv, oper>() = default;
+};
+
+
+	//---------------------------------------------------------------------Buffer by Buffer Operations ---------------------------------------------------/
+//	template<class T2, class lv2, class rv2, class oper2>
+//	Buffer<T, Math_lib, Buffer<T, Math_lib, lv, rv, oper>, Buffer<T2, Math_lib, lv2, rv2, oper2>, Operation::add<T>> operator +(const Buffer<T2, Math_lib, lv2, rv2, oper2>& add) {
+//		return Buffer<T, Math_lib, Buffer<T, Math_lib, lv, rv, oper>, Buffer<T2, Math_lib, lv2, rv2, oper2>, Operation::add<T>>(*this, add, sz);
+//	}
+//
+//	template<class T2, class lv2, class rv2, class oper2>
+//	Buffer<T, Math_lib, Buffer<T, Math_lib, lv, rv, oper>, Buffer<T2, Math_lib, lv2, rv2, oper2>, Operation::sub<T>> operator -(const Buffer<T2, Math_lib, lv2, rv2, oper2>& sub) {
+//		return Buffer<T, Math_lib, Buffer<T, Math_lib, lv, rv, oper>, Buffer<T2, Math_lib, lv2, rv2, oper2>, Operation::sub<T>>(*this, sub, sz);
+//	}
+//
+//	template<class T2, class lv2, class rv2, class oper2>
+//	Buffer<T, Math_lib, Buffer<T, Math_lib, lv, rv, oper>, Buffer<T2, Math_lib, lv2, rv2, oper2>, Operation::mul<T>> operator %(const Buffer<T2, Math_lib, lv2, rv2, oper2>& mul) {
+//		return Buffer<T, Math_lib, Buffer<T, Math_lib, lv, rv, oper>, Buffer<T2, Math_lib, lv2, rv2, oper2>, Operation::mul<T>>(*this, mul, sz);
+//	}
+//
+//	template<class T2, class lv2, class rv2, class oper2>
+//	Buffer<T, Math_lib, Buffer<T, Math_lib, lv, rv, oper>, Buffer<T2, Math_lib, lv2, rv2, oper2>, Operation::div<T>> operator /(const Buffer<T2, Math_lib, lv2, rv2, oper2>& div) {
+//		return Buffer<T, Math_lib, Buffer<T, Math_lib, lv, rv, oper>, Buffer<T2, Math_lib, lv2, rv2, oper2>, Operation::div<T>>(*this, div, sz);
+//	}
+
+	/*
+	 * The accessor of the buffer --> calls the operation of the given buffer and calculates the sum, if buffers are chained it becomes a recursive template pattern
+	 * This is essential
+	 */
+//	T operator [](int index) const {
+//		return operation(curr, next, index);
+//	}
+//TQ 
+
+//template<class T, class Math_lib, class Accessor>
+//template<class U, class lv, class rv, class oper>
+//Buffer<T, Math_lib, Accessor, Buffer<U, Math_lib, lv, rv, oper>,Operation::add<T>>  Tensor_Queen<T, Math_lib, Accessor>::operator +(const Buffer<U, Math_lib, lv, rv, oper>& vec) const {
+//	return Buffer<T, Math_lib, Accessor, Buffer<U, Math_lib, lv, rv, oper>, Operation::add<T>>(this->accessor(), vec, sz);
+//}
+//template<class T, class Math_lib, class Accessor>
+//template<class U, class lv, class rv, class oper>
+//Buffer<T, Math_lib, Accessor, Buffer<U, Math_lib, lv, rv, oper>, Operation::sub<T>>  Tensor_Queen<T, Math_lib, Accessor>::operator -(const Buffer<U, Math_lib, lv, rv, oper>& vec) const {
+//	return Buffer<T, Math_lib, Accessor, Buffer<U, Math_lib, lv, rv, oper>, Operation::sub<T>>(this->accessor(), vec, sz);
+//}
+//template<class T, class Math_lib, class Accessor>
+//template<class U, class lv, class rv, class oper>
+//Buffer<T, Math_lib, Accessor, Buffer<U, Math_lib, lv, rv, oper>, Operation::div<T>>  Tensor_Queen<T, Math_lib, Accessor>::operator /(const Buffer<U, Math_lib, lv, rv, oper>& vec) const {
+//	return Buffer<T, Math_lib, Accessor, Buffer<U, Math_lib, lv, rv, oper>, Operation::div<T>>(this->accessor(), vec, sz);
+//}
+//template<class T, class Math_lib, class Accessor>
+//template<class U, class lv, class rv, class oper>
+//Buffer<T, Math_lib, Accessor, Buffer<U, Math_lib, lv, rv, oper>, Operation::mul<T>>  Tensor_Queen<T, Math_lib, Accessor>::operator %(const Buffer<U, Math_lib, lv, rv, oper>& vec) const {
+//	return Buffer<T, Math_lib, Accessor, Buffer<U, Math_lib, lv, rv, oper>, Operation::mul<T>>(this->accessor(), vec, sz);
+//}
+
+//--------------------------End of operaions-------------------//
+
+/*
+ * Buffer class - recursive template programming methodology, assists in converting extensive operations (IE y = a + b + c + d) into a single for loop.
+ * typename T
+ *
+ * T        -- the return value of the recursive template calculation
+ * Math_lib -- this type is not used by the Buffer itself but ensures that the calculations are done under the same framework, IE if done in conjunction with CUDA, ensures no cross between gpu/cpu operations
+ *lv		-- LV the left hand operation... generally is either another buffer or a pointer to an array. May potentially be a wrapper for tensors that are non continuous (differing leading dimensions)
+ *rv		-- same as above except right hand side
+ *oper  	-- the operation to be calculated. It is expected it is one of the structs given above.
+ */
+/*
+ * Same as above but only from a value given from the stack. Although the mathlib is always CPU --
+ * the class is trivially copy-able and therefor can integrate with other math_libs
+ */
+//template<class T, class Math_lib>
+//class stack_Scalar : public Tensor_King<T, Math_lib, singleton_stack<T, Math_lib>> {
+//	public:
+//
+//	stack_Scalar<T,Math_lib>(T value) : Tensor_King<T, Math_lib, singleton_stack<T, Math_lib>>(value) {}
+//
+//	~stack_Scalar<T,Math_lib>() = default;
+//	void print() {
+//		std::cout << *(this->accessor().scalar) << std::endl;
+//	}
+//	int size() const { return 1; }
+//	int order() const { return 0; }
+//	int order(int index) const { return 1; }
+//};

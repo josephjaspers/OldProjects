@@ -1,0 +1,1413 @@
+16:41:17 **** Clean-only build of configuration Release for project BlackCat_Tensors ****
+make clean 
+rm -rf  ./NN_test.o ./SpeedTests.o ./main.o ./test_area.o  ./BC_Internals/BC_MathLibraries/Mathematics_GPU.o ./BC_Internals/BC_MathLibraries/Mathematics_GPU_impl.o ./BC_Internals/BC_MathLibraries/Mathematics_Opt.o ./BC_Internals/BC_MathLibraries/Mathematics_mGPU.o  ./BC_Internals/BC_Expressions/Expression_Binary_Dotproduct.o ./BC_Internals/BC_Expressions/Expression_Binary_Functors.o ./BC_Internals/BC_Expressions/Expression_Binary_Pointwise.o ./BC_Internals/BC_Expressions/Expression_Binary_Pointwise_Scalar.o ./BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.o ./BC_Internals/BC_Expressions/Expression_Unary_Pointwise.o ./BC_Internals/BC_Expressions/SubTensor_Expression.o  ./NN_test.d ./SpeedTests.d ./main.d ./test_area.d  ./BC_Internals/BC_MathLibraries/Mathematics_GPU.d ./BC_Internals/BC_MathLibraries/Mathematics_GPU_impl.d ./BC_Internals/BC_MathLibraries/Mathematics_Opt.d ./BC_Internals/BC_MathLibraries/Mathematics_mGPU.d  ./BC_Internals/BC_Expressions/Expression_Binary_Dotproduct.d ./BC_Internals/BC_Expressions/Expression_Binary_Functors.d ./BC_Internals/BC_Expressions/Expression_Binary_Pointwise.d ./BC_Internals/BC_Expressions/Expression_Binary_Pointwise_Scalar.d ./BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.d ./BC_Internals/BC_Expressions/Expression_Unary_Pointwise.d ./BC_Internals/BC_Expressions/SubTensor_Expression.d  libBlackCat_Tensors.a
+ 
+16:41:17 **** Incremental Build of configuration Release for project BlackCat_Tensors ****
+make all 
+Building file: ../NN_test.cu
+Invoking: NVCC Compiler
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -O3 -gencode arch=compute_52,code=sm_52  -odir "." -M -o "NN_test.d" "../NN_test.cu"
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -O3 --compile --relocatable-device-code=true -gencode arch=compute_52,code=compute_52 -gencode arch=compute_52,code=sm_52  -x cu -o  "NN_test.o" "../NN_test.cu"
+Finished building: ../NN_test.cu
+ 
+Building file: ../SpeedTests.cu
+Invoking: NVCC Compiler
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -O3 -gencode arch=compute_52,code=sm_52  -odir "." -M -o "SpeedTests.d" "../SpeedTests.cu"
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -O3 --compile --relocatable-device-code=true -gencode arch=compute_52,code=compute_52 -gencode arch=compute_52,code=sm_52  -x cu -o  "SpeedTests.o" "../SpeedTests.cu"
+Finished building: ../SpeedTests.cu
+ 
+Building file: ../main.cu
+Invoking: NVCC Compiler
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -O3 -gencode arch=compute_52,code=sm_52  -odir "." -M -o "main.d" "../main.cu"
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -O3 --compile --relocatable-device-code=true -gencode arch=compute_52,code=compute_52 -gencode arch=compute_52,code=sm_52  -x cu -o  "main.o" "../main.cu"
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a constexpr __host__ function("floor") from a __host__ __device__ function("operator[]") is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+          detected during:
+            instantiation of "const auto &BC::unary_expression_transpose<T, parent>::operator[](int) const [with T=double, parent=BC::Matrix<double, BC::DEFAULT_MATHLIB>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(127): here
+            instantiation of "void BC::CPU::copy_single_thread(T &, const J &, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(114): here
+            instantiation of "void BC::CPU::copy(T, J, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_Core/Matrix.h(61): here
+            instantiation of "BC::Matrix<T, Mathlib> &BC::Matrix<T, Mathlib>::operator=(const BC::Matrix<U, Mathlib> &) [with T=double, Mathlib=BC::DEFAULT_MATHLIB, U=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../main.cu(166): here
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a __host__ function from a __host__ __device__ function is not allowed
+          detected during:
+            instantiation of "const auto &BC::unary_expression_transpose<T, parent>::operator[](int) const [with T=double, parent=BC::Matrix<double, BC::DEFAULT_MATHLIB>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(127): here
+            instantiation of "void BC::CPU::copy_single_thread(T &, const J &, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(114): here
+            instantiation of "void BC::CPU::copy(T, J, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_Core/Matrix.h(61): here
+            instantiation of "BC::Matrix<T, Mathlib> &BC::Matrix<T, Mathlib>::operator=(const BC::Matrix<U, Mathlib> &) [with T=double, Mathlib=BC::DEFAULT_MATHLIB, U=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../main.cu(166): here
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a __host__ function from a __host__ __device__ function is not allowed
+          detected during:
+            instantiation of "const auto &BC::unary_expression_transpose<T, parent>::operator[](int) const [with T=double, parent=BC::Matrix<double, BC::DEFAULT_MATHLIB>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(127): here
+            instantiation of "void BC::CPU::copy_single_thread(T &, const J &, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(114): here
+            instantiation of "void BC::CPU::copy(T, J, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_Core/Matrix.h(61): here
+            instantiation of "BC::Matrix<T, Mathlib> &BC::Matrix<T, Mathlib>::operator=(const BC::Matrix<U, Mathlib> &) [with T=double, Mathlib=BC::DEFAULT_MATHLIB, U=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../main.cu(166): here
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a constexpr __host__ function from a __host__ __device__ function is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+          detected during:
+            instantiation of "const auto &BC::unary_expression_transpose<T, parent>::operator[](int) const [with T=double, parent=BC::Matrix<double, BC::DEFAULT_MATHLIB>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(127): here
+            instantiation of "void BC::CPU::copy_single_thread(T &, const J &, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(114): here
+            instantiation of "void BC::CPU::copy(T, J, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_Core/Matrix.h(61): here
+            instantiation of "BC::Matrix<T, Mathlib> &BC::Matrix<T, Mathlib>::operator=(const BC::Matrix<U, Mathlib> &) [with T=double, Mathlib=BC::DEFAULT_MATHLIB, U=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../main.cu(166): here
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a __host__ function from a __host__ __device__ function is not allowed
+          detected during:
+            instantiation of "const auto &BC::unary_expression_transpose<T, parent>::operator[](int) const [with T=double, parent=BC::Matrix<double, BC::DEFAULT_MATHLIB>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(127): here
+            instantiation of "void BC::CPU::copy_single_thread(T &, const J &, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(114): here
+            instantiation of "void BC::CPU::copy(T, J, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_Core/Matrix.h(61): here
+            instantiation of "BC::Matrix<T, Mathlib> &BC::Matrix<T, Mathlib>::operator=(const BC::Matrix<U, Mathlib> &) [with T=double, Mathlib=BC::DEFAULT_MATHLIB, U=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../main.cu(166): here
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a __host__ function from a __host__ __device__ function is not allowed
+          detected during:
+            instantiation of "const auto &BC::unary_expression_transpose<T, parent>::operator[](int) const [with T=double, parent=BC::Matrix<double, BC::DEFAULT_MATHLIB>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(127): here
+            instantiation of "void BC::CPU::copy_single_thread(T &, const J &, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(114): here
+            instantiation of "void BC::CPU::copy(T, J, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_Core/Matrix.h(61): here
+            instantiation of "BC::Matrix<T, Mathlib> &BC::Matrix<T, Mathlib>::operator=(const BC::Matrix<U, Mathlib> &) [with T=double, Mathlib=BC::DEFAULT_MATHLIB, U=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../main.cu(166): here
+
+../BC_Internals/BC_Core/Implementation_Core/../../BC_Expressions/Expression_Unary_Pointwise.cu(32): warning: calling a __host__ function from a __host__ __device__ function is not allowed
+          detected during:
+            instantiation of "auto BC::unary_expression<T, operation, value>::operator[](int) const [with T=double, operation=sigmoid, value=BC::binary_expression_dotproduct<double, BC::binary_expression_scalar_R<double, BC::mul, BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>, double *>, BC::binary_expression_scalar_R<double, BC::mul, BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>, double *>, BC::DEFAULT_MATHLIB>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(127): here
+            instantiation of "void BC::CPU::copy_single_thread(T &, const J &, int) [with T=double *, J=BC::unary_expression<double, sigmoid, BC::binary_expression_dotproduct<double, BC::binary_expression_scalar_R<double, BC::mul, BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>, double *>, BC::binary_expression_scalar_R<double, BC::mul, BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>, double *>, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(114): here
+            instantiation of "void BC::CPU::copy(T, J, int) [with T=double *, J=BC::unary_expression<double, sigmoid, BC::binary_expression_dotproduct<double, BC::binary_expression_scalar_R<double, BC::mul, BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>, double *>, BC::binary_expression_scalar_R<double, BC::mul, BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>, double *>, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_Core/Matrix.h(61): here
+            instantiation of "BC::Matrix<T, Mathlib> &BC::Matrix<T, Mathlib>::operator=(const BC::Matrix<U, Mathlib> &) [with T=double, Mathlib=BC::DEFAULT_MATHLIB, U=BC::unary_expression<double, sigmoid, BC::binary_expression_dotproduct<double, BC::binary_expression_scalar_R<double, BC::mul, BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>, double *>, BC::binary_expression_scalar_R<double, BC::mul, BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>, double *>, BC::DEFAULT_MATHLIB>>]" 
+../main.cu(175): here
+
+Finished building: ../main.cu
+ 
+Building file: ../test_area.cu
+Invoking: NVCC Compiler
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -O3 -gencode arch=compute_52,code=sm_52  -odir "." -M -o "test_area.d" "../test_area.cu"
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -O3 --compile --relocatable-device-code=true -gencode arch=compute_52,code=compute_52 -gencode arch=compute_52,code=sm_52  -x cu -o  "test_area.o" "../test_area.cu"
+Finished building: ../test_area.cu
+ 
+Building file: ../BC_Internals/BC_MathLibraries/Mathematics_GPU.cu
+Invoking: NVCC Compiler
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -O3 -gencode arch=compute_52,code=sm_52  -odir "BC_Internals/BC_MathLibraries" -M -o "BC_Internals/BC_MathLibraries/Mathematics_GPU.d" "../BC_Internals/BC_MathLibraries/Mathematics_GPU.cu"
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -O3 --compile --relocatable-device-code=true -gencode arch=compute_52,code=compute_52 -gencode arch=compute_52,code=sm_52  -x cu -o  "BC_Internals/BC_MathLibraries/Mathematics_GPU.o" "../BC_Internals/BC_MathLibraries/Mathematics_GPU.cu"
+Finished building: ../BC_Internals/BC_MathLibraries/Mathematics_GPU.cu
+ 
+Building file: ../BC_Internals/BC_MathLibraries/Mathematics_GPU_impl.cu
+Invoking: NVCC Compiler
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -O3 -gencode arch=compute_52,code=sm_52  -odir "BC_Internals/BC_MathLibraries" -M -o "BC_Internals/BC_MathLibraries/Mathematics_GPU_impl.d" "../BC_Internals/BC_MathLibraries/Mathematics_GPU_impl.cu"
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -O3 --compile --relocatable-device-code=true -gencode arch=compute_52,code=compute_52 -gencode arch=compute_52,code=sm_52  -x cu -o  "BC_Internals/BC_MathLibraries/Mathematics_GPU_impl.o" "../BC_Internals/BC_MathLibraries/Mathematics_GPU_impl.cu"
+Finished building: ../BC_Internals/BC_MathLibraries/Mathematics_GPU_impl.cu
+ 
+Building file: ../BC_Internals/BC_MathLibraries/Mathematics_Opt.cu
+Invoking: NVCC Compiler
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -O3 -gencode arch=compute_52,code=sm_52  -odir "BC_Internals/BC_MathLibraries" -M -o "BC_Internals/BC_MathLibraries/Mathematics_Opt.d" "../BC_Internals/BC_MathLibraries/Mathematics_Opt.cu"
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -O3 --compile --relocatable-device-code=true -gencode arch=compute_52,code=compute_52 -gencode arch=compute_52,code=sm_52  -x cu -o  "BC_Internals/BC_MathLibraries/Mathematics_Opt.o" "../BC_Internals/BC_MathLibraries/Mathematics_Opt.cu"
+Finished building: ../BC_Internals/BC_MathLibraries/Mathematics_Opt.cu
+ 
+Building file: ../BC_Internals/BC_MathLibraries/Mathematics_mGPU.cu
+Invoking: NVCC Compiler
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -O3 -gencode arch=compute_52,code=sm_52  -odir "BC_Internals/BC_MathLibraries" -M -o "BC_Internals/BC_MathLibraries/Mathematics_mGPU.d" "../BC_Internals/BC_MathLibraries/Mathematics_mGPU.cu"
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -O3 --compile --relocatable-device-code=true -gencode arch=compute_52,code=compute_52 -gencode arch=compute_52,code=sm_52  -x cu -o  "BC_Internals/BC_MathLibraries/Mathematics_mGPU.o" "../BC_Internals/BC_MathLibraries/Mathematics_mGPU.cu"
+Finished building: ../BC_Internals/BC_MathLibraries/Mathematics_mGPU.cu
+ 
+Building file: ../BC_Internals/BC_Expressions/Expression_Binary_Dotproduct.cu
+Invoking: NVCC Compiler
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -O3 -gencode arch=compute_52,code=sm_52  -odir "BC_Internals/BC_Expressions" -M -o "BC_Internals/BC_Expressions/Expression_Binary_Dotproduct.d" "../BC_Internals/BC_Expressions/Expression_Binary_Dotproduct.cu"
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -O3 --compile --relocatable-device-code=true -gencode arch=compute_52,code=compute_52 -gencode arch=compute_52,code=sm_52  -x cu -o  "BC_Internals/BC_Expressions/Expression_Binary_Dotproduct.o" "../BC_Internals/BC_Expressions/Expression_Binary_Dotproduct.cu"
+Finished building: ../BC_Internals/BC_Expressions/Expression_Binary_Dotproduct.cu
+ 
+Building file: ../BC_Internals/BC_Expressions/Expression_Binary_Functors.cu
+Invoking: NVCC Compiler
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -O3 -gencode arch=compute_52,code=sm_52  -odir "BC_Internals/BC_Expressions" -M -o "BC_Internals/BC_Expressions/Expression_Binary_Functors.d" "../BC_Internals/BC_Expressions/Expression_Binary_Functors.cu"
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -O3 --compile --relocatable-device-code=true -gencode arch=compute_52,code=compute_52 -gencode arch=compute_52,code=sm_52  -x cu -o  "BC_Internals/BC_Expressions/Expression_Binary_Functors.o" "../BC_Internals/BC_Expressions/Expression_Binary_Functors.cu"
+Finished building: ../BC_Internals/BC_Expressions/Expression_Binary_Functors.cu
+ 
+Building file: ../BC_Internals/BC_Expressions/Expression_Binary_Pointwise.cu
+Invoking: NVCC Compiler
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -O3 -gencode arch=compute_52,code=sm_52  -odir "BC_Internals/BC_Expressions" -M -o "BC_Internals/BC_Expressions/Expression_Binary_Pointwise.d" "../BC_Internals/BC_Expressions/Expression_Binary_Pointwise.cu"
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -O3 --compile --relocatable-device-code=true -gencode arch=compute_52,code=compute_52 -gencode arch=compute_52,code=sm_52  -x cu -o  "BC_Internals/BC_Expressions/Expression_Binary_Pointwise.o" "../BC_Internals/BC_Expressions/Expression_Binary_Pointwise.cu"
+Finished building: ../BC_Internals/BC_Expressions/Expression_Binary_Pointwise.cu
+ 
+Building file: ../BC_Internals/BC_Expressions/Expression_Binary_Pointwise_Scalar.cu
+Invoking: NVCC Compiler
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -O3 -gencode arch=compute_52,code=sm_52  -odir "BC_Internals/BC_Expressions" -M -o "BC_Internals/BC_Expressions/Expression_Binary_Pointwise_Scalar.d" "../BC_Internals/BC_Expressions/Expression_Binary_Pointwise_Scalar.cu"
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -O3 --compile --relocatable-device-code=true -gencode arch=compute_52,code=compute_52 -gencode arch=compute_52,code=sm_52  -x cu -o  "BC_Internals/BC_Expressions/Expression_Binary_Pointwise_Scalar.o" "../BC_Internals/BC_Expressions/Expression_Binary_Pointwise_Scalar.cu"
+Finished building: ../BC_Internals/BC_Expressions/Expression_Binary_Pointwise_Scalar.cu
+ 
+Building file: ../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu
+Invoking: NVCC Compiler
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -O3 -gencode arch=compute_52,code=sm_52  -odir "BC_Internals/BC_Expressions" -M -o "BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.d" "../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu"
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -O3 --compile --relocatable-device-code=true -gencode arch=compute_52,code=compute_52 -gencode arch=compute_52,code=sm_52  -x cu -o  "BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.o" "../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu"
+Finished building: ../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu
+ 
+Building file: ../BC_Internals/BC_Expressions/Expression_Unary_Pointwise.cu
+Invoking: NVCC Compiler
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -O3 -gencode arch=compute_52,code=sm_52  -odir "BC_Internals/BC_Expressions" -M -o "BC_Internals/BC_Expressions/Expression_Unary_Pointwise.d" "../BC_Internals/BC_Expressions/Expression_Unary_Pointwise.cu"
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -O3 --compile --relocatable-device-code=true -gencode arch=compute_52,code=compute_52 -gencode arch=compute_52,code=sm_52  -x cu -o  "BC_Internals/BC_Expressions/Expression_Unary_Pointwise.o" "../BC_Internals/BC_Expressions/Expression_Unary_Pointwise.cu"
+Finished building: ../BC_Internals/BC_Expressions/Expression_Unary_Pointwise.cu
+ 
+Building file: ../BC_Internals/BC_Expressions/SubTensor_Expression.cu
+Invoking: NVCC Compiler
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -O3 -gencode arch=compute_52,code=sm_52  -odir "BC_Internals/BC_Expressions" -M -o "BC_Internals/BC_Expressions/SubTensor_Expression.d" "../BC_Internals/BC_Expressions/SubTensor_Expression.cu"
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -O3 --compile --relocatable-device-code=true -gencode arch=compute_52,code=compute_52 -gencode arch=compute_52,code=sm_52  -x cu -o  "BC_Internals/BC_Expressions/SubTensor_Expression.o" "../BC_Internals/BC_Expressions/SubTensor_Expression.cu"
+Finished building: ../BC_Internals/BC_Expressions/SubTensor_Expression.cu
+ 
+Building target: libBlackCat_Tensors.a
+Invoking: NVCC Archiver
+nvcc  -lib -o  "libBlackCat_Tensors.a"  ./NN_test.o ./SpeedTests.o ./main.o ./test_area.o  ./BC_Internals/BC_MathLibraries/Mathematics_GPU.o ./BC_Internals/BC_MathLibraries/Mathematics_GPU_impl.o ./BC_Internals/BC_MathLibraries/Mathematics_Opt.o ./BC_Internals/BC_MathLibraries/Mathematics_mGPU.o  ./BC_Internals/BC_Expressions/Expression_Binary_Dotproduct.o ./BC_Internals/BC_Expressions/Expression_Binary_Functors.o ./BC_Internals/BC_Expressions/Expression_Binary_Pointwise.o ./BC_Internals/BC_Expressions/Expression_Binary_Pointwise_Scalar.o ./BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.o ./BC_Internals/BC_Expressions/Expression_Unary_Pointwise.o ./BC_Internals/BC_Expressions/SubTensor_Expression.o   
+Finished building target: libBlackCat_Tensors.a
+ 
+16:41:33 **** Clean-only build of configuration Debug for project BlackCat_Tensors ****
+make clean 
+rm -rf  ./NN_test.o ./SpeedTests.o ./main.o ./test_area.o  ./BC_Internals/BC_MathLibraries/Mathematics_GPU.o ./BC_Internals/BC_MathLibraries/Mathematics_GPU_impl.o ./BC_Internals/BC_MathLibraries/Mathematics_Opt.o ./BC_Internals/BC_MathLibraries/Mathematics_mGPU.o  ./BC_Internals/BC_Expressions/Expression_Binary_Dotproduct.o ./BC_Internals/BC_Expressions/Expression_Binary_Functors.o ./BC_Internals/BC_Expressions/Expression_Binary_Pointwise.o ./BC_Internals/BC_Expressions/Expression_Binary_Pointwise_Scalar.o ./BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.o ./BC_Internals/BC_Expressions/Expression_Unary_Pointwise.o ./BC_Internals/BC_Expressions/SubTensor_Expression.o  ./NN_test.d ./SpeedTests.d ./main.d ./test_area.d  ./BC_Internals/BC_MathLibraries/Mathematics_GPU.d ./BC_Internals/BC_MathLibraries/Mathematics_GPU_impl.d ./BC_Internals/BC_MathLibraries/Mathematics_Opt.d ./BC_Internals/BC_MathLibraries/Mathematics_mGPU.d  ./BC_Internals/BC_Expressions/Expression_Binary_Dotproduct.d ./BC_Internals/BC_Expressions/Expression_Binary_Functors.d ./BC_Internals/BC_Expressions/Expression_Binary_Pointwise.d ./BC_Internals/BC_Expressions/Expression_Binary_Pointwise_Scalar.d ./BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.d ./BC_Internals/BC_Expressions/Expression_Unary_Pointwise.d ./BC_Internals/BC_Expressions/SubTensor_Expression.d  libBlackCat_Tensors.a
+ 
+16:41:33 **** Incremental Build of configuration Debug for project BlackCat_Tensors ****
+make all 
+Building file: ../NN_test.cu
+Invoking: NVCC Compiler
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -G -g -O0 -gencode arch=compute_52,code=sm_52  -odir "." -M -o "NN_test.d" "../NN_test.cu"
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -G -g -O0 --compile --relocatable-device-code=true -gencode arch=compute_52,code=compute_52 -gencode arch=compute_52,code=sm_52  -x cu -o  "NN_test.o" "../NN_test.cu"
+Finished building: ../NN_test.cu
+ 
+Building file: ../SpeedTests.cu
+Invoking: NVCC Compiler
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -G -g -O0 -gencode arch=compute_52,code=sm_52  -odir "." -M -o "SpeedTests.d" "../SpeedTests.cu"
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -G -g -O0 --compile --relocatable-device-code=true -gencode arch=compute_52,code=compute_52 -gencode arch=compute_52,code=sm_52  -x cu -o  "SpeedTests.o" "../SpeedTests.cu"
+Finished building: ../SpeedTests.cu
+ 
+Building file: ../main.cu
+Invoking: NVCC Compiler
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -G -g -O0 -gencode arch=compute_52,code=sm_52  -odir "." -M -o "main.d" "../main.cu"
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -G -g -O0 --compile --relocatable-device-code=true -gencode arch=compute_52,code=compute_52 -gencode arch=compute_52,code=sm_52  -x cu -o  "main.o" "../main.cu"
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a constexpr __host__ function("floor") from a __host__ __device__ function("operator[]") is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+          detected during:
+            instantiation of "const auto &BC::unary_expression_transpose<T, parent>::operator[](int) const [with T=double, parent=BC::Matrix<double, BC::DEFAULT_MATHLIB>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(127): here
+            instantiation of "void BC::CPU::copy_single_thread(T &, const J &, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(114): here
+            instantiation of "void BC::CPU::copy(T, J, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_Core/Matrix.h(61): here
+            instantiation of "BC::Matrix<T, Mathlib> &BC::Matrix<T, Mathlib>::operator=(const BC::Matrix<U, Mathlib> &) [with T=double, Mathlib=BC::DEFAULT_MATHLIB, U=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../main.cu(166): here
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a __host__ function from a __host__ __device__ function is not allowed
+          detected during:
+            instantiation of "const auto &BC::unary_expression_transpose<T, parent>::operator[](int) const [with T=double, parent=BC::Matrix<double, BC::DEFAULT_MATHLIB>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(127): here
+            instantiation of "void BC::CPU::copy_single_thread(T &, const J &, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(114): here
+            instantiation of "void BC::CPU::copy(T, J, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_Core/Matrix.h(61): here
+            instantiation of "BC::Matrix<T, Mathlib> &BC::Matrix<T, Mathlib>::operator=(const BC::Matrix<U, Mathlib> &) [with T=double, Mathlib=BC::DEFAULT_MATHLIB, U=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../main.cu(166): here
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a __host__ function from a __host__ __device__ function is not allowed
+          detected during:
+            instantiation of "const auto &BC::unary_expression_transpose<T, parent>::operator[](int) const [with T=double, parent=BC::Matrix<double, BC::DEFAULT_MATHLIB>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(127): here
+            instantiation of "void BC::CPU::copy_single_thread(T &, const J &, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(114): here
+            instantiation of "void BC::CPU::copy(T, J, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_Core/Matrix.h(61): here
+            instantiation of "BC::Matrix<T, Mathlib> &BC::Matrix<T, Mathlib>::operator=(const BC::Matrix<U, Mathlib> &) [with T=double, Mathlib=BC::DEFAULT_MATHLIB, U=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../main.cu(166): here
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a constexpr __host__ function from a __host__ __device__ function is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+          detected during:
+            instantiation of "const auto &BC::unary_expression_transpose<T, parent>::operator[](int) const [with T=double, parent=BC::Matrix<double, BC::DEFAULT_MATHLIB>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(127): here
+            instantiation of "void BC::CPU::copy_single_thread(T &, const J &, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(114): here
+            instantiation of "void BC::CPU::copy(T, J, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_Core/Matrix.h(61): here
+            instantiation of "BC::Matrix<T, Mathlib> &BC::Matrix<T, Mathlib>::operator=(const BC::Matrix<U, Mathlib> &) [with T=double, Mathlib=BC::DEFAULT_MATHLIB, U=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../main.cu(166): here
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a __host__ function from a __host__ __device__ function is not allowed
+          detected during:
+            instantiation of "const auto &BC::unary_expression_transpose<T, parent>::operator[](int) const [with T=double, parent=BC::Matrix<double, BC::DEFAULT_MATHLIB>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(127): here
+            instantiation of "void BC::CPU::copy_single_thread(T &, const J &, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(114): here
+            instantiation of "void BC::CPU::copy(T, J, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_Core/Matrix.h(61): here
+            instantiation of "BC::Matrix<T, Mathlib> &BC::Matrix<T, Mathlib>::operator=(const BC::Matrix<U, Mathlib> &) [with T=double, Mathlib=BC::DEFAULT_MATHLIB, U=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../main.cu(166): here
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a __host__ function from a __host__ __device__ function is not allowed
+          detected during:
+            instantiation of "const auto &BC::unary_expression_transpose<T, parent>::operator[](int) const [with T=double, parent=BC::Matrix<double, BC::DEFAULT_MATHLIB>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(127): here
+            instantiation of "void BC::CPU::copy_single_thread(T &, const J &, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(114): here
+            instantiation of "void BC::CPU::copy(T, J, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_Core/Matrix.h(61): here
+            instantiation of "BC::Matrix<T, Mathlib> &BC::Matrix<T, Mathlib>::operator=(const BC::Matrix<U, Mathlib> &) [with T=double, Mathlib=BC::DEFAULT_MATHLIB, U=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../main.cu(166): here
+
+../BC_Internals/BC_Core/Implementation_Core/../../BC_Expressions/Expression_Unary_Pointwise.cu(32): warning: calling a __host__ function from a __host__ __device__ function is not allowed
+          detected during:
+            instantiation of "auto BC::unary_expression<T, operation, value>::operator[](int) const [with T=double, operation=sigmoid, value=BC::binary_expression_dotproduct<double, BC::binary_expression_scalar_R<double, BC::mul, BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>, double *>, BC::binary_expression_scalar_R<double, BC::mul, BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>, double *>, BC::DEFAULT_MATHLIB>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(127): here
+            instantiation of "void BC::CPU::copy_single_thread(T &, const J &, int) [with T=double *, J=BC::unary_expression<double, sigmoid, BC::binary_expression_dotproduct<double, BC::binary_expression_scalar_R<double, BC::mul, BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>, double *>, BC::binary_expression_scalar_R<double, BC::mul, BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>, double *>, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(114): here
+            instantiation of "void BC::CPU::copy(T, J, int) [with T=double *, J=BC::unary_expression<double, sigmoid, BC::binary_expression_dotproduct<double, BC::binary_expression_scalar_R<double, BC::mul, BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>, double *>, BC::binary_expression_scalar_R<double, BC::mul, BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>, double *>, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_Core/Matrix.h(61): here
+            instantiation of "BC::Matrix<T, Mathlib> &BC::Matrix<T, Mathlib>::operator=(const BC::Matrix<U, Mathlib> &) [with T=double, Mathlib=BC::DEFAULT_MATHLIB, U=BC::unary_expression<double, sigmoid, BC::binary_expression_dotproduct<double, BC::binary_expression_scalar_R<double, BC::mul, BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>, double *>, BC::binary_expression_scalar_R<double, BC::mul, BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>, double *>, BC::DEFAULT_MATHLIB>>]" 
+../main.cu(175): here
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a __host__ function("BC::Tensor_Operations_impl< ::BC::Matrix<double,  ::BC::CPU> ,  ::BC::_TRAITS<double, double *,  ::BC::Matrix<double,  ::BC::CPU>  &,  ::BC::CPU> > ::data const") from a __host__ __device__ function("BC::unary_expression_transpose<double,  ::BC::Matrix<double,  ::BC::CPU> > ::operator [] const") is not allowed
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a constexpr __host__ function("std::floor<int> ") from a __host__ __device__ function("BC::unary_expression_transpose<double,  ::BC::Matrix<double,  ::BC::CPU> > ::operator [] const") is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a __host__ function("BC::inner_shape::cols const") from a __host__ __device__ function("BC::unary_expression_transpose<double,  ::BC::Matrix<double,  ::BC::CPU> > ::operator [] const") is not allowed
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a __host__ function("BC::inner_shape::cols const") from a __host__ __device__ function("BC::unary_expression_transpose<double,  ::BC::Matrix<double,  ::BC::CPU> > ::operator [] const") is not allowed
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a __host__ function("BC::inner_shape::rows const") from a __host__ __device__ function("BC::unary_expression_transpose<double,  ::BC::Matrix<double,  ::BC::CPU> > ::operator [] const") is not allowed
+
+../BC_Internals/BC_Core/Implementation_Core/../../BC_Expressions/Expression_Unary_Pointwise.cu(32): warning: calling a __host__ function("sigmoid::operator ()<double>  const") from a __host__ __device__ function("BC::unary_expression<double,  ::sigmoid,  ::BC::binary_expression_dotproduct<double,  ::BC::binary_expression_scalar_R<double,  ::BC::mul,  ::BC::unary_expression_transpose<double,  ::BC::Matrix<double,  ::BC::CPU> > , double *> ,  ::BC::binary_expression_scalar_R<double,  ::BC::mul,  ::BC::unary_expression_transpose<double,  ::BC::Matrix<double,  ::BC::CPU> > , double *> ,  ::BC::CPU> > ::operator [] const") is not allowed
+
+Finished building: ../main.cu
+ 
+Building file: ../test_area.cu
+Invoking: NVCC Compiler
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -G -g -O0 -gencode arch=compute_52,code=sm_52  -odir "." -M -o "test_area.d" "../test_area.cu"
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -G -g -O0 --compile --relocatable-device-code=true -gencode arch=compute_52,code=compute_52 -gencode arch=compute_52,code=sm_52  -x cu -o  "test_area.o" "../test_area.cu"
+Finished building: ../test_area.cu
+ 
+Building file: ../BC_Internals/BC_MathLibraries/Mathematics_GPU.cu
+Invoking: NVCC Compiler
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -G -g -O0 -gencode arch=compute_52,code=sm_52  -odir "BC_Internals/BC_MathLibraries" -M -o "BC_Internals/BC_MathLibraries/Mathematics_GPU.d" "../BC_Internals/BC_MathLibraries/Mathematics_GPU.cu"
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -G -g -O0 --compile --relocatable-device-code=true -gencode arch=compute_52,code=compute_52 -gencode arch=compute_52,code=sm_52  -x cu -o  "BC_Internals/BC_MathLibraries/Mathematics_GPU.o" "../BC_Internals/BC_MathLibraries/Mathematics_GPU.cu"
+Finished building: ../BC_Internals/BC_MathLibraries/Mathematics_GPU.cu
+ 
+Building file: ../BC_Internals/BC_MathLibraries/Mathematics_GPU_impl.cu
+Invoking: NVCC Compiler
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -G -g -O0 -gencode arch=compute_52,code=sm_52  -odir "BC_Internals/BC_MathLibraries" -M -o "BC_Internals/BC_MathLibraries/Mathematics_GPU_impl.d" "../BC_Internals/BC_MathLibraries/Mathematics_GPU_impl.cu"
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -G -g -O0 --compile --relocatable-device-code=true -gencode arch=compute_52,code=compute_52 -gencode arch=compute_52,code=sm_52  -x cu -o  "BC_Internals/BC_MathLibraries/Mathematics_GPU_impl.o" "../BC_Internals/BC_MathLibraries/Mathematics_GPU_impl.cu"
+Finished building: ../BC_Internals/BC_MathLibraries/Mathematics_GPU_impl.cu
+ 
+Building file: ../BC_Internals/BC_MathLibraries/Mathematics_Opt.cu
+Invoking: NVCC Compiler
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -G -g -O0 -gencode arch=compute_52,code=sm_52  -odir "BC_Internals/BC_MathLibraries" -M -o "BC_Internals/BC_MathLibraries/Mathematics_Opt.d" "../BC_Internals/BC_MathLibraries/Mathematics_Opt.cu"
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -G -g -O0 --compile --relocatable-device-code=true -gencode arch=compute_52,code=compute_52 -gencode arch=compute_52,code=sm_52  -x cu -o  "BC_Internals/BC_MathLibraries/Mathematics_Opt.o" "../BC_Internals/BC_MathLibraries/Mathematics_Opt.cu"
+Finished building: ../BC_Internals/BC_MathLibraries/Mathematics_Opt.cu
+ 
+Building file: ../BC_Internals/BC_MathLibraries/Mathematics_mGPU.cu
+Invoking: NVCC Compiler
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -G -g -O0 -gencode arch=compute_52,code=sm_52  -odir "BC_Internals/BC_MathLibraries" -M -o "BC_Internals/BC_MathLibraries/Mathematics_mGPU.d" "../BC_Internals/BC_MathLibraries/Mathematics_mGPU.cu"
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -G -g -O0 --compile --relocatable-device-code=true -gencode arch=compute_52,code=compute_52 -gencode arch=compute_52,code=sm_52  -x cu -o  "BC_Internals/BC_MathLibraries/Mathematics_mGPU.o" "../BC_Internals/BC_MathLibraries/Mathematics_mGPU.cu"
+Finished building: ../BC_Internals/BC_MathLibraries/Mathematics_mGPU.cu
+ 
+Building file: ../BC_Internals/BC_Expressions/Expression_Binary_Dotproduct.cu
+Invoking: NVCC Compiler
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -G -g -O0 -gencode arch=compute_52,code=sm_52  -odir "BC_Internals/BC_Expressions" -M -o "BC_Internals/BC_Expressions/Expression_Binary_Dotproduct.d" "../BC_Internals/BC_Expressions/Expression_Binary_Dotproduct.cu"
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -G -g -O0 --compile --relocatable-device-code=true -gencode arch=compute_52,code=compute_52 -gencode arch=compute_52,code=sm_52  -x cu -o  "BC_Internals/BC_Expressions/Expression_Binary_Dotproduct.o" "../BC_Internals/BC_Expressions/Expression_Binary_Dotproduct.cu"
+Finished building: ../BC_Internals/BC_Expressions/Expression_Binary_Dotproduct.cu
+ 
+Building file: ../BC_Internals/BC_Expressions/Expression_Binary_Functors.cu
+Invoking: NVCC Compiler
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -G -g -O0 -gencode arch=compute_52,code=sm_52  -odir "BC_Internals/BC_Expressions" -M -o "BC_Internals/BC_Expressions/Expression_Binary_Functors.d" "../BC_Internals/BC_Expressions/Expression_Binary_Functors.cu"
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -G -g -O0 --compile --relocatable-device-code=true -gencode arch=compute_52,code=compute_52 -gencode arch=compute_52,code=sm_52  -x cu -o  "BC_Internals/BC_Expressions/Expression_Binary_Functors.o" "../BC_Internals/BC_Expressions/Expression_Binary_Functors.cu"
+Finished building: ../BC_Internals/BC_Expressions/Expression_Binary_Functors.cu
+ 
+Building file: ../BC_Internals/BC_Expressions/Expression_Binary_Pointwise.cu
+Invoking: NVCC Compiler
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -G -g -O0 -gencode arch=compute_52,code=sm_52  -odir "BC_Internals/BC_Expressions" -M -o "BC_Internals/BC_Expressions/Expression_Binary_Pointwise.d" "../BC_Internals/BC_Expressions/Expression_Binary_Pointwise.cu"
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -G -g -O0 --compile --relocatable-device-code=true -gencode arch=compute_52,code=compute_52 -gencode arch=compute_52,code=sm_52  -x cu -o  "BC_Internals/BC_Expressions/Expression_Binary_Pointwise.o" "../BC_Internals/BC_Expressions/Expression_Binary_Pointwise.cu"
+Finished building: ../BC_Internals/BC_Expressions/Expression_Binary_Pointwise.cu
+ 
+Building file: ../BC_Internals/BC_Expressions/Expression_Binary_Pointwise_Scalar.cu
+Invoking: NVCC Compiler
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -G -g -O0 -gencode arch=compute_52,code=sm_52  -odir "BC_Internals/BC_Expressions" -M -o "BC_Internals/BC_Expressions/Expression_Binary_Pointwise_Scalar.d" "../BC_Internals/BC_Expressions/Expression_Binary_Pointwise_Scalar.cu"
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -G -g -O0 --compile --relocatable-device-code=true -gencode arch=compute_52,code=compute_52 -gencode arch=compute_52,code=sm_52  -x cu -o  "BC_Internals/BC_Expressions/Expression_Binary_Pointwise_Scalar.o" "../BC_Internals/BC_Expressions/Expression_Binary_Pointwise_Scalar.cu"
+Finished building: ../BC_Internals/BC_Expressions/Expression_Binary_Pointwise_Scalar.cu
+ 
+Building file: ../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu
+Invoking: NVCC Compiler
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -G -g -O0 -gencode arch=compute_52,code=sm_52  -odir "BC_Internals/BC_Expressions" -M -o "BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.d" "../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu"
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -G -g -O0 --compile --relocatable-device-code=true -gencode arch=compute_52,code=compute_52 -gencode arch=compute_52,code=sm_52  -x cu -o  "BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.o" "../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu"
+Finished building: ../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu
+ 
+Building file: ../BC_Internals/BC_Expressions/Expression_Unary_Pointwise.cu
+Invoking: NVCC Compiler
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -G -g -O0 -gencode arch=compute_52,code=sm_52  -odir "BC_Internals/BC_Expressions" -M -o "BC_Internals/BC_Expressions/Expression_Unary_Pointwise.d" "../BC_Internals/BC_Expressions/Expression_Unary_Pointwise.cu"
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -G -g -O0 --compile --relocatable-device-code=true -gencode arch=compute_52,code=compute_52 -gencode arch=compute_52,code=sm_52  -x cu -o  "BC_Internals/BC_Expressions/Expression_Unary_Pointwise.o" "../BC_Internals/BC_Expressions/Expression_Unary_Pointwise.cu"
+Finished building: ../BC_Internals/BC_Expressions/Expression_Unary_Pointwise.cu
+ 
+Building file: ../BC_Internals/BC_Expressions/SubTensor_Expression.cu
+Invoking: NVCC Compiler
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -G -g -O0 -gencode arch=compute_52,code=sm_52  -odir "BC_Internals/BC_Expressions" -M -o "BC_Internals/BC_Expressions/SubTensor_Expression.d" "../BC_Internals/BC_Expressions/SubTensor_Expression.cu"
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -G -g -O0 --compile --relocatable-device-code=true -gencode arch=compute_52,code=compute_52 -gencode arch=compute_52,code=sm_52  -x cu -o  "BC_Internals/BC_Expressions/SubTensor_Expression.o" "../BC_Internals/BC_Expressions/SubTensor_Expression.cu"
+Finished building: ../BC_Internals/BC_Expressions/SubTensor_Expression.cu
+ 
+Building target: libBlackCat_Tensors.a
+Invoking: NVCC Archiver
+nvcc  -lib -o  "libBlackCat_Tensors.a"  ./NN_test.o ./SpeedTests.o ./main.o ./test_area.o  ./BC_Internals/BC_MathLibraries/Mathematics_GPU.o ./BC_Internals/BC_MathLibraries/Mathematics_GPU_impl.o ./BC_Internals/BC_MathLibraries/Mathematics_Opt.o ./BC_Internals/BC_MathLibraries/Mathematics_mGPU.o  ./BC_Internals/BC_Expressions/Expression_Binary_Dotproduct.o ./BC_Internals/BC_Expressions/Expression_Binary_Functors.o ./BC_Internals/BC_Expressions/Expression_Binary_Pointwise.o ./BC_Internals/BC_Expressions/Expression_Binary_Pointwise_Scalar.o ./BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.o ./BC_Internals/BC_Expressions/Expression_Unary_Pointwise.o ./BC_Internals/BC_Expressions/SubTensor_Expression.o   
+Finished building target: libBlackCat_Tensors.a
+ 
+16:42:06 **** Incremental Build of configuration Debug for project BlackCat_Tensors ****
+make all 
+make: Nothing to be done for 'all'.
+16:42:09 **** Incremental Build of configuration Debug for project BlackCat_Tensors ****
+make all 
+make: Nothing to be done for 'all'.
+16:42:54 **** Incremental Build of configuration Debug for project BlackCat_Tensors ****
+make all 
+make: Nothing to be done for 'all'.
+16:43:08 **** Incremental Build of configuration Debug for project BlackCat_Tensors ****
+make all 
+make: Nothing to be done for 'all'.
+16:43:11 **** Incremental Build of configuration Debug for project BlackCat_Tensors ****
+make all 
+make: Nothing to be done for 'all'.
+16:43:22 **** Incremental Build of configuration Debug for project BlackCat_Tensors ****
+make all 
+make: Nothing to be done for 'all'.
+16:43:24 **** Incremental Build of configuration Debug for project BlackCat_Tensors ****
+make all 
+make: Nothing to be done for 'all'.
+16:44:13 **** Incremental Build of configuration Debug for project BlackCat_Tensors ****
+make all 
+make: Nothing to be done for 'all'.
+16:45:30 **** Incremental Build of configuration Debug for project BlackCat_Tensors ****
+make all 
+make: Nothing to be done for 'all'.
+16:45:32 **** Incremental Build of configuration Debug for project BlackCat_Tensors ****
+make all 
+make: Nothing to be done for 'all'.
+16:45:37 **** Incremental Build of configuration Debug for project BlackCat_Tensors ****
+make all 
+make: Nothing to be done for 'all'.
+16:45:39 **** Incremental Build of configuration Debug for project BlackCat_Tensors ****
+make all 
+make: Nothing to be done for 'all'.
+16:45:41 **** Incremental Build of configuration Debug for project BlackCat_Tensors ****
+make all 
+make: Nothing to be done for 'all'.
+16:45:44 **** Incremental Build of configuration Debug for project BlackCat_Tensors ****
+make all 
+Building file: ../main.cu
+Invoking: NVCC Compiler
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -G -g -O0 -gencode arch=compute_52,code=sm_52  -odir "." -M -o "main.d" "../main.cu"
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -G -g -O0 --compile --relocatable-device-code=true -gencode arch=compute_52,code=compute_52 -gencode arch=compute_52,code=sm_52  -x cu -o  "main.o" "../main.cu"
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a constexpr __host__ function("floor") from a __host__ __device__ function("operator[]") is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+          detected during:
+            instantiation of "const auto &BC::unary_expression_transpose<T, parent>::operator[](int) const [with T=double, parent=BC::Matrix<double, BC::DEFAULT_MATHLIB>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(127): here
+            instantiation of "void BC::CPU::copy_single_thread(T &, const J &, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(114): here
+            instantiation of "void BC::CPU::copy(T, J, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_Core/Matrix.h(61): here
+            instantiation of "BC::Matrix<T, Mathlib> &BC::Matrix<T, Mathlib>::operator=(const BC::Matrix<U, Mathlib> &) [with T=double, Mathlib=BC::DEFAULT_MATHLIB, U=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../main.cu(166): here
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a __host__ function from a __host__ __device__ function is not allowed
+          detected during:
+            instantiation of "const auto &BC::unary_expression_transpose<T, parent>::operator[](int) const [with T=double, parent=BC::Matrix<double, BC::DEFAULT_MATHLIB>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(127): here
+            instantiation of "void BC::CPU::copy_single_thread(T &, const J &, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(114): here
+            instantiation of "void BC::CPU::copy(T, J, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_Core/Matrix.h(61): here
+            instantiation of "BC::Matrix<T, Mathlib> &BC::Matrix<T, Mathlib>::operator=(const BC::Matrix<U, Mathlib> &) [with T=double, Mathlib=BC::DEFAULT_MATHLIB, U=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../main.cu(166): here
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a __host__ function from a __host__ __device__ function is not allowed
+          detected during:
+            instantiation of "const auto &BC::unary_expression_transpose<T, parent>::operator[](int) const [with T=double, parent=BC::Matrix<double, BC::DEFAULT_MATHLIB>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(127): here
+            instantiation of "void BC::CPU::copy_single_thread(T &, const J &, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(114): here
+            instantiation of "void BC::CPU::copy(T, J, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_Core/Matrix.h(61): here
+            instantiation of "BC::Matrix<T, Mathlib> &BC::Matrix<T, Mathlib>::operator=(const BC::Matrix<U, Mathlib> &) [with T=double, Mathlib=BC::DEFAULT_MATHLIB, U=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../main.cu(166): here
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a constexpr __host__ function from a __host__ __device__ function is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+          detected during:
+            instantiation of "const auto &BC::unary_expression_transpose<T, parent>::operator[](int) const [with T=double, parent=BC::Matrix<double, BC::DEFAULT_MATHLIB>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(127): here
+            instantiation of "void BC::CPU::copy_single_thread(T &, const J &, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(114): here
+            instantiation of "void BC::CPU::copy(T, J, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_Core/Matrix.h(61): here
+            instantiation of "BC::Matrix<T, Mathlib> &BC::Matrix<T, Mathlib>::operator=(const BC::Matrix<U, Mathlib> &) [with T=double, Mathlib=BC::DEFAULT_MATHLIB, U=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../main.cu(166): here
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a __host__ function from a __host__ __device__ function is not allowed
+          detected during:
+            instantiation of "const auto &BC::unary_expression_transpose<T, parent>::operator[](int) const [with T=double, parent=BC::Matrix<double, BC::DEFAULT_MATHLIB>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(127): here
+            instantiation of "void BC::CPU::copy_single_thread(T &, const J &, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(114): here
+            instantiation of "void BC::CPU::copy(T, J, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_Core/Matrix.h(61): here
+            instantiation of "BC::Matrix<T, Mathlib> &BC::Matrix<T, Mathlib>::operator=(const BC::Matrix<U, Mathlib> &) [with T=double, Mathlib=BC::DEFAULT_MATHLIB, U=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../main.cu(166): here
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a __host__ function from a __host__ __device__ function is not allowed
+          detected during:
+            instantiation of "const auto &BC::unary_expression_transpose<T, parent>::operator[](int) const [with T=double, parent=BC::Matrix<double, BC::DEFAULT_MATHLIB>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(127): here
+            instantiation of "void BC::CPU::copy_single_thread(T &, const J &, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(114): here
+            instantiation of "void BC::CPU::copy(T, J, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_Core/Matrix.h(61): here
+            instantiation of "BC::Matrix<T, Mathlib> &BC::Matrix<T, Mathlib>::operator=(const BC::Matrix<U, Mathlib> &) [with T=double, Mathlib=BC::DEFAULT_MATHLIB, U=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../main.cu(166): here
+
+../BC_Internals/BC_Core/Implementation_Core/../../BC_Expressions/Expression_Unary_Pointwise.cu(32): warning: calling a __host__ function from a __host__ __device__ function is not allowed
+          detected during:
+            instantiation of "auto BC::unary_expression<T, operation, value>::operator[](int) const [with T=double, operation=sigmoid, value=BC::binary_expression_dotproduct<double, BC::binary_expression_scalar_R<double, BC::mul, BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>, double *>, BC::binary_expression_scalar_R<double, BC::mul, BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>, double *>, BC::DEFAULT_MATHLIB>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(127): here
+            instantiation of "void BC::CPU::copy_single_thread(T &, const J &, int) [with T=double *, J=BC::unary_expression<double, sigmoid, BC::binary_expression_dotproduct<double, BC::binary_expression_scalar_R<double, BC::mul, BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>, double *>, BC::binary_expression_scalar_R<double, BC::mul, BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>, double *>, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(114): here
+            instantiation of "void BC::CPU::copy(T, J, int) [with T=double *, J=BC::unary_expression<double, sigmoid, BC::binary_expression_dotproduct<double, BC::binary_expression_scalar_R<double, BC::mul, BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>, double *>, BC::binary_expression_scalar_R<double, BC::mul, BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>, double *>, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_Core/Matrix.h(61): here
+            instantiation of "BC::Matrix<T, Mathlib> &BC::Matrix<T, Mathlib>::operator=(const BC::Matrix<U, Mathlib> &) [with T=double, Mathlib=BC::DEFAULT_MATHLIB, U=BC::unary_expression<double, sigmoid, BC::binary_expression_dotproduct<double, BC::binary_expression_scalar_R<double, BC::mul, BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>, double *>, BC::binary_expression_scalar_R<double, BC::mul, BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>, double *>, BC::DEFAULT_MATHLIB>>]" 
+../main.cu(176): here
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a __host__ function("BC::Tensor_Operations_impl< ::BC::Matrix<double,  ::BC::CPU> ,  ::BC::_TRAITS<double, double *,  ::BC::Matrix<double,  ::BC::CPU>  &,  ::BC::CPU> > ::data const") from a __host__ __device__ function("BC::unary_expression_transpose<double,  ::BC::Matrix<double,  ::BC::CPU> > ::operator [] const") is not allowed
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a constexpr __host__ function("std::floor<int> ") from a __host__ __device__ function("BC::unary_expression_transpose<double,  ::BC::Matrix<double,  ::BC::CPU> > ::operator [] const") is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a __host__ function("BC::inner_shape::cols const") from a __host__ __device__ function("BC::unary_expression_transpose<double,  ::BC::Matrix<double,  ::BC::CPU> > ::operator [] const") is not allowed
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a __host__ function("BC::inner_shape::cols const") from a __host__ __device__ function("BC::unary_expression_transpose<double,  ::BC::Matrix<double,  ::BC::CPU> > ::operator [] const") is not allowed
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a __host__ function("BC::inner_shape::rows const") from a __host__ __device__ function("BC::unary_expression_transpose<double,  ::BC::Matrix<double,  ::BC::CPU> > ::operator [] const") is not allowed
+
+../BC_Internals/BC_Core/Implementation_Core/../../BC_Expressions/Expression_Unary_Pointwise.cu(32): warning: calling a __host__ function("sigmoid::operator ()<double>  const") from a __host__ __device__ function("BC::unary_expression<double,  ::sigmoid,  ::BC::binary_expression_dotproduct<double,  ::BC::binary_expression_scalar_R<double,  ::BC::mul,  ::BC::unary_expression_transpose<double,  ::BC::Matrix<double,  ::BC::CPU> > , double *> ,  ::BC::binary_expression_scalar_R<double,  ::BC::mul,  ::BC::unary_expression_transpose<double,  ::BC::Matrix<double,  ::BC::CPU> > , double *> ,  ::BC::CPU> > ::operator [] const") is not allowed
+
+Finished building: ../main.cu
+ 
+Building target: libBlackCat_Tensors.a
+Invoking: NVCC Archiver
+nvcc  -lib -o  "libBlackCat_Tensors.a"  ./NN_test.o ./SpeedTests.o ./main.o ./test_area.o  ./BC_Internals/BC_MathLibraries/Mathematics_GPU.o ./BC_Internals/BC_MathLibraries/Mathematics_GPU_impl.o ./BC_Internals/BC_MathLibraries/Mathematics_Opt.o ./BC_Internals/BC_MathLibraries/Mathematics_mGPU.o  ./BC_Internals/BC_Expressions/Expression_Binary_Dotproduct.o ./BC_Internals/BC_Expressions/Expression_Binary_Functors.o ./BC_Internals/BC_Expressions/Expression_Binary_Pointwise.o ./BC_Internals/BC_Expressions/Expression_Binary_Pointwise_Scalar.o ./BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.o ./BC_Internals/BC_Expressions/Expression_Unary_Pointwise.o ./BC_Internals/BC_Expressions/SubTensor_Expression.o   
+Finished building target: libBlackCat_Tensors.a
+ 
+16:45:50 **** Incremental Build of configuration Debug for project BlackCat_Tensors ****
+make all 
+make: Nothing to be done for 'all'.
+16:45:56 **** Incremental Build of configuration Debug for project BlackCat_Tensors ****
+make all 
+make: Nothing to be done for 'all'.
+16:46:03 **** Incremental Build of configuration Debug for project BlackCat_Tensors ****
+make all 
+Building file: ../main.cu
+Invoking: NVCC Compiler
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -G -g -O0 -gencode arch=compute_52,code=sm_52  -odir "." -M -o "main.d" "../main.cu"
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -G -g -O0 --compile --relocatable-device-code=true -gencode arch=compute_52,code=compute_52 -gencode arch=compute_52,code=sm_52  -x cu -o  "main.o" "../main.cu"
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a constexpr __host__ function("floor") from a __host__ __device__ function("operator[]") is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+          detected during:
+            instantiation of "const auto &BC::unary_expression_transpose<T, parent>::operator[](int) const [with T=double, parent=BC::Matrix<double, BC::DEFAULT_MATHLIB>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(127): here
+            instantiation of "void BC::CPU::copy_single_thread(T &, const J &, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(114): here
+            instantiation of "void BC::CPU::copy(T, J, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_Core/Matrix.h(61): here
+            instantiation of "BC::Matrix<T, Mathlib> &BC::Matrix<T, Mathlib>::operator=(const BC::Matrix<U, Mathlib> &) [with T=double, Mathlib=BC::DEFAULT_MATHLIB, U=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../main.cu(166): here
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a __host__ function from a __host__ __device__ function is not allowed
+          detected during:
+            instantiation of "const auto &BC::unary_expression_transpose<T, parent>::operator[](int) const [with T=double, parent=BC::Matrix<double, BC::DEFAULT_MATHLIB>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(127): here
+            instantiation of "void BC::CPU::copy_single_thread(T &, const J &, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(114): here
+            instantiation of "void BC::CPU::copy(T, J, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_Core/Matrix.h(61): here
+            instantiation of "BC::Matrix<T, Mathlib> &BC::Matrix<T, Mathlib>::operator=(const BC::Matrix<U, Mathlib> &) [with T=double, Mathlib=BC::DEFAULT_MATHLIB, U=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../main.cu(166): here
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a __host__ function from a __host__ __device__ function is not allowed
+          detected during:
+            instantiation of "const auto &BC::unary_expression_transpose<T, parent>::operator[](int) const [with T=double, parent=BC::Matrix<double, BC::DEFAULT_MATHLIB>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(127): here
+            instantiation of "void BC::CPU::copy_single_thread(T &, const J &, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(114): here
+            instantiation of "void BC::CPU::copy(T, J, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_Core/Matrix.h(61): here
+            instantiation of "BC::Matrix<T, Mathlib> &BC::Matrix<T, Mathlib>::operator=(const BC::Matrix<U, Mathlib> &) [with T=double, Mathlib=BC::DEFAULT_MATHLIB, U=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../main.cu(166): here
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a constexpr __host__ function from a __host__ __device__ function is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+          detected during:
+            instantiation of "const auto &BC::unary_expression_transpose<T, parent>::operator[](int) const [with T=double, parent=BC::Matrix<double, BC::DEFAULT_MATHLIB>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(127): here
+            instantiation of "void BC::CPU::copy_single_thread(T &, const J &, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(114): here
+            instantiation of "void BC::CPU::copy(T, J, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_Core/Matrix.h(61): here
+            instantiation of "BC::Matrix<T, Mathlib> &BC::Matrix<T, Mathlib>::operator=(const BC::Matrix<U, Mathlib> &) [with T=double, Mathlib=BC::DEFAULT_MATHLIB, U=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../main.cu(166): here
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a __host__ function from a __host__ __device__ function is not allowed
+          detected during:
+            instantiation of "const auto &BC::unary_expression_transpose<T, parent>::operator[](int) const [with T=double, parent=BC::Matrix<double, BC::DEFAULT_MATHLIB>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(127): here
+            instantiation of "void BC::CPU::copy_single_thread(T &, const J &, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(114): here
+            instantiation of "void BC::CPU::copy(T, J, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_Core/Matrix.h(61): here
+            instantiation of "BC::Matrix<T, Mathlib> &BC::Matrix<T, Mathlib>::operator=(const BC::Matrix<U, Mathlib> &) [with T=double, Mathlib=BC::DEFAULT_MATHLIB, U=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../main.cu(166): here
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a __host__ function from a __host__ __device__ function is not allowed
+          detected during:
+            instantiation of "const auto &BC::unary_expression_transpose<T, parent>::operator[](int) const [with T=double, parent=BC::Matrix<double, BC::DEFAULT_MATHLIB>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(127): here
+            instantiation of "void BC::CPU::copy_single_thread(T &, const J &, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(114): here
+            instantiation of "void BC::CPU::copy(T, J, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_Core/Matrix.h(61): here
+            instantiation of "BC::Matrix<T, Mathlib> &BC::Matrix<T, Mathlib>::operator=(const BC::Matrix<U, Mathlib> &) [with T=double, Mathlib=BC::DEFAULT_MATHLIB, U=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../main.cu(166): here
+
+../BC_Internals/BC_Core/Implementation_Core/../../BC_Expressions/Expression_Unary_Pointwise.cu(32): warning: calling a __host__ function from a __host__ __device__ function is not allowed
+          detected during:
+            instantiation of "auto BC::unary_expression<T, operation, value>::operator[](int) const [with T=double, operation=sigmoid, value=BC::binary_expression_dotproduct<double, BC::binary_expression_scalar_R<double, BC::mul, BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>, double *>, BC::binary_expression_scalar_R<double, BC::mul, BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>, double *>, BC::DEFAULT_MATHLIB>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(127): here
+            instantiation of "void BC::CPU::copy_single_thread(T &, const J &, int) [with T=double *, J=BC::unary_expression<double, sigmoid, BC::binary_expression_dotproduct<double, BC::binary_expression_scalar_R<double, BC::mul, BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>, double *>, BC::binary_expression_scalar_R<double, BC::mul, BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>, double *>, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(114): here
+            instantiation of "void BC::CPU::copy(T, J, int) [with T=double *, J=BC::unary_expression<double, sigmoid, BC::binary_expression_dotproduct<double, BC::binary_expression_scalar_R<double, BC::mul, BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>, double *>, BC::binary_expression_scalar_R<double, BC::mul, BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>, double *>, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_Core/Matrix.h(61): here
+            instantiation of "BC::Matrix<T, Mathlib> &BC::Matrix<T, Mathlib>::operator=(const BC::Matrix<U, Mathlib> &) [with T=double, Mathlib=BC::DEFAULT_MATHLIB, U=BC::unary_expression<double, sigmoid, BC::binary_expression_dotproduct<double, BC::binary_expression_scalar_R<double, BC::mul, BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>, double *>, BC::binary_expression_scalar_R<double, BC::mul, BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>, double *>, BC::DEFAULT_MATHLIB>>]" 
+../main.cu(177): here
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a __host__ function("BC::Tensor_Operations_impl< ::BC::Matrix<double,  ::BC::CPU> ,  ::BC::_TRAITS<double, double *,  ::BC::Matrix<double,  ::BC::CPU>  &,  ::BC::CPU> > ::data const") from a __host__ __device__ function("BC::unary_expression_transpose<double,  ::BC::Matrix<double,  ::BC::CPU> > ::operator [] const") is not allowed
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a constexpr __host__ function("std::floor<int> ") from a __host__ __device__ function("BC::unary_expression_transpose<double,  ::BC::Matrix<double,  ::BC::CPU> > ::operator [] const") is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a __host__ function("BC::inner_shape::cols const") from a __host__ __device__ function("BC::unary_expression_transpose<double,  ::BC::Matrix<double,  ::BC::CPU> > ::operator [] const") is not allowed
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a __host__ function("BC::inner_shape::cols const") from a __host__ __device__ function("BC::unary_expression_transpose<double,  ::BC::Matrix<double,  ::BC::CPU> > ::operator [] const") is not allowed
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a __host__ function("BC::inner_shape::rows const") from a __host__ __device__ function("BC::unary_expression_transpose<double,  ::BC::Matrix<double,  ::BC::CPU> > ::operator [] const") is not allowed
+
+../BC_Internals/BC_Core/Implementation_Core/../../BC_Expressions/Expression_Unary_Pointwise.cu(32): warning: calling a __host__ function("sigmoid::operator ()<double>  const") from a __host__ __device__ function("BC::unary_expression<double,  ::sigmoid,  ::BC::binary_expression_dotproduct<double,  ::BC::binary_expression_scalar_R<double,  ::BC::mul,  ::BC::unary_expression_transpose<double,  ::BC::Matrix<double,  ::BC::CPU> > , double *> ,  ::BC::binary_expression_scalar_R<double,  ::BC::mul,  ::BC::unary_expression_transpose<double,  ::BC::Matrix<double,  ::BC::CPU> > , double *> ,  ::BC::CPU> > ::operator [] const") is not allowed
+
+Finished building: ../main.cu
+ 
+Building target: libBlackCat_Tensors.a
+Invoking: NVCC Archiver
+nvcc  -lib -o  "libBlackCat_Tensors.a"  ./NN_test.o ./SpeedTests.o ./main.o ./test_area.o  ./BC_Internals/BC_MathLibraries/Mathematics_GPU.o ./BC_Internals/BC_MathLibraries/Mathematics_GPU_impl.o ./BC_Internals/BC_MathLibraries/Mathematics_Opt.o ./BC_Internals/BC_MathLibraries/Mathematics_mGPU.o  ./BC_Internals/BC_Expressions/Expression_Binary_Dotproduct.o ./BC_Internals/BC_Expressions/Expression_Binary_Functors.o ./BC_Internals/BC_Expressions/Expression_Binary_Pointwise.o ./BC_Internals/BC_Expressions/Expression_Binary_Pointwise_Scalar.o ./BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.o ./BC_Internals/BC_Expressions/Expression_Unary_Pointwise.o ./BC_Internals/BC_Expressions/SubTensor_Expression.o   
+Finished building target: libBlackCat_Tensors.a
+ 
+16:46:33 **** Incremental Build of configuration Debug for project BlackCat_Tensors ****
+make all 
+make: Nothing to be done for 'all'.
+16:46:36 **** Incremental Build of configuration Debug for project BlackCat_Tensors ****
+make all 
+make: Nothing to be done for 'all'.
+16:46:48 **** Incremental Build of configuration Debug for project BlackCat_Tensors ****
+make all 
+Building file: ../main.cu
+Invoking: NVCC Compiler
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -G -g -O0 -gencode arch=compute_52,code=sm_52  -odir "." -M -o "main.d" "../main.cu"
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -G -g -O0 --compile --relocatable-device-code=true -gencode arch=compute_52,code=compute_52 -gencode arch=compute_52,code=sm_52  -x cu -o  "main.o" "../main.cu"
+../main.cu(226): error: identifier "dp_test" is undefined
+
+1 error detected in the compilation of "/tmp/tmpxft_00006c6d_00000000-6_main.cpp1.ii".
+make: *** [main.o] Error 1
+subdir.mk:27: recipe for target 'main.o' failed
+16:46:56 **** Incremental Build of configuration Debug for project BlackCat_Tensors ****
+make all 
+Building file: ../main.cu
+Invoking: NVCC Compiler
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -G -g -O0 -gencode arch=compute_52,code=sm_52  -odir "." -M -o "main.d" "../main.cu"
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -G -g -O0 --compile --relocatable-device-code=true -gencode arch=compute_52,code=compute_52 -gencode arch=compute_52,code=sm_52  -x cu -o  "main.o" "../main.cu"
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a constexpr __host__ function("floor") from a __host__ __device__ function("operator[]") is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+          detected during:
+            instantiation of "const auto &BC::unary_expression_transpose<T, parent>::operator[](int) const [with T=double, parent=BC::Matrix<double, BC::DEFAULT_MATHLIB>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(127): here
+            instantiation of "void BC::CPU::copy_single_thread(T &, const J &, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(114): here
+            instantiation of "void BC::CPU::copy(T, J, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_Core/Matrix.h(61): here
+            instantiation of "BC::Matrix<T, Mathlib> &BC::Matrix<T, Mathlib>::operator=(const BC::Matrix<U, Mathlib> &) [with T=double, Mathlib=BC::DEFAULT_MATHLIB, U=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../main.cu(166): here
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a __host__ function from a __host__ __device__ function is not allowed
+          detected during:
+            instantiation of "const auto &BC::unary_expression_transpose<T, parent>::operator[](int) const [with T=double, parent=BC::Matrix<double, BC::DEFAULT_MATHLIB>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(127): here
+            instantiation of "void BC::CPU::copy_single_thread(T &, const J &, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(114): here
+            instantiation of "void BC::CPU::copy(T, J, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_Core/Matrix.h(61): here
+            instantiation of "BC::Matrix<T, Mathlib> &BC::Matrix<T, Mathlib>::operator=(const BC::Matrix<U, Mathlib> &) [with T=double, Mathlib=BC::DEFAULT_MATHLIB, U=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../main.cu(166): here
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a __host__ function from a __host__ __device__ function is not allowed
+          detected during:
+            instantiation of "const auto &BC::unary_expression_transpose<T, parent>::operator[](int) const [with T=double, parent=BC::Matrix<double, BC::DEFAULT_MATHLIB>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(127): here
+            instantiation of "void BC::CPU::copy_single_thread(T &, const J &, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(114): here
+            instantiation of "void BC::CPU::copy(T, J, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_Core/Matrix.h(61): here
+            instantiation of "BC::Matrix<T, Mathlib> &BC::Matrix<T, Mathlib>::operator=(const BC::Matrix<U, Mathlib> &) [with T=double, Mathlib=BC::DEFAULT_MATHLIB, U=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../main.cu(166): here
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a constexpr __host__ function from a __host__ __device__ function is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+          detected during:
+            instantiation of "const auto &BC::unary_expression_transpose<T, parent>::operator[](int) const [with T=double, parent=BC::Matrix<double, BC::DEFAULT_MATHLIB>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(127): here
+            instantiation of "void BC::CPU::copy_single_thread(T &, const J &, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(114): here
+            instantiation of "void BC::CPU::copy(T, J, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_Core/Matrix.h(61): here
+            instantiation of "BC::Matrix<T, Mathlib> &BC::Matrix<T, Mathlib>::operator=(const BC::Matrix<U, Mathlib> &) [with T=double, Mathlib=BC::DEFAULT_MATHLIB, U=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../main.cu(166): here
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a __host__ function from a __host__ __device__ function is not allowed
+          detected during:
+            instantiation of "const auto &BC::unary_expression_transpose<T, parent>::operator[](int) const [with T=double, parent=BC::Matrix<double, BC::DEFAULT_MATHLIB>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(127): here
+            instantiation of "void BC::CPU::copy_single_thread(T &, const J &, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(114): here
+            instantiation of "void BC::CPU::copy(T, J, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_Core/Matrix.h(61): here
+            instantiation of "BC::Matrix<T, Mathlib> &BC::Matrix<T, Mathlib>::operator=(const BC::Matrix<U, Mathlib> &) [with T=double, Mathlib=BC::DEFAULT_MATHLIB, U=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../main.cu(166): here
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a __host__ function from a __host__ __device__ function is not allowed
+          detected during:
+            instantiation of "const auto &BC::unary_expression_transpose<T, parent>::operator[](int) const [with T=double, parent=BC::Matrix<double, BC::DEFAULT_MATHLIB>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(127): here
+            instantiation of "void BC::CPU::copy_single_thread(T &, const J &, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(114): here
+            instantiation of "void BC::CPU::copy(T, J, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_Core/Matrix.h(61): here
+            instantiation of "BC::Matrix<T, Mathlib> &BC::Matrix<T, Mathlib>::operator=(const BC::Matrix<U, Mathlib> &) [with T=double, Mathlib=BC::DEFAULT_MATHLIB, U=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../main.cu(166): here
+
+../BC_Internals/BC_Core/Implementation_Core/../../BC_Expressions/Expression_Unary_Pointwise.cu(32): warning: calling a __host__ function from a __host__ __device__ function is not allowed
+          detected during:
+            instantiation of "auto BC::unary_expression<T, operation, value>::operator[](int) const [with T=double, operation=sigmoid, value=BC::binary_expression_dotproduct<double, BC::binary_expression_scalar_R<double, BC::mul, BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>, double *>, BC::binary_expression_scalar_R<double, BC::mul, BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>, double *>, BC::DEFAULT_MATHLIB>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(127): here
+            instantiation of "void BC::CPU::copy_single_thread(T &, const J &, int) [with T=double *, J=BC::unary_expression<double, sigmoid, BC::binary_expression_dotproduct<double, BC::binary_expression_scalar_R<double, BC::mul, BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>, double *>, BC::binary_expression_scalar_R<double, BC::mul, BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>, double *>, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(114): here
+            instantiation of "void BC::CPU::copy(T, J, int) [with T=double *, J=BC::unary_expression<double, sigmoid, BC::binary_expression_dotproduct<double, BC::binary_expression_scalar_R<double, BC::mul, BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>, double *>, BC::binary_expression_scalar_R<double, BC::mul, BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>, double *>, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_Core/Matrix.h(61): here
+            instantiation of "BC::Matrix<T, Mathlib> &BC::Matrix<T, Mathlib>::operator=(const BC::Matrix<U, Mathlib> &) [with T=double, Mathlib=BC::DEFAULT_MATHLIB, U=BC::unary_expression<double, sigmoid, BC::binary_expression_dotproduct<double, BC::binary_expression_scalar_R<double, BC::mul, BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>, double *>, BC::binary_expression_scalar_R<double, BC::mul, BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>, double *>, BC::DEFAULT_MATHLIB>>]" 
+../main.cu(177): here
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a __host__ function("BC::Tensor_Operations_impl< ::BC::Matrix<double,  ::BC::CPU> ,  ::BC::_TRAITS<double, double *,  ::BC::Matrix<double,  ::BC::CPU>  &,  ::BC::CPU> > ::data const") from a __host__ __device__ function("BC::unary_expression_transpose<double,  ::BC::Matrix<double,  ::BC::CPU> > ::operator [] const") is not allowed
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a constexpr __host__ function("std::floor<int> ") from a __host__ __device__ function("BC::unary_expression_transpose<double,  ::BC::Matrix<double,  ::BC::CPU> > ::operator [] const") is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a __host__ function("BC::inner_shape::cols const") from a __host__ __device__ function("BC::unary_expression_transpose<double,  ::BC::Matrix<double,  ::BC::CPU> > ::operator [] const") is not allowed
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a __host__ function("BC::inner_shape::cols const") from a __host__ __device__ function("BC::unary_expression_transpose<double,  ::BC::Matrix<double,  ::BC::CPU> > ::operator [] const") is not allowed
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a __host__ function("BC::inner_shape::rows const") from a __host__ __device__ function("BC::unary_expression_transpose<double,  ::BC::Matrix<double,  ::BC::CPU> > ::operator [] const") is not allowed
+
+../BC_Internals/BC_Core/Implementation_Core/../../BC_Expressions/Expression_Unary_Pointwise.cu(32): warning: calling a __host__ function("sigmoid::operator ()<double>  const") from a __host__ __device__ function("BC::unary_expression<double,  ::sigmoid,  ::BC::binary_expression_dotproduct<double,  ::BC::binary_expression_scalar_R<double,  ::BC::mul,  ::BC::unary_expression_transpose<double,  ::BC::Matrix<double,  ::BC::CPU> > , double *> ,  ::BC::binary_expression_scalar_R<double,  ::BC::mul,  ::BC::unary_expression_transpose<double,  ::BC::Matrix<double,  ::BC::CPU> > , double *> ,  ::BC::CPU> > ::operator [] const") is not allowed
+
+Finished building: ../main.cu
+ 
+Building target: libBlackCat_Tensors.a
+Invoking: NVCC Archiver
+nvcc  -lib -o  "libBlackCat_Tensors.a"  ./NN_test.o ./SpeedTests.o ./main.o ./test_area.o  ./BC_Internals/BC_MathLibraries/Mathematics_GPU.o ./BC_Internals/BC_MathLibraries/Mathematics_GPU_impl.o ./BC_Internals/BC_MathLibraries/Mathematics_Opt.o ./BC_Internals/BC_MathLibraries/Mathematics_mGPU.o  ./BC_Internals/BC_Expressions/Expression_Binary_Dotproduct.o ./BC_Internals/BC_Expressions/Expression_Binary_Functors.o ./BC_Internals/BC_Expressions/Expression_Binary_Pointwise.o ./BC_Internals/BC_Expressions/Expression_Binary_Pointwise_Scalar.o ./BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.o ./BC_Internals/BC_Expressions/Expression_Unary_Pointwise.o ./BC_Internals/BC_Expressions/SubTensor_Expression.o   
+Finished building target: libBlackCat_Tensors.a
+ 
+16:47:15 **** Incremental Build of configuration Debug for project BlackCat_Tensors ****
+make all 
+make: Nothing to be done for 'all'.
+16:47:20 **** Incremental Build of configuration Release for project BlackCat_Tensors ****
+make all 
+Building file: ../main.cu
+Invoking: NVCC Compiler
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -O3 -gencode arch=compute_52,code=sm_52  -odir "." -M -o "main.d" "../main.cu"
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -O3 --compile --relocatable-device-code=true -gencode arch=compute_52,code=compute_52 -gencode arch=compute_52,code=sm_52  -x cu -o  "main.o" "../main.cu"
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a constexpr __host__ function("floor") from a __host__ __device__ function("operator[]") is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+          detected during:
+            instantiation of "const auto &BC::unary_expression_transpose<T, parent>::operator[](int) const [with T=double, parent=BC::Matrix<double, BC::DEFAULT_MATHLIB>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(127): here
+            instantiation of "void BC::CPU::copy_single_thread(T &, const J &, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(114): here
+            instantiation of "void BC::CPU::copy(T, J, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_Core/Matrix.h(61): here
+            instantiation of "BC::Matrix<T, Mathlib> &BC::Matrix<T, Mathlib>::operator=(const BC::Matrix<U, Mathlib> &) [with T=double, Mathlib=BC::DEFAULT_MATHLIB, U=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../main.cu(166): here
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a __host__ function from a __host__ __device__ function is not allowed
+          detected during:
+            instantiation of "const auto &BC::unary_expression_transpose<T, parent>::operator[](int) const [with T=double, parent=BC::Matrix<double, BC::DEFAULT_MATHLIB>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(127): here
+            instantiation of "void BC::CPU::copy_single_thread(T &, const J &, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(114): here
+            instantiation of "void BC::CPU::copy(T, J, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_Core/Matrix.h(61): here
+            instantiation of "BC::Matrix<T, Mathlib> &BC::Matrix<T, Mathlib>::operator=(const BC::Matrix<U, Mathlib> &) [with T=double, Mathlib=BC::DEFAULT_MATHLIB, U=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../main.cu(166): here
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a __host__ function from a __host__ __device__ function is not allowed
+          detected during:
+            instantiation of "const auto &BC::unary_expression_transpose<T, parent>::operator[](int) const [with T=double, parent=BC::Matrix<double, BC::DEFAULT_MATHLIB>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(127): here
+            instantiation of "void BC::CPU::copy_single_thread(T &, const J &, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(114): here
+            instantiation of "void BC::CPU::copy(T, J, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_Core/Matrix.h(61): here
+            instantiation of "BC::Matrix<T, Mathlib> &BC::Matrix<T, Mathlib>::operator=(const BC::Matrix<U, Mathlib> &) [with T=double, Mathlib=BC::DEFAULT_MATHLIB, U=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../main.cu(166): here
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a constexpr __host__ function from a __host__ __device__ function is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+          detected during:
+            instantiation of "const auto &BC::unary_expression_transpose<T, parent>::operator[](int) const [with T=double, parent=BC::Matrix<double, BC::DEFAULT_MATHLIB>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(127): here
+            instantiation of "void BC::CPU::copy_single_thread(T &, const J &, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(114): here
+            instantiation of "void BC::CPU::copy(T, J, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_Core/Matrix.h(61): here
+            instantiation of "BC::Matrix<T, Mathlib> &BC::Matrix<T, Mathlib>::operator=(const BC::Matrix<U, Mathlib> &) [with T=double, Mathlib=BC::DEFAULT_MATHLIB, U=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../main.cu(166): here
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a __host__ function from a __host__ __device__ function is not allowed
+          detected during:
+            instantiation of "const auto &BC::unary_expression_transpose<T, parent>::operator[](int) const [with T=double, parent=BC::Matrix<double, BC::DEFAULT_MATHLIB>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(127): here
+            instantiation of "void BC::CPU::copy_single_thread(T &, const J &, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(114): here
+            instantiation of "void BC::CPU::copy(T, J, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_Core/Matrix.h(61): here
+            instantiation of "BC::Matrix<T, Mathlib> &BC::Matrix<T, Mathlib>::operator=(const BC::Matrix<U, Mathlib> &) [with T=double, Mathlib=BC::DEFAULT_MATHLIB, U=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../main.cu(166): here
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a __host__ function from a __host__ __device__ function is not allowed
+          detected during:
+            instantiation of "const auto &BC::unary_expression_transpose<T, parent>::operator[](int) const [with T=double, parent=BC::Matrix<double, BC::DEFAULT_MATHLIB>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(127): here
+            instantiation of "void BC::CPU::copy_single_thread(T &, const J &, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(114): here
+            instantiation of "void BC::CPU::copy(T, J, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_Core/Matrix.h(61): here
+            instantiation of "BC::Matrix<T, Mathlib> &BC::Matrix<T, Mathlib>::operator=(const BC::Matrix<U, Mathlib> &) [with T=double, Mathlib=BC::DEFAULT_MATHLIB, U=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../main.cu(166): here
+
+../BC_Internals/BC_Core/Implementation_Core/../../BC_Expressions/Expression_Unary_Pointwise.cu(32): warning: calling a __host__ function from a __host__ __device__ function is not allowed
+          detected during:
+            instantiation of "auto BC::unary_expression<T, operation, value>::operator[](int) const [with T=double, operation=sigmoid, value=BC::binary_expression_dotproduct<double, BC::binary_expression_scalar_R<double, BC::mul, BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>, double *>, BC::binary_expression_scalar_R<double, BC::mul, BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>, double *>, BC::DEFAULT_MATHLIB>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(127): here
+            instantiation of "void BC::CPU::copy_single_thread(T &, const J &, int) [with T=double *, J=BC::unary_expression<double, sigmoid, BC::binary_expression_dotproduct<double, BC::binary_expression_scalar_R<double, BC::mul, BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>, double *>, BC::binary_expression_scalar_R<double, BC::mul, BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>, double *>, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(114): here
+            instantiation of "void BC::CPU::copy(T, J, int) [with T=double *, J=BC::unary_expression<double, sigmoid, BC::binary_expression_dotproduct<double, BC::binary_expression_scalar_R<double, BC::mul, BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>, double *>, BC::binary_expression_scalar_R<double, BC::mul, BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>, double *>, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_Core/Matrix.h(61): here
+            instantiation of "BC::Matrix<T, Mathlib> &BC::Matrix<T, Mathlib>::operator=(const BC::Matrix<U, Mathlib> &) [with T=double, Mathlib=BC::DEFAULT_MATHLIB, U=BC::unary_expression<double, sigmoid, BC::binary_expression_dotproduct<double, BC::binary_expression_scalar_R<double, BC::mul, BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>, double *>, BC::binary_expression_scalar_R<double, BC::mul, BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>, double *>, BC::DEFAULT_MATHLIB>>]" 
+../main.cu(177): here
+
+Finished building: ../main.cu
+ 
+Building target: libBlackCat_Tensors.a
+Invoking: NVCC Archiver
+nvcc  -lib -o  "libBlackCat_Tensors.a"  ./NN_test.o ./SpeedTests.o ./main.o ./test_area.o  ./BC_Internals/BC_MathLibraries/Mathematics_GPU.o ./BC_Internals/BC_MathLibraries/Mathematics_GPU_impl.o ./BC_Internals/BC_MathLibraries/Mathematics_Opt.o ./BC_Internals/BC_MathLibraries/Mathematics_mGPU.o  ./BC_Internals/BC_Expressions/Expression_Binary_Dotproduct.o ./BC_Internals/BC_Expressions/Expression_Binary_Functors.o ./BC_Internals/BC_Expressions/Expression_Binary_Pointwise.o ./BC_Internals/BC_Expressions/Expression_Binary_Pointwise_Scalar.o ./BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.o ./BC_Internals/BC_Expressions/Expression_Unary_Pointwise.o ./BC_Internals/BC_Expressions/SubTensor_Expression.o   
+Finished building target: libBlackCat_Tensors.a
+ 
+16:47:26 **** Incremental Build of configuration Debug for project BlackCat_Tensors ****
+make all 
+make: Nothing to be done for 'all'.
+16:48:10 **** Incremental Build of configuration Debug for project BlackCat_Tensors ****
+make all 
+make: Nothing to be done for 'all'.
+16:48:29 **** Incremental Build of configuration Debug for project BlackCat_Tensors ****
+make all 
+Building target: BlackCat_Tensors
+Invoking: NVCC Linker
+/usr/local/cuda-9.1/bin/nvcc --cudart static -L/usr/lib/atlas-base -L/usr/local/cuda/include -L/usr/local/cuda-9.1/bin --relocatable-device-code=true -gencode arch=compute_52,code=compute_52 -gencode arch=compute_52,code=sm_52 -link -o  "BlackCat_Tensors"  ./NN_test.o ./SpeedTests.o ./main.o ./test_area.o  ./BC_Internals/BC_MathLibraries/Mathematics_GPU.o ./BC_Internals/BC_MathLibraries/Mathematics_GPU_impl.o ./BC_Internals/BC_MathLibraries/Mathematics_Opt.o ./BC_Internals/BC_MathLibraries/Mathematics_mGPU.o  ./BC_Internals/BC_Expressions/Expression_Binary_Dotproduct.o ./BC_Internals/BC_Expressions/Expression_Binary_Functors.o ./BC_Internals/BC_Expressions/Expression_Binary_Pointwise.o ./BC_Internals/BC_Expressions/Expression_Binary_Pointwise_Scalar.o ./BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.o ./BC_Internals/BC_Expressions/Expression_Unary_Pointwise.o ./BC_Internals/BC_Expressions/SubTensor_Expression.o   -lcblas -lf77blas -lcublas -lgomp
+Finished building target: BlackCat_Tensors
+ 
+16:48:34 **** Incremental Build of configuration Release for project BlackCat_Tensors ****
+make all 
+Building target: BlackCat_Tensors
+Invoking: NVCC Linker
+/usr/local/cuda-9.1/bin/nvcc --cudart static -L/usr/lib/atlas-base -L/usr/local/cuda/include -L/usr/local/cuda-9.1/bin --relocatable-device-code=true -gencode arch=compute_52,code=compute_52 -gencode arch=compute_52,code=sm_52 -link -o  "BlackCat_Tensors"  ./NN_test.o ./SpeedTests.o ./main.o ./test_area.o  ./BC_Internals/BC_MathLibraries/Mathematics_GPU.o ./BC_Internals/BC_MathLibraries/Mathematics_GPU_impl.o ./BC_Internals/BC_MathLibraries/Mathematics_Opt.o ./BC_Internals/BC_MathLibraries/Mathematics_mGPU.o  ./BC_Internals/BC_Expressions/Expression_Binary_Dotproduct.o ./BC_Internals/BC_Expressions/Expression_Binary_Functors.o ./BC_Internals/BC_Expressions/Expression_Binary_Pointwise.o ./BC_Internals/BC_Expressions/Expression_Binary_Pointwise_Scalar.o ./BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.o ./BC_Internals/BC_Expressions/Expression_Unary_Pointwise.o ./BC_Internals/BC_Expressions/SubTensor_Expression.o   -lcblas -lf77blas -lcublas -lgomp
+Finished building target: BlackCat_Tensors
+ 
+16:48:37 **** Incremental Build of configuration Release for project BlackCat_Tensors ****
+make all 
+make: Nothing to be done for 'all'.
+16:48:39 **** Incremental Build of configuration Debug for project BlackCat_Tensors ****
+make all 
+make: Nothing to be done for 'all'.
+16:48:51 **** Incremental Build of configuration Debug for project BlackCat_Tensors ****
+make all 
+Building file: ../main.cu
+Invoking: NVCC Compiler
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -G -g -O0 -gencode arch=compute_52,code=sm_52  -odir "." -M -o "main.d" "../main.cu"
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -G -g -O0 --compile --relocatable-device-code=true -gencode arch=compute_52,code=compute_52 -gencode arch=compute_52,code=sm_52  -x cu -o  "main.o" "../main.cu"
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a constexpr __host__ function("floor") from a __host__ __device__ function("operator[]") is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+          detected during:
+            instantiation of "const auto &BC::unary_expression_transpose<T, parent>::operator[](int) const [with T=double, parent=BC::Matrix<double, BC::DEFAULT_MATHLIB>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(127): here
+            instantiation of "void BC::CPU::copy_single_thread(T &, const J &, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(114): here
+            instantiation of "void BC::CPU::copy(T, J, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_Core/Matrix.h(61): here
+            instantiation of "BC::Matrix<T, Mathlib> &BC::Matrix<T, Mathlib>::operator=(const BC::Matrix<U, Mathlib> &) [with T=double, Mathlib=BC::DEFAULT_MATHLIB, U=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../main.cu(166): here
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a __host__ function from a __host__ __device__ function is not allowed
+          detected during:
+            instantiation of "const auto &BC::unary_expression_transpose<T, parent>::operator[](int) const [with T=double, parent=BC::Matrix<double, BC::DEFAULT_MATHLIB>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(127): here
+            instantiation of "void BC::CPU::copy_single_thread(T &, const J &, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(114): here
+            instantiation of "void BC::CPU::copy(T, J, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_Core/Matrix.h(61): here
+            instantiation of "BC::Matrix<T, Mathlib> &BC::Matrix<T, Mathlib>::operator=(const BC::Matrix<U, Mathlib> &) [with T=double, Mathlib=BC::DEFAULT_MATHLIB, U=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../main.cu(166): here
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a __host__ function from a __host__ __device__ function is not allowed
+          detected during:
+            instantiation of "const auto &BC::unary_expression_transpose<T, parent>::operator[](int) const [with T=double, parent=BC::Matrix<double, BC::DEFAULT_MATHLIB>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(127): here
+            instantiation of "void BC::CPU::copy_single_thread(T &, const J &, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(114): here
+            instantiation of "void BC::CPU::copy(T, J, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_Core/Matrix.h(61): here
+            instantiation of "BC::Matrix<T, Mathlib> &BC::Matrix<T, Mathlib>::operator=(const BC::Matrix<U, Mathlib> &) [with T=double, Mathlib=BC::DEFAULT_MATHLIB, U=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../main.cu(166): here
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a constexpr __host__ function from a __host__ __device__ function is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+          detected during:
+            instantiation of "const auto &BC::unary_expression_transpose<T, parent>::operator[](int) const [with T=double, parent=BC::Matrix<double, BC::DEFAULT_MATHLIB>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(127): here
+            instantiation of "void BC::CPU::copy_single_thread(T &, const J &, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(114): here
+            instantiation of "void BC::CPU::copy(T, J, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_Core/Matrix.h(61): here
+            instantiation of "BC::Matrix<T, Mathlib> &BC::Matrix<T, Mathlib>::operator=(const BC::Matrix<U, Mathlib> &) [with T=double, Mathlib=BC::DEFAULT_MATHLIB, U=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../main.cu(166): here
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a __host__ function from a __host__ __device__ function is not allowed
+          detected during:
+            instantiation of "const auto &BC::unary_expression_transpose<T, parent>::operator[](int) const [with T=double, parent=BC::Matrix<double, BC::DEFAULT_MATHLIB>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(127): here
+            instantiation of "void BC::CPU::copy_single_thread(T &, const J &, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(114): here
+            instantiation of "void BC::CPU::copy(T, J, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_Core/Matrix.h(61): here
+            instantiation of "BC::Matrix<T, Mathlib> &BC::Matrix<T, Mathlib>::operator=(const BC::Matrix<U, Mathlib> &) [with T=double, Mathlib=BC::DEFAULT_MATHLIB, U=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../main.cu(166): here
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a __host__ function from a __host__ __device__ function is not allowed
+          detected during:
+            instantiation of "const auto &BC::unary_expression_transpose<T, parent>::operator[](int) const [with T=double, parent=BC::Matrix<double, BC::DEFAULT_MATHLIB>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(127): here
+            instantiation of "void BC::CPU::copy_single_thread(T &, const J &, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(114): here
+            instantiation of "void BC::CPU::copy(T, J, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_Core/Matrix.h(61): here
+            instantiation of "BC::Matrix<T, Mathlib> &BC::Matrix<T, Mathlib>::operator=(const BC::Matrix<U, Mathlib> &) [with T=double, Mathlib=BC::DEFAULT_MATHLIB, U=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../main.cu(166): here
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a __host__ function("BC::Tensor_Operations_impl< ::BC::Matrix<double,  ::BC::CPU> ,  ::BC::_TRAITS<double, double *,  ::BC::Matrix<double,  ::BC::CPU>  &,  ::BC::CPU> > ::data const") from a __host__ __device__ function("BC::unary_expression_transpose<double,  ::BC::Matrix<double,  ::BC::CPU> > ::operator [] const") is not allowed
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a constexpr __host__ function("std::floor<int> ") from a __host__ __device__ function("BC::unary_expression_transpose<double,  ::BC::Matrix<double,  ::BC::CPU> > ::operator [] const") is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a __host__ function("BC::inner_shape::cols const") from a __host__ __device__ function("BC::unary_expression_transpose<double,  ::BC::Matrix<double,  ::BC::CPU> > ::operator [] const") is not allowed
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a __host__ function("BC::inner_shape::cols const") from a __host__ __device__ function("BC::unary_expression_transpose<double,  ::BC::Matrix<double,  ::BC::CPU> > ::operator [] const") is not allowed
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a __host__ function("BC::inner_shape::rows const") from a __host__ __device__ function("BC::unary_expression_transpose<double,  ::BC::Matrix<double,  ::BC::CPU> > ::operator [] const") is not allowed
+
+Finished building: ../main.cu
+ 
+Building target: BlackCat_Tensors
+Invoking: NVCC Linker
+/usr/local/cuda-9.1/bin/nvcc --cudart static -L/usr/lib/atlas-base -L/usr/local/cuda/include -L/usr/local/cuda-9.1/bin --relocatable-device-code=true -gencode arch=compute_52,code=compute_52 -gencode arch=compute_52,code=sm_52 -link -o  "BlackCat_Tensors"  ./NN_test.o ./SpeedTests.o ./main.o ./test_area.o  ./BC_Internals/BC_MathLibraries/Mathematics_GPU.o ./BC_Internals/BC_MathLibraries/Mathematics_GPU_impl.o ./BC_Internals/BC_MathLibraries/Mathematics_Opt.o ./BC_Internals/BC_MathLibraries/Mathematics_mGPU.o  ./BC_Internals/BC_Expressions/Expression_Binary_Dotproduct.o ./BC_Internals/BC_Expressions/Expression_Binary_Functors.o ./BC_Internals/BC_Expressions/Expression_Binary_Pointwise.o ./BC_Internals/BC_Expressions/Expression_Binary_Pointwise_Scalar.o ./BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.o ./BC_Internals/BC_Expressions/Expression_Unary_Pointwise.o ./BC_Internals/BC_Expressions/SubTensor_Expression.o   -lcblas -lf77blas -lcublas -lgomp
+Finished building target: BlackCat_Tensors
+ 
+16:50:57 **** Build of configuration Debug for project BlackCat_Tensors ****
+make all 
+Building file: ../main.cu
+Invoking: NVCC Compiler
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -G -g -O0 -gencode arch=compute_52,code=sm_52  -odir "." -M -o "main.d" "../main.cu"
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -G -g -O0 --compile --relocatable-device-code=true -gencode arch=compute_52,code=compute_52 -gencode arch=compute_52,code=sm_52  -x cu -o  "main.o" "../main.cu"
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a constexpr __host__ function("floor") from a __host__ __device__ function("operator[]") is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+          detected during:
+            instantiation of "const auto &BC::unary_expression_transpose<T, parent>::operator[](int) const [with T=double, parent=BC::Matrix<double, BC::DEFAULT_MATHLIB>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(127): here
+            instantiation of "void BC::CPU::copy_single_thread(T &, const J &, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(114): here
+            instantiation of "void BC::CPU::copy(T, J, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_Core/Matrix.h(61): here
+            instantiation of "BC::Matrix<T, Mathlib> &BC::Matrix<T, Mathlib>::operator=(const BC::Matrix<U, Mathlib> &) [with T=double, Mathlib=BC::DEFAULT_MATHLIB, U=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../main.cu(166): here
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a __host__ function from a __host__ __device__ function is not allowed
+          detected during:
+            instantiation of "const auto &BC::unary_expression_transpose<T, parent>::operator[](int) const [with T=double, parent=BC::Matrix<double, BC::DEFAULT_MATHLIB>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(127): here
+            instantiation of "void BC::CPU::copy_single_thread(T &, const J &, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(114): here
+            instantiation of "void BC::CPU::copy(T, J, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_Core/Matrix.h(61): here
+            instantiation of "BC::Matrix<T, Mathlib> &BC::Matrix<T, Mathlib>::operator=(const BC::Matrix<U, Mathlib> &) [with T=double, Mathlib=BC::DEFAULT_MATHLIB, U=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../main.cu(166): here
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a __host__ function from a __host__ __device__ function is not allowed
+          detected during:
+            instantiation of "const auto &BC::unary_expression_transpose<T, parent>::operator[](int) const [with T=double, parent=BC::Matrix<double, BC::DEFAULT_MATHLIB>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(127): here
+            instantiation of "void BC::CPU::copy_single_thread(T &, const J &, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(114): here
+            instantiation of "void BC::CPU::copy(T, J, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_Core/Matrix.h(61): here
+            instantiation of "BC::Matrix<T, Mathlib> &BC::Matrix<T, Mathlib>::operator=(const BC::Matrix<U, Mathlib> &) [with T=double, Mathlib=BC::DEFAULT_MATHLIB, U=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../main.cu(166): here
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a constexpr __host__ function from a __host__ __device__ function is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+          detected during:
+            instantiation of "const auto &BC::unary_expression_transpose<T, parent>::operator[](int) const [with T=double, parent=BC::Matrix<double, BC::DEFAULT_MATHLIB>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(127): here
+            instantiation of "void BC::CPU::copy_single_thread(T &, const J &, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(114): here
+            instantiation of "void BC::CPU::copy(T, J, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_Core/Matrix.h(61): here
+            instantiation of "BC::Matrix<T, Mathlib> &BC::Matrix<T, Mathlib>::operator=(const BC::Matrix<U, Mathlib> &) [with T=double, Mathlib=BC::DEFAULT_MATHLIB, U=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../main.cu(166): here
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a __host__ function from a __host__ __device__ function is not allowed
+          detected during:
+            instantiation of "const auto &BC::unary_expression_transpose<T, parent>::operator[](int) const [with T=double, parent=BC::Matrix<double, BC::DEFAULT_MATHLIB>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(127): here
+            instantiation of "void BC::CPU::copy_single_thread(T &, const J &, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(114): here
+            instantiation of "void BC::CPU::copy(T, J, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_Core/Matrix.h(61): here
+            instantiation of "BC::Matrix<T, Mathlib> &BC::Matrix<T, Mathlib>::operator=(const BC::Matrix<U, Mathlib> &) [with T=double, Mathlib=BC::DEFAULT_MATHLIB, U=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../main.cu(166): here
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a __host__ function from a __host__ __device__ function is not allowed
+          detected during:
+            instantiation of "const auto &BC::unary_expression_transpose<T, parent>::operator[](int) const [with T=double, parent=BC::Matrix<double, BC::DEFAULT_MATHLIB>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(127): here
+            instantiation of "void BC::CPU::copy_single_thread(T &, const J &, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(114): here
+            instantiation of "void BC::CPU::copy(T, J, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_Core/Matrix.h(61): here
+            instantiation of "BC::Matrix<T, Mathlib> &BC::Matrix<T, Mathlib>::operator=(const BC::Matrix<U, Mathlib> &) [with T=double, Mathlib=BC::DEFAULT_MATHLIB, U=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../main.cu(166): here
+
+../BC_Internals/BC_Core/Implementation_Core/../../BC_Expressions/Expression_Unary_Pointwise.cu(32): warning: calling a __host__ function from a __host__ __device__ function is not allowed
+          detected during:
+            instantiation of "auto BC::unary_expression<T, operation, value>::operator[](int) const [with T=double, operation=sigmoid, value=BC::binary_expression_dotproduct<double, BC::binary_expression_scalar_R<double, BC::mul, BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>, double *>, BC::binary_expression_scalar_R<double, BC::mul, BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>, double *>, BC::DEFAULT_MATHLIB>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(127): here
+            instantiation of "void BC::CPU::copy_single_thread(T &, const J &, int) [with T=double *, J=BC::unary_expression<double, sigmoid, BC::binary_expression_dotproduct<double, BC::binary_expression_scalar_R<double, BC::mul, BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>, double *>, BC::binary_expression_scalar_R<double, BC::mul, BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>, double *>, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(114): here
+            instantiation of "void BC::CPU::copy(T, J, int) [with T=double *, J=BC::unary_expression<double, sigmoid, BC::binary_expression_dotproduct<double, BC::binary_expression_scalar_R<double, BC::mul, BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>, double *>, BC::binary_expression_scalar_R<double, BC::mul, BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>, double *>, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_Core/Matrix.h(61): here
+            instantiation of "BC::Matrix<T, Mathlib> &BC::Matrix<T, Mathlib>::operator=(const BC::Matrix<U, Mathlib> &) [with T=double, Mathlib=BC::DEFAULT_MATHLIB, U=BC::unary_expression<double, sigmoid, BC::binary_expression_dotproduct<double, BC::binary_expression_scalar_R<double, BC::mul, BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>, double *>, BC::binary_expression_scalar_R<double, BC::mul, BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>, double *>, BC::DEFAULT_MATHLIB>>]" 
+../main.cu(177): here
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a __host__ function("BC::Tensor_Operations_impl< ::BC::Matrix<double,  ::BC::CPU> ,  ::BC::_TRAITS<double, double *,  ::BC::Matrix<double,  ::BC::CPU>  &,  ::BC::CPU> > ::data const") from a __host__ __device__ function("BC::unary_expression_transpose<double,  ::BC::Matrix<double,  ::BC::CPU> > ::operator [] const") is not allowed
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a constexpr __host__ function("std::floor<int> ") from a __host__ __device__ function("BC::unary_expression_transpose<double,  ::BC::Matrix<double,  ::BC::CPU> > ::operator [] const") is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a __host__ function("BC::inner_shape::cols const") from a __host__ __device__ function("BC::unary_expression_transpose<double,  ::BC::Matrix<double,  ::BC::CPU> > ::operator [] const") is not allowed
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a __host__ function("BC::inner_shape::cols const") from a __host__ __device__ function("BC::unary_expression_transpose<double,  ::BC::Matrix<double,  ::BC::CPU> > ::operator [] const") is not allowed
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a __host__ function("BC::inner_shape::rows const") from a __host__ __device__ function("BC::unary_expression_transpose<double,  ::BC::Matrix<double,  ::BC::CPU> > ::operator [] const") is not allowed
+
+../BC_Internals/BC_Core/Implementation_Core/../../BC_Expressions/Expression_Unary_Pointwise.cu(32): warning: calling a __host__ function("sigmoid::operator ()<double>  const") from a __host__ __device__ function("BC::unary_expression<double,  ::sigmoid,  ::BC::binary_expression_dotproduct<double,  ::BC::binary_expression_scalar_R<double,  ::BC::mul,  ::BC::unary_expression_transpose<double,  ::BC::Matrix<double,  ::BC::CPU> > , double *> ,  ::BC::binary_expression_scalar_R<double,  ::BC::mul,  ::BC::unary_expression_transpose<double,  ::BC::Matrix<double,  ::BC::CPU> > , double *> ,  ::BC::CPU> > ::operator [] const") is not allowed
+
+Finished building: ../main.cu
+ 
+Building target: BlackCat_Tensors
+Invoking: NVCC Linker
+/usr/local/cuda-9.1/bin/nvcc --cudart static -L/usr/lib/atlas-base -L/usr/local/cuda/include -L/usr/local/cuda-9.1/bin --relocatable-device-code=true -gencode arch=compute_52,code=compute_52 -gencode arch=compute_52,code=sm_52 -link -o  "BlackCat_Tensors"  ./NN_test.o ./SpeedTests.o ./main.o ./test_area.o  ./BC_Internals/BC_MathLibraries/Mathematics_GPU.o ./BC_Internals/BC_MathLibraries/Mathematics_GPU_impl.o ./BC_Internals/BC_MathLibraries/Mathematics_Opt.o ./BC_Internals/BC_MathLibraries/Mathematics_mGPU.o  ./BC_Internals/BC_Expressions/Expression_Binary_Dotproduct.o ./BC_Internals/BC_Expressions/Expression_Binary_Functors.o ./BC_Internals/BC_Expressions/Expression_Binary_Pointwise.o ./BC_Internals/BC_Expressions/Expression_Binary_Pointwise_Scalar.o ./BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.o ./BC_Internals/BC_Expressions/Expression_Unary_Pointwise.o ./BC_Internals/BC_Expressions/SubTensor_Expression.o   -lcblas -lf77blas -lcublas -lgomp
+Finished building target: BlackCat_Tensors
+ 
+16:51:41 **** Incremental Build of configuration Debug for project BlackCat_Tensors ****
+make all 
+Building file: ../main.cu
+Invoking: NVCC Compiler
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -G -g -O0 -gencode arch=compute_52,code=sm_52  -odir "." -M -o "main.d" "../main.cu"
+/usr/local/cuda-9.1/bin/nvcc -I/usr/local/cuda-9.1/bin -I/usr/local/cuda/include -I/usr/local/include/atlas-base -G -g -O0 --compile --relocatable-device-code=true -gencode arch=compute_52,code=compute_52 -gencode arch=compute_52,code=sm_52  -x cu -o  "main.o" "../main.cu"
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a constexpr __host__ function("floor") from a __host__ __device__ function("operator[]") is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+          detected during:
+            instantiation of "const auto &BC::unary_expression_transpose<T, parent>::operator[](int) const [with T=double, parent=BC::Matrix<double, BC::DEFAULT_MATHLIB>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(127): here
+            instantiation of "void BC::CPU::copy_single_thread(T &, const J &, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(114): here
+            instantiation of "void BC::CPU::copy(T, J, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_Core/Matrix.h(61): here
+            instantiation of "BC::Matrix<T, Mathlib> &BC::Matrix<T, Mathlib>::operator=(const BC::Matrix<U, Mathlib> &) [with T=double, Mathlib=BC::DEFAULT_MATHLIB, U=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../main.cu(166): here
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a __host__ function from a __host__ __device__ function is not allowed
+          detected during:
+            instantiation of "const auto &BC::unary_expression_transpose<T, parent>::operator[](int) const [with T=double, parent=BC::Matrix<double, BC::DEFAULT_MATHLIB>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(127): here
+            instantiation of "void BC::CPU::copy_single_thread(T &, const J &, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(114): here
+            instantiation of "void BC::CPU::copy(T, J, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_Core/Matrix.h(61): here
+            instantiation of "BC::Matrix<T, Mathlib> &BC::Matrix<T, Mathlib>::operator=(const BC::Matrix<U, Mathlib> &) [with T=double, Mathlib=BC::DEFAULT_MATHLIB, U=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../main.cu(166): here
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a __host__ function from a __host__ __device__ function is not allowed
+          detected during:
+            instantiation of "const auto &BC::unary_expression_transpose<T, parent>::operator[](int) const [with T=double, parent=BC::Matrix<double, BC::DEFAULT_MATHLIB>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(127): here
+            instantiation of "void BC::CPU::copy_single_thread(T &, const J &, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(114): here
+            instantiation of "void BC::CPU::copy(T, J, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_Core/Matrix.h(61): here
+            instantiation of "BC::Matrix<T, Mathlib> &BC::Matrix<T, Mathlib>::operator=(const BC::Matrix<U, Mathlib> &) [with T=double, Mathlib=BC::DEFAULT_MATHLIB, U=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../main.cu(166): here
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a constexpr __host__ function from a __host__ __device__ function is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+          detected during:
+            instantiation of "const auto &BC::unary_expression_transpose<T, parent>::operator[](int) const [with T=double, parent=BC::Matrix<double, BC::DEFAULT_MATHLIB>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(127): here
+            instantiation of "void BC::CPU::copy_single_thread(T &, const J &, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(114): here
+            instantiation of "void BC::CPU::copy(T, J, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_Core/Matrix.h(61): here
+            instantiation of "BC::Matrix<T, Mathlib> &BC::Matrix<T, Mathlib>::operator=(const BC::Matrix<U, Mathlib> &) [with T=double, Mathlib=BC::DEFAULT_MATHLIB, U=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../main.cu(166): here
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a __host__ function from a __host__ __device__ function is not allowed
+          detected during:
+            instantiation of "const auto &BC::unary_expression_transpose<T, parent>::operator[](int) const [with T=double, parent=BC::Matrix<double, BC::DEFAULT_MATHLIB>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(127): here
+            instantiation of "void BC::CPU::copy_single_thread(T &, const J &, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(114): here
+            instantiation of "void BC::CPU::copy(T, J, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_Core/Matrix.h(61): here
+            instantiation of "BC::Matrix<T, Mathlib> &BC::Matrix<T, Mathlib>::operator=(const BC::Matrix<U, Mathlib> &) [with T=double, Mathlib=BC::DEFAULT_MATHLIB, U=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../main.cu(166): here
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a __host__ function from a __host__ __device__ function is not allowed
+          detected during:
+            instantiation of "const auto &BC::unary_expression_transpose<T, parent>::operator[](int) const [with T=double, parent=BC::Matrix<double, BC::DEFAULT_MATHLIB>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(127): here
+            instantiation of "void BC::CPU::copy_single_thread(T &, const J &, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_MathLibraries/Mathematics_CPU.h(114): here
+            instantiation of "void BC::CPU::copy(T, J, int) [with T=double *, J=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../BC_Internals/BC_Core/Matrix.h(61): here
+            instantiation of "BC::Matrix<T, Mathlib> &BC::Matrix<T, Mathlib>::operator=(const BC::Matrix<U, Mathlib> &) [with T=double, Mathlib=BC::DEFAULT_MATHLIB, U=BC::unary_expression_transpose<double, BC::Matrix<double, BC::DEFAULT_MATHLIB>>]" 
+../main.cu(166): here
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a __host__ function("BC::Tensor_Operations_impl< ::BC::Matrix<double,  ::BC::CPU> ,  ::BC::_TRAITS<double, double *,  ::BC::Matrix<double,  ::BC::CPU>  &,  ::BC::CPU> > ::data const") from a __host__ __device__ function("BC::unary_expression_transpose<double,  ::BC::Matrix<double,  ::BC::CPU> > ::operator [] const") is not allowed
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a constexpr __host__ function("std::floor<int> ") from a __host__ __device__ function("BC::unary_expression_transpose<double,  ::BC::Matrix<double,  ::BC::CPU> > ::operator [] const") is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a __host__ function("BC::inner_shape::cols const") from a __host__ __device__ function("BC::unary_expression_transpose<double,  ::BC::Matrix<double,  ::BC::CPU> > ::operator [] const") is not allowed
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a __host__ function("BC::inner_shape::cols const") from a __host__ __device__ function("BC::unary_expression_transpose<double,  ::BC::Matrix<double,  ::BC::CPU> > ::operator [] const") is not allowed
+
+../BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.cu(34): warning: calling a __host__ function("BC::inner_shape::rows const") from a __host__ __device__ function("BC::unary_expression_transpose<double,  ::BC::Matrix<double,  ::BC::CPU> > ::operator [] const") is not allowed
+
+Finished building: ../main.cu
+ 
+Building target: BlackCat_Tensors
+Invoking: NVCC Linker
+/usr/local/cuda-9.1/bin/nvcc --cudart static -L/usr/lib/atlas-base -L/usr/local/cuda/include -L/usr/local/cuda-9.1/bin --relocatable-device-code=true -gencode arch=compute_52,code=compute_52 -gencode arch=compute_52,code=sm_52 -link -o  "BlackCat_Tensors"  ./NN_test.o ./SpeedTests.o ./main.o ./test_area.o  ./BC_Internals/BC_MathLibraries/Mathematics_GPU.o ./BC_Internals/BC_MathLibraries/Mathematics_GPU_impl.o ./BC_Internals/BC_MathLibraries/Mathematics_Opt.o ./BC_Internals/BC_MathLibraries/Mathematics_mGPU.o  ./BC_Internals/BC_Expressions/Expression_Binary_Dotproduct.o ./BC_Internals/BC_Expressions/Expression_Binary_Functors.o ./BC_Internals/BC_Expressions/Expression_Binary_Pointwise.o ./BC_Internals/BC_Expressions/Expression_Binary_Pointwise_Scalar.o ./BC_Internals/BC_Expressions/Expression_Unary_MatrixTransposition.o ./BC_Internals/BC_Expressions/Expression_Unary_Pointwise.o ./BC_Internals/BC_Expressions/SubTensor_Expression.o   -lcblas -lf77blas -lcublas -lgomp
+Finished building target: BlackCat_Tensors
+ 
+16:51:46 **** Incremental Build of configuration Debug for project BlackCat_Tensors ****
+make all 
+make: Nothing to be done for 'all'.
+19:58:24 **** Incremental Build of configuration Debug for project BlackCat_Tensors ****
+make all 
+make: Nothing to be done for 'all'.
+20:03:18 **** Build of configuration Debug for project BlackCat_Tensors_Functions ****
+make all 
+Building file: ../Functions/BlackCat_TensorFunctions.cu
+Invoking: NVCC Compiler
+/usr/local/cuda-9.1/bin/nvcc -G -g -O0 -gencode arch=compute_52,code=sm_52  -odir "Functions" -M -o "Functions/BlackCat_TensorFunctions.d" "../Functions/BlackCat_TensorFunctions.cu"
+/usr/local/cuda-9.1/bin/nvcc -G -g -O0 --compile --relocatable-device-code=true -gencode arch=compute_52,code=compute_52 -gencode arch=compute_52,code=sm_52  -x cu -o  "Functions/BlackCat_TensorFunctions.o" "../Functions/BlackCat_TensorFunctions.cu"
+../Functions/BlackCat_TensorFunctions.cu(20): error: identifier "T" is undefined
+
+../Functions/BlackCat_TensorFunctions.cu(20): error: identifier "T" is undefined
+
+../Functions/BlackCat_TensorFunctions.cu(6): warning: variable "BC::CUDA_BASE_THREADS" was declared but never referenced
+
+2 errors detected in the compilation of "/tmp/tmpxft_00000a92_00000000-6_BlackCat_TensorFunctions.cpp1.ii".
+make: *** [Functions/BlackCat_TensorFunctions.o] Error 1
+Functions/subdir.mk:18: recipe for target 'Functions/BlackCat_TensorFunctions.o' failed
+20:03:30 **** Incremental Build of configuration Debug for project BlackCat_Tensors_Functions ****
+make all 
+Building file: ../Functions/BlackCat_TensorFunctions.cu
+Invoking: NVCC Compiler
+/usr/local/cuda-9.1/bin/nvcc -G -g -O0 -gencode arch=compute_52,code=sm_52  -odir "Functions" -M -o "Functions/BlackCat_TensorFunctions.d" "../Functions/BlackCat_TensorFunctions.cu"
+/usr/local/cuda-9.1/bin/nvcc -G -g -O0 --compile --relocatable-device-code=true -gencode arch=compute_52,code=compute_52 -gencode arch=compute_52,code=sm_52  -x cu -o  "Functions/BlackCat_TensorFunctions.o" "../Functions/BlackCat_TensorFunctions.cu"
+../Functions/BlackCat_TensorFunctions.cu(6): warning: variable "BC::CUDA_BASE_THREADS" was declared but never referenced
+
+../Functions/BlackCat_TensorFunctions.cu(6): warning: variable "BC::CUDA_BASE_THREADS" was declared but never referenced
+
+Finished building: ../Functions/BlackCat_TensorFunctions.cu
+ 
+Building target: BlackCat_Tensors_Functions
+Invoking: NVCC Linker
+/usr/local/cuda-9.1/bin/nvcc --cudart static --relocatable-device-code=true -gencode arch=compute_52,code=compute_52 -gencode arch=compute_52,code=sm_52 -link -o  "BlackCat_Tensors_Functions"  ./Functions/BlackCat_TensorFunctions.o   
+/usr/lib/gcc/x86_64-linux-gnu/6/../../../x86_64-linux-gnu/crt1.o: In function `_start':
+(.text+0x20): undefined reference to `main'
+collect2: error: ld returned 1 exit status
+makefile:59: recipe for target 'BlackCat_Tensors_Functions' failed
+make: *** [BlackCat_Tensors_Functions] Error 1
+20:03:54 **** Incremental Build of configuration Debug for project BlackCat_Tensors_Functions ****
+make all 
+Building target: libBlackCat_Tensors_Functions.a
+Invoking: NVCC Archiver
+nvcc  -lib -o  "libBlackCat_Tensors_Functions.a"  ./Functions/BlackCat_TensorFunctions.o   
+Finished building target: libBlackCat_Tensors_Functions.a
+ 
+20:04:11 **** Incremental Build of configuration Debug for project BlackCat_Tensors_Functions ****
+make all 
+Building file: ../Functions/BlackCat_TensorFunctions.cu
+Invoking: NVCC Compiler
+/usr/local/cuda-9.1/bin/nvcc -G -g -O0 -gencode arch=compute_52,code=sm_52  -odir "Functions" -M -o "Functions/BlackCat_TensorFunctions.d" "../Functions/BlackCat_TensorFunctions.cu"
+/usr/local/cuda-9.1/bin/nvcc -G -g -O0 --compile --relocatable-device-code=true -gencode arch=compute_52,code=compute_52 -gencode arch=compute_52,code=sm_52  -x cu -o  "Functions/BlackCat_TensorFunctions.o" "../Functions/BlackCat_TensorFunctions.cu"
+../Functions/BlackCat_TensorFunctions.cu(6): warning: variable "BC::CUDA_BASE_THREADS" was declared but never referenced
+
+../Functions/BlackCat_TensorFunctions.cu(6): warning: variable "BC::CUDA_BASE_THREADS" was declared but never referenced
+
+Finished building: ../Functions/BlackCat_TensorFunctions.cu
+ 
+Building target: libBlackCat_Tensors_Functions.a
+Invoking: NVCC Archiver
+nvcc  -lib -o  "libBlackCat_Tensors_Functions.a"  ./Functions/BlackCat_TensorFunctions.o   
+Finished building target: libBlackCat_Tensors_Functions.a
+ 
+20:04:43 **** Incremental Build of configuration Debug for project BlackCat_Tensors_Functions ****
+make all 
+Building file: ../Functions/BlackCat_TensorFunctions.cu
+Invoking: NVCC Compiler
+/usr/local/cuda-9.1/bin/nvcc -G -g -O0 -gencode arch=compute_52,code=sm_52  -odir "Functions" -M -o "Functions/BlackCat_TensorFunctions.d" "../Functions/BlackCat_TensorFunctions.cu"
+/usr/local/cuda-9.1/bin/nvcc -G -g -O0 --compile --relocatable-device-code=true -gencode arch=compute_52,code=compute_52 -gencode arch=compute_52,code=sm_52  -x cu -o  "Functions/BlackCat_TensorFunctions.o" "../Functions/BlackCat_TensorFunctions.cu"
+../Functions/BlackCat_TensorFunctions.cu(38): error: invalid redeclaration of type name "BC::NN_Functions::sigmoid_assign"
+(22): here
+
+../Functions/BlackCat_TensorFunctions.cu(6): warning: variable "BC::CUDA_BASE_THREADS" was declared but never referenced
+
+1 error detected in the compilation of "/tmp/tmpxft_00000c11_00000000-6_BlackCat_TensorFunctions.cpp1.ii".
+Functions/subdir.mk:18: recipe for target 'Functions/BlackCat_TensorFunctions.o' failed
+make: *** [Functions/BlackCat_TensorFunctions.o] Error 1
+20:05:09 **** Incremental Build of configuration Debug for project BlackCat_Tensors_Functions ****
+make all 
+Building file: ../Functions/BlackCat_TensorFunctions.cu
+Invoking: NVCC Compiler
+/usr/local/cuda-9.1/bin/nvcc -G -g -O0 -gencode arch=compute_52,code=sm_52  -odir "Functions" -M -o "Functions/BlackCat_TensorFunctions.d" "../Functions/BlackCat_TensorFunctions.cu"
+/usr/local/cuda-9.1/bin/nvcc -G -g -O0 --compile --relocatable-device-code=true -gencode arch=compute_52,code=compute_52 -gencode arch=compute_52,code=sm_52  -x cu -o  "Functions/BlackCat_TensorFunctions.o" "../Functions/BlackCat_TensorFunctions.cu"
+../Functions/BlackCat_TensorFunctions.cu(6): warning: variable "BC::CUDA_BASE_THREADS" was declared but never referenced
+
+../Functions/BlackCat_TensorFunctions.cu(6): warning: variable "BC::CUDA_BASE_THREADS" was declared but never referenced
+
+Finished building: ../Functions/BlackCat_TensorFunctions.cu
+ 
+Building target: libBlackCat_Tensors_Functions.a
+Invoking: NVCC Archiver
+nvcc  -lib -o  "libBlackCat_Tensors_Functions.a"  ./Functions/BlackCat_TensorFunctions.o   
+Finished building target: libBlackCat_Tensors_Functions.a
+ 
+20:06:31 **** Incremental Build of configuration Debug for project BlackCat_Tensors_Functions ****
+make all 
+Building file: ../Functions/BlackCat_TensorFunctions.cu
+Invoking: NVCC Compiler
+/usr/local/cuda-9.1/bin/nvcc -G -g -O0 -gencode arch=compute_52,code=sm_52  -odir "Functions" -M -o "Functions/BlackCat_TensorFunctions.d" "../Functions/BlackCat_TensorFunctions.cu"
+/usr/local/cuda-9.1/bin/nvcc -G -g -O0 --compile --relocatable-device-code=true -gencode arch=compute_52,code=compute_52 -gencode arch=compute_52,code=sm_52  -x cu -o  "Functions/BlackCat_TensorFunctions.o" "../Functions/BlackCat_TensorFunctions.cu"
+../Functions/BlackCat_TensorFunctions.cu(6): warning: variable "BC::CUDA_BASE_THREADS" was declared but never referenced
+
+../Functions/BlackCat_TensorFunctions.cu(49): error: no instance of function template "BC::NN_Functions::sigmoid" matches the argument list
+
+../Functions/BlackCat_TensorFunctions.cu(6): warning: variable "BC::CUDA_BASE_THREADS" was declared but never referenced
+
+1 error detected in the compilation of "/tmp/tmpxft_00000cff_00000000-4_BlackCat_TensorFunctions.cpp4.ii".
+Functions/subdir.mk:18: recipe for target 'Functions/BlackCat_TensorFunctions.o' failed
+make: *** [Functions/BlackCat_TensorFunctions.o] Error 2
+20:09:09 **** Incremental Build of configuration Debug for project BlackCat_Tensors_Functions ****
+make all 
+Building file: ../Functions/BlackCat_TensorFunctions.cu
+Invoking: NVCC Compiler
+/usr/local/cuda-9.1/bin/nvcc -G -g -O0 -gencode arch=compute_52,code=sm_52  -odir "Functions" -M -o "Functions/BlackCat_TensorFunctions.d" "../Functions/BlackCat_TensorFunctions.cu"
+/usr/local/cuda-9.1/bin/nvcc -G -g -O0 --compile --relocatable-device-code=true -gencode arch=compute_52,code=compute_52 -gencode arch=compute_52,code=sm_52  -x cu -o  "Functions/BlackCat_TensorFunctions.o" "../Functions/BlackCat_TensorFunctions.cu"
+../Functions/BlackCat_TensorFunctions.cu(6): warning: variable "BC::CUDA_BASE_THREADS" was declared but never referenced
+
+../Functions/BlackCat_TensorFunctions.cu(6): warning: variable "BC::CUDA_BASE_THREADS" was declared but never referenced
+
+Finished building: ../Functions/BlackCat_TensorFunctions.cu
+ 
+Building target: libBlackCat_Tensors_Functions.a
+Invoking: NVCC Archiver
+nvcc  -lib -o  "libBlackCat_Tensors_Functions.a"  ./Functions/BlackCat_TensorFunctions.o   
+Finished building target: libBlackCat_Tensors_Functions.a
+ 
+20:10:26 **** Incremental Build of configuration Debug for project BlackCat_Tensors_Functions ****
+make all 
+Building file: ../Functions/BlackCat_TensorFunctions.cu
+Invoking: NVCC Compiler
+/usr/local/cuda-9.1/bin/nvcc -G -g -O0 -gencode arch=compute_52,code=sm_52  -odir "Functions" -M -o "Functions/BlackCat_TensorFunctions.d" "../Functions/BlackCat_TensorFunctions.cu"
+/usr/local/cuda-9.1/bin/nvcc -G -g -O0 --compile --relocatable-device-code=true -gencode arch=compute_52,code=compute_52 -gencode arch=compute_52,code=sm_52  -x cu -o  "Functions/BlackCat_TensorFunctions.o" "../Functions/BlackCat_TensorFunctions.cu"
+../Functions/BlackCat_TensorFunctions.cu(6): warning: variable "BC::CUDA_BASE_THREADS" was declared but never referenced
+
+../Functions/BlackCat_TensorFunctions.cu(6): warning: variable "BC::CUDA_BASE_THREADS" was declared but never referenced
+
+Finished building: ../Functions/BlackCat_TensorFunctions.cu
+ 
+Building target: libBlackCat_Tensors_Functions.a
+Invoking: NVCC Archiver
+nvcc  -lib -o  "libBlackCat_Tensors_Functions.a"  ./Functions/BlackCat_TensorFunctions.o   
+Finished building target: libBlackCat_Tensors_Functions.a
+ 
+12:42:55 **** Incremental Build of configuration Debug for project BlackCat_Tensors_Functions ****
+make all 
+Building file: ../Functions/BlackCat_TensorFunctions.cu
+Invoking: NVCC Compiler
+/usr/local/cuda-9.1/bin/nvcc -G -g -O0 -gencode arch=compute_52,code=sm_52  -odir "Functions" -M -o "Functions/BlackCat_TensorFunctions.d" "../Functions/BlackCat_TensorFunctions.cu"
+/usr/local/cuda-9.1/bin/nvcc -G -g -O0 --compile --relocatable-device-code=true -gencode arch=compute_52,code=compute_52 -gencode arch=compute_52,code=sm_52  -x cu -o  "Functions/BlackCat_TensorFunctions.o" "../Functions/BlackCat_TensorFunctions.cu"
+Finished building: ../Functions/BlackCat_TensorFunctions.cu
+ 
+Building target: libBlackCat_Tensors_Functions.a
+Invoking: NVCC Archiver
+nvcc  -lib -o  "libBlackCat_Tensors_Functions.a"  ./Functions/BlackCat_TensorFunctions.o   
+Finished building target: libBlackCat_Tensors_Functions.a
+ 
+12:56:13 **** Incremental Build of configuration Debug for project BlackCat_Tensors_Functions ****
+make all 
+Building file: ../Functions/BlackCat_TensorFunctions.cu
+Invoking: NVCC Compiler
+/usr/local/cuda-9.1/bin/nvcc -G -g -O0 -gencode arch=compute_52,code=sm_52  -odir "Functions" -M -o "Functions/BlackCat_TensorFunctions.d" "../Functions/BlackCat_TensorFunctions.cu"
+/usr/local/cuda-9.1/bin/nvcc -G -g -O0 --compile --relocatable-device-code=true -gencode arch=compute_52,code=compute_52 -gencode arch=compute_52,code=sm_52  -x cu -o  "Functions/BlackCat_TensorFunctions.o" "../Functions/BlackCat_TensorFunctions.cu"
+../Functions/BlackCat_TensorFunctions.cu(69): error: "template" is not allowed
+
+../Functions/BlackCat_TensorFunctions.cu(73): warning: parsing restarts here after previous syntax error
+
+../Functions/BlackCat_TensorFunctions.cu(73): error: expected an identifier
+
+../Functions/BlackCat_TensorFunctions.cu(73): error: expected a ";"
+
+../Functions/BlackCat_TensorFunctions.cu(95): error: name must be a namespace name
+
+../Functions/BlackCat_TensorFunctions.cu(126): error: expected a declaration
+
+5 errors detected in the compilation of "/tmp/tmpxft_000019ca_00000000-6_BlackCat_TensorFunctions.cpp1.ii".
+Functions/subdir.mk:18: recipe for target 'Functions/BlackCat_TensorFunctions.o' failed
+make: *** [Functions/BlackCat_TensorFunctions.o] Error 1
+12:56:21 **** Incremental Build of configuration Debug for project BlackCat_Tensors_Functions ****
+make all 
+Building file: ../Functions/BlackCat_TensorFunctions.cu
+Invoking: NVCC Compiler
+/usr/local/cuda-9.1/bin/nvcc -G -g -O0 -gencode arch=compute_52,code=sm_52  -odir "Functions" -M -o "Functions/BlackCat_TensorFunctions.d" "../Functions/BlackCat_TensorFunctions.cu"
+/usr/local/cuda-9.1/bin/nvcc -G -g -O0 --compile --relocatable-device-code=true -gencode arch=compute_52,code=compute_52 -gencode arch=compute_52,code=sm_52  -x cu -o  "Functions/BlackCat_TensorFunctions.o" "../Functions/BlackCat_TensorFunctions.cu"
+../Functions/BlackCat_TensorFunctions.cu(71): error: "template" is not allowed
+
+../Functions/BlackCat_TensorFunctions.cu(75): warning: parsing restarts here after previous syntax error
+
+../Functions/BlackCat_TensorFunctions.cu(75): error: expected an identifier
+
+../Functions/BlackCat_TensorFunctions.cu(75): error: expected a ";"
+
+../Functions/BlackCat_TensorFunctions.cu(97): error: name must be a namespace name
+
+../Functions/BlackCat_TensorFunctions.cu(128): error: expected a declaration
+
+5 errors detected in the compilation of "/tmp/tmpxft_00001a19_00000000-6_BlackCat_TensorFunctions.cpp1.ii".
+Functions/subdir.mk:18: recipe for target 'Functions/BlackCat_TensorFunctions.o' failed
+make: *** [Functions/BlackCat_TensorFunctions.o] Error 1
+12:56:33 **** Incremental Build of configuration Debug for project BlackCat_Tensors_Functions ****
+make all 
+Building file: ../Functions/BlackCat_TensorFunctions.cu
+Invoking: NVCC Compiler
+/usr/local/cuda-9.1/bin/nvcc -G -g -O0 -gencode arch=compute_52,code=sm_52  -odir "Functions" -M -o "Functions/BlackCat_TensorFunctions.d" "../Functions/BlackCat_TensorFunctions.cu"
+/usr/local/cuda-9.1/bin/nvcc -G -g -O0 --compile --relocatable-device-code=true -gencode arch=compute_52,code=compute_52 -gencode arch=compute_52,code=sm_52  -x cu -o  "Functions/BlackCat_TensorFunctions.o" "../Functions/BlackCat_TensorFunctions.cu"
+../Functions/BlackCat_TensorFunctions.cu(74): error: identifier "T" is undefined
+
+../Functions/BlackCat_TensorFunctions.cu(74): error: identifier "T" is undefined
+
+2 errors detected in the compilation of "/tmp/tmpxft_00001a6c_00000000-6_BlackCat_TensorFunctions.cpp1.ii".
+make: *** [Functions/BlackCat_TensorFunctions.o] Error 1
+Functions/subdir.mk:18: recipe for target 'Functions/BlackCat_TensorFunctions.o' failed
+12:56:39 **** Incremental Build of configuration Debug for project BlackCat_Tensors_Functions ****
+make all 
+Building file: ../Functions/BlackCat_TensorFunctions.cu
+Invoking: NVCC Compiler
+/usr/local/cuda-9.1/bin/nvcc -G -g -O0 -gencode arch=compute_52,code=sm_52  -odir "Functions" -M -o "Functions/BlackCat_TensorFunctions.d" "../Functions/BlackCat_TensorFunctions.cu"
+/usr/local/cuda-9.1/bin/nvcc -G -g -O0 --compile --relocatable-device-code=true -gencode arch=compute_52,code=compute_52 -gencode arch=compute_52,code=sm_52  -x cu -o  "Functions/BlackCat_TensorFunctions.o" "../Functions/BlackCat_TensorFunctions.cu"
+Finished building: ../Functions/BlackCat_TensorFunctions.cu
+ 
+Building target: libBlackCat_Tensors_Functions.a
+Invoking: NVCC Archiver
+nvcc  -lib -o  "libBlackCat_Tensors_Functions.a"  ./Functions/BlackCat_TensorFunctions.o   
+Finished building target: libBlackCat_Tensors_Functions.a
+ 
+12:58:20 **** Incremental Build of configuration Debug for project BlackCat_Tensors_Functions ****
+make all 
+Building file: ../Functions/BlackCat_TensorFunctions.cu
+Invoking: NVCC Compiler
+/usr/local/cuda-9.1/bin/nvcc -G -g -O0 -gencode arch=compute_52,code=sm_52  -odir "Functions" -M -o "Functions/BlackCat_TensorFunctions.d" "../Functions/BlackCat_TensorFunctions.cu"
+/usr/local/cuda-9.1/bin/nvcc -G -g -O0 --compile --relocatable-device-code=true -gencode arch=compute_52,code=compute_52 -gencode arch=compute_52,code=sm_52  -x cu -o  "Functions/BlackCat_TensorFunctions.o" "../Functions/BlackCat_TensorFunctions.cu"
+Finished building: ../Functions/BlackCat_TensorFunctions.cu
+ 
+Building target: libBlackCat_Tensors_Functions.a
+Invoking: NVCC Archiver
+nvcc  -lib -o  "libBlackCat_Tensors_Functions.a"  ./Functions/BlackCat_TensorFunctions.o   
+Finished building target: libBlackCat_Tensors_Functions.a
+ 
+13:02:37 **** Incremental Build of configuration Debug for project BlackCat_Tensors_Functions ****
+make all 
+Building file: ../Functions/BlackCat_TensorFunctions.cu
+Invoking: NVCC Compiler
+/usr/local/cuda-9.1/bin/nvcc -G -g -O0 -gencode arch=compute_52,code=sm_52  -odir "Functions" -M -o "Functions/BlackCat_TensorFunctions.d" "../Functions/BlackCat_TensorFunctions.cu"
+/usr/local/cuda-9.1/bin/nvcc -G -g -O0 --compile --relocatable-device-code=true -gencode arch=compute_52,code=compute_52 -gencode arch=compute_52,code=sm_52  -x cu -o  "Functions/BlackCat_TensorFunctions.o" "../Functions/BlackCat_TensorFunctions.cu"
+Finished building: ../Functions/BlackCat_TensorFunctions.cu
+ 
+Building target: libBlackCat_Tensors_Functions.a
+Invoking: NVCC Archiver
+nvcc  -lib -o  "libBlackCat_Tensors_Functions.a"  ./Functions/BlackCat_TensorFunctions.o   
+Finished building target: libBlackCat_Tensors_Functions.a
+ 
+13:02:58 **** Incremental Build of configuration Debug for project BlackCat_Tensors_Functions ****
+make all 
+Building file: ../Functions/BlackCat_TensorFunctions.cu
+Invoking: NVCC Compiler
+/usr/local/cuda-9.1/bin/nvcc -G -g -O0 -gencode arch=compute_52,code=sm_52  -odir "Functions" -M -o "Functions/BlackCat_TensorFunctions.d" "../Functions/BlackCat_TensorFunctions.cu"
+/usr/local/cuda-9.1/bin/nvcc -G -g -O0 --compile --relocatable-device-code=true -gencode arch=compute_52,code=compute_52 -gencode arch=compute_52,code=sm_52  -x cu -o  "Functions/BlackCat_TensorFunctions.o" "../Functions/BlackCat_TensorFunctions.cu"
+Finished building: ../Functions/BlackCat_TensorFunctions.cu
+ 
+Building target: libBlackCat_Tensors_Functions.a
+Invoking: NVCC Archiver
+nvcc  -lib -o  "libBlackCat_Tensors_Functions.a"  ./Functions/BlackCat_TensorFunctions.o   
+Finished building target: libBlackCat_Tensors_Functions.a
+ 
+13:04:26 **** Incremental Build of configuration Debug for project BlackCat_Tensors_Functions ****
+make all 
+Building file: ../Functions/BlackCat_TensorFunctions.cu
+Invoking: NVCC Compiler
+/usr/local/cuda-9.1/bin/nvcc -G -g -O0 -gencode arch=compute_52,code=sm_52  -odir "Functions" -M -o "Functions/BlackCat_TensorFunctions.d" "../Functions/BlackCat_TensorFunctions.cu"
+/usr/local/cuda-9.1/bin/nvcc -G -g -O0 --compile --relocatable-device-code=true -gencode arch=compute_52,code=compute_52 -gencode arch=compute_52,code=sm_52  -x cu -o  "Functions/BlackCat_TensorFunctions.o" "../Functions/BlackCat_TensorFunctions.cu"
+Finished building: ../Functions/BlackCat_TensorFunctions.cu
+ 
+Building target: libBlackCat_Tensors_Functions.a
+Invoking: NVCC Archiver
+nvcc  -lib -o  "libBlackCat_Tensors_Functions.a"  ./Functions/BlackCat_TensorFunctions.o   
+Finished building target: libBlackCat_Tensors_Functions.a
+ 

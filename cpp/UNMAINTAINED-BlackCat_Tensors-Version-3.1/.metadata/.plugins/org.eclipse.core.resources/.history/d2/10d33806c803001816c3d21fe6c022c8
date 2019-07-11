@@ -1,0 +1,78 @@
+
+namespace BC {
+
+#ifdef __CUDACC__
+#define __BC_gcpu__ __host__ __device__
+static constexpr int CUDA_BASE_THREADS = 256;
+#define BLACKCAT_GPU_ENABLED
+#else
+#define __BC_gcpu__
+#endif
+
+	namespace NN_Functions {
+
+		struct Sigmoid {
+			static constexpr double e = 2.71828;
+
+			template<class T>
+			__BC_gcpu__ T operator () (T t) const {
+				return 1 / (1 + std::pow(e, - t));
+			}
+		};
+		struct SigmoidAssign {
+			static constexpr double e = 2.71828;
+
+			template<class T>
+			__BC_gcpu__ T operator () (T& t) const {
+				return t = 1 / (1 + std::pow(e, - t));
+			}
+		};
+		struct CachedSigmoidDeriv {
+			static constexpr double e = 2.71828;
+
+			template<class T>
+			__BC_gcpu__ T operator () (T t) const {
+				return t * (1 - t);
+			}
+		};
+		struct cached_sigmoid_deriv_assign {
+			static constexpr double e = 2.71828;
+
+			template<class T>
+			__BC_gcpu__ T operator () (T& t) const {
+				return t *= (1 - t);
+			}
+		};
+
+		template<template<class,class> class tensor, class T, class ml>
+		void sigmoid(tensor<T, ml>& x) {
+			return x.unFunc(SigmoidAssign());
+		}
+		template<template<class,class> class tensor, class T, class ml>
+		void sigmoid(tensor<T, ml>&& x) {
+			return x.unFunc(Sigmoid());
+		}
+
+		template<template<class,class> class tensor, class T, class ml>
+		void sigmoidDeriv(tensor<T, ml>& x) {
+			return x.unFunc(SigmoidAssign());
+		}
+		template<template<class,class> class tensor, class T, class ml>
+		void sigmoidDeriv(tensor<T, ml>&& x) {
+			return x.unFunc(Sigmoid());
+		}
+
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+}
